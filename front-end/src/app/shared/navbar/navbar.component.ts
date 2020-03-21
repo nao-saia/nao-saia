@@ -12,6 +12,49 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
+    socialMedias = {
+        github: 'b0nn13/nao-saia',
+        instagram: '@naosaia',
+        facebook: '@naosaia',
+        linkedin: '@naosaia',
+        twitter: '@naosaia'
+    };
+
+    menu: {
+        categories: [
+            {
+                name: "Farmácias"
+                description: "Encontre Farmácias com delivery abertos.",
+                ref: "estabelecimento/famarcias",
+                icon: "ni ni-spaceship"
+            },
+            {
+                name: "Supermercados"
+                description: "Encontre Supermercados com delivery abertos.",
+                ref: "estabelecimento/supermercados",
+                icon: "ni ni-spaceship"
+            },
+            {
+                name: "Lanchonetes"
+                description: "Encontre Restaurantes/Lanchonetes com delivery abertos.",
+                ref: "estabelecimento/lanchonetes",
+                icon: "ni ni-spaceship"
+            },
+            {
+                name: "Restaurantes"
+                description: "Encontre Restaurantes com delivery abertos.",
+                ref: "estabelecimento/restaurantes",
+                icon: "ni ni-spaceship"
+            },
+            {
+                name: "Outros"
+                description: "Encontre outros estabalecimentos.",
+                ref: "estabelecimento",
+                icon: "ni ni-spaceship"
+            },
+        ]
+    };
+
     constructor(public location: Location, private router: Router) {
     }
 
