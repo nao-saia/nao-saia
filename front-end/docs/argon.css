@@ -13313,7 +13313,7 @@ a.btn-icon-only {
 .card-profile-image img {
     position: absolute;
     left: 50%;
-    max-width: 180px;
+    max-width: 200px;
     transition: all .15s ease;
     transform: translate(-50%, -30%);
     border-radius: .375rem
