@@ -1,7 +1,7 @@
 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
   <div class="container">
     <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
-      <img src="./assets/img/brand/argon-white.png">
+      <img src="./assets/img/brand/logo.png">
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
           [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
@@ -12,7 +12,7 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a [routerLink]="['/home']">
-              <img src="./assets/img/brand/blue.png">
+              <img src="./assets/img/brand/favico.png">
             </a>
           </div>
           <div class="col-6 collapse-close">
@@ -28,35 +28,19 @@
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-ui-04 d-lg-none"></i>
-            <span class="nav-link-inner--text">Components</span>
+            <span class="nav-link-inner--text">Onde Comprar</span>
           </a>
           <div class="dropdown-menu-xl dropdown-menu" >
             <div class="dropdown-menu-inner">
-              <a routerLinkActive="active" [routerLink]="['documentation/tutorial']" class="media d-flex align-items-center">
+              <a *ngFor="let item of menu.categories"
+                  routerLinkActive="active" [routerLink]="[item.ref]" class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                   <i class="ni ni-spaceship"></i>
+                  <i class="{{item.icon}}"></i>
                 </div>
                 <div class="media-body ml-3">
-                  <h6 class="heading text-primary mb-md-1">Getting started</h6>
-                  <p class="description d-none d-md-inline-block mb-0">Learn how to use Argon compiling Scss, change brand colors and more.</p>
-                </div>
-              </a>
-              <a routerLinkActive="active" [routerLink]="['documentation/colors']" class="media d-flex align-items-center">
-                <div class="icon icon-shape bg-gradient-success rounded-circle text-white">
-                  <i class="ni ni-palette"></i>
-                </div>
-                <div class="media-body ml-3">
-                  <h6 class="heading text-primary mb-md-1">Foundation</h6>
-                  <p class="description d-none d-md-inline-block mb-0">Learn more about colors, typography, icons and the grid system we used for Argon.</p>
-                </div>
-              </a>
-              <a routerLinkActive="active" [routerLink]="['documentation/alerts']" class="media d-flex align-items-center">
-                <div class="icon icon-shape bg-gradient-warning rounded-circle text-white">
-                  <i class="ni ni-ui-04"></i>
-                </div>
-                <div class="media-body ml-3">
-                  <h5 class="heading text-warning mb-md-1">Components</h5>
-                  <p class="description d-none d-md-inline-block mb-0">Browse our 50 beautiful handcrafted components offered in the Free version.</p>
+                  <h6 class="heading text-primary mb-md-1">{{item.name}}</h6>
+                  <p class="description d-none d-md-inline-block mb-0">{{item.description}}</p>
                 </div>
               </a>
             </div>
@@ -77,35 +61,41 @@
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/{{socialMedias.facebook}}" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
             <i class="fa fa-facebook-square"></i>
             <span class="nav-link-inner--text d-lg-none">Facebook</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+          <a class="nav-link nav-link-icon" href="https://www.instagram.com/{{socialMedias.instagram}}" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
             <i class="fa fa-instagram"></i>
             <span class="nav-link-inner--text d-lg-none">Instagram</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+          <a class="nav-link nav-link-icon" href="https://twitter.com/{{socialMedias.twitter}}" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
             <i class="fa fa-twitter-square"></i>
             <span class="nav-link-inner--text d-lg-none">Twitter</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://github.com/creativetimofficial/argon-design-system-angular?ref=adsa-navbar" target="_blank" data-toggle="tooltip" title="Star us on Github">
+          <a class="nav-link nav-link-icon" href="https://www.linkedin.com/company/{{socialMedias.linkedin}}" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+            <i class="fa fa-linkedin-square"></i>
+            <span class="nav-link-inner--text d-lg-none">Linkedin</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://github.com/{{socialMedias.github}}" target="_blank" data-toggle="tooltip" title="Star us on Github">
             <i class="fa fa-github"></i>
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
         </li>
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a href="https://www.creative-tim.com/product/argon-design-system-angular?ref=adsa-navbar" target="_blank" class="btn btn-neutral btn-icon">
+          <a href="#register" target="_blank" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
-              <i class="fa fa-cloud-download mr-2"></i>
+              <i class="fa fa-registered mr-2"></i>
             </span>
-            <span class="nav-link-inner--text">Download</span>
+            <span class="nav-link-inner--text">Cadastre Seu Estabelecimento</span>
           </a>
         </li>
       </ul>
