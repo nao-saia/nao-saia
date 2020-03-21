@@ -1,0 +1,395 @@
+2020-03-21 16:39:49.486  INFO 13684 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 13684 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 16:39:49.497 DEBUG 13684 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 16:39:49.531  INFO 13684 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 16:39:52.118  INFO 13684 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 16:39:52.119  INFO 13684 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 16:39:52.137  INFO 13684 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 16:39:52.538  INFO 13684 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 16:39:52.690  INFO 13684 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 16:39:53.413  INFO 13684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 16:39:53.759  INFO 13684 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 16:39:55.119  INFO 13684 --- [main] br.com.naosaia.service.init.Init         : Started Init in 7.818 seconds (JVM running for 28.458)
+2020-03-21 16:50:38.570  INFO 14260 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 14260 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 16:50:38.613 DEBUG 14260 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 16:50:38.616  INFO 14260 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 16:50:40.636  INFO 14260 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 16:50:40.637  INFO 14260 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 16:50:40.662  INFO 14260 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 16:50:40.830  INFO 14260 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 16:50:40.950  INFO 14260 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 16:50:41.606  INFO 14260 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 16:50:41.916  INFO 14260 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 16:50:42.925  INFO 14260 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2020-03-21 16:50:42.957 ERROR 14260 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [br/com/naosaia/service/init/LiquibaseConfig.class]: Invocation of init method failed; nested exception is liquibase.exception.MigrationFailedException: Migration failed for change set classpath:db/changelog/migrations/0001_schema_inicial.sql::1::gustavo:
+     Reason: liquibase.exception.DatabaseException: ERRO: não há restrição de unicidade que corresponde com as colunas informadas na tabela referenciada "estados" [Failed SQL: CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+
+
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+
+
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+
+
+
+CREATE TABLE cidades (
+    idcidadeibge integer NOT NULL,
+    idestadoibge integer NOT NULL,
+    codigoibge integer,
+    nomecidade character varying(1000),
+    dataatualizacao timestamp without time zone DEFAULT now()
+);
+
+
+
+
+CREATE TABLE estados (
+    idestadoibge integer NOT NULL,
+    sigla character varying(2) NOT NULL,
+    nomeestado character varying(50) NOT NULL,
+    codigoibge integer NOT NULL,
+    nomepais character varying DEFAULT 'BRASIL'::character varying NOT NULL,
+    dataatualizacao timestamp without time zone DEFAULT now() NOT NULL
+);
+
+CREATE TABLE usuarios (
+    idusuario uuid NOT NULL,
+    email character varying(250) NOT NULL,
+    senha character varying(250) NOT NULL,
+    dataatualizacao timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.usuarios OWNER TO postgres;
+
+
+
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT pk_usuarios_idusuario PRIMARY KEY (idusuario);
+
+
+
+
+ALTER TABLE ONLY cidades
+    ADD CONSTRAINT pk_cidades_idcidadeibge PRIMARY KEY (idcidadeibge);
+
+
+
+
+CREATE INDEX fki_cidades_codigoibge ON cidades USING btree (codigoibge);
+
+
+
+
+ALTER TABLE ONLY cidades
+    ADD CONSTRAINT fk_cidades_estados_idestadoibge FOREIGN KEY (idestadoibge) REFERENCES estados(idestadoibge);
+
+
+ALTER TABLE ONLY estados
+    ADD CONSTRAINT pk_estados_idestadoibge PRIMARY KEY (idestadoibge)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1745) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:576) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:498) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:320) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:318) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:846) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:863) ~[spring-context-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:546) ~[spring-context-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:142) ~[spring-boot-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:775) [spring-boot-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397) [spring-boot-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:316) [spring-boot-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1260) [spring-boot-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1248) [spring-boot-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at br.com.naosaia.service.init.Init.main(Init.java:25) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_121]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_121]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_121]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_121]
+	at org.springframework.boot.maven.AbstractRunMojo$LaunchRunner.run(AbstractRunMojo.java:558) [spring-boot-maven-plugin-2.1.2.RELEASE.jar:2.1.2.RELEASE]
+	at java.lang.Thread.run(Thread.java:745) [na:1.8.0_121]
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set classpath:db/changelog/migrations/0001_schema_inicial.sql::1::gustavo:
+     Reason: liquibase.exception.DatabaseException: ERRO: não há restrição de unicidade que corresponde com as colunas informadas na tabela referenciada "estados" [Failed SQL: CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+
+
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+
+
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+
+
+
+CREATE TABLE cidades (
+    idcidadeibge integer NOT NULL,
+    idestadoibge integer NOT NULL,
+    codigoibge integer,
+    nomecidade character varying(1000),
+    dataatualizacao timestamp without time zone DEFAULT now()
+);
+
+
+
+
+CREATE TABLE estados (
+    idestadoibge integer NOT NULL,
+    sigla character varying(2) NOT NULL,
+    nomeestado character varying(50) NOT NULL,
+    codigoibge integer NOT NULL,
+    nomepais character varying DEFAULT 'BRASIL'::character varying NOT NULL,
+    dataatualizacao timestamp without time zone DEFAULT now() NOT NULL
+);
+
+CREATE TABLE usuarios (
+    idusuario uuid NOT NULL,
+    email character varying(250) NOT NULL,
+    senha character varying(250) NOT NULL,
+    dataatualizacao timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.usuarios OWNER TO postgres;
+
+
+
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT pk_usuarios_idusuario PRIMARY KEY (idusuario);
+
+
+
+
+ALTER TABLE ONLY cidades
+    ADD CONSTRAINT pk_cidades_idcidadeibge PRIMARY KEY (idcidadeibge);
+
+
+
+
+CREATE INDEX fki_cidades_codigoibge ON cidades USING btree (codigoibge);
+
+
+
+
+ALTER TABLE ONLY cidades
+    ADD CONSTRAINT fk_cidades_estados_idestadoibge FOREIGN KEY (idestadoibge) REFERENCES estados(idestadoibge);
+
+
+ALTER TABLE ONLY estados
+    ADD CONSTRAINT pk_estados_idestadoibge PRIMARY KEY (idestadoibge)]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:584) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:51) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:73) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:210) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.Liquibase.update(Liquibase.java:190) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:434) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:391) ~[liquibase-core-3.4.1.jar:na]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1804) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1741) ~[spring-beans-5.1.4.RELEASE.jar:5.1.4.RELEASE]
+	... 22 common frames omitted
+Caused by: liquibase.exception.DatabaseException: ERRO: não há restrição de unicidade que corresponde com as colunas informadas na tabela referenciada "estados" [Failed SQL: CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+
+
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+
+
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+
+
+
+CREATE TABLE cidades (
+    idcidadeibge integer NOT NULL,
+    idestadoibge integer NOT NULL,
+    codigoibge integer,
+    nomecidade character varying(1000),
+    dataatualizacao timestamp without time zone DEFAULT now()
+);
+
+
+
+
+CREATE TABLE estados (
+    idestadoibge integer NOT NULL,
+    sigla character varying(2) NOT NULL,
+    nomeestado character varying(50) NOT NULL,
+    codigoibge integer NOT NULL,
+    nomepais character varying DEFAULT 'BRASIL'::character varying NOT NULL,
+    dataatualizacao timestamp without time zone DEFAULT now() NOT NULL
+);
+
+CREATE TABLE usuarios (
+    idusuario uuid NOT NULL,
+    email character varying(250) NOT NULL,
+    senha character varying(250) NOT NULL,
+    dataatualizacao timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE public.usuarios OWNER TO postgres;
+
+
+
+
+ALTER TABLE ONLY usuarios
+    ADD CONSTRAINT pk_usuarios_idusuario PRIMARY KEY (idusuario);
+
+
+
+
+ALTER TABLE ONLY cidades
+    ADD CONSTRAINT pk_cidades_idcidadeibge PRIMARY KEY (idcidadeibge);
+
+
+
+
+CREATE INDEX fki_cidades_codigoibge ON cidades USING btree (codigoibge);
+
+
+
+
+ALTER TABLE ONLY cidades
+    ADD CONSTRAINT fk_cidades_estados_idestadoibge FOREIGN KEY (idestadoibge) REFERENCES estados(idestadoibge);
+
+
+ALTER TABLE ONLY estados
+    ADD CONSTRAINT pk_estados_idestadoibge PRIMARY KEY (idestadoibge)]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:316) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:55) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:122) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1247) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1230) ~[liquibase-core-3.4.1.jar:na]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:548) ~[liquibase-core-3.4.1.jar:na]
+	... 30 common frames omitted
+Caused by: org.postgresql.util.PSQLException: ERRO: não há restrição de unicidade que corresponde com as colunas informadas na tabela referenciada "estados"
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2440) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2183) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:308) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:441) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:365) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:307) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:293) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:270) ~[postgresql-42.2.5.jar:42.2.5]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:266) ~[postgresql-42.2.5.jar:42.2.5]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:95) ~[HikariCP-3.2.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-3.2.0.jar:na]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:314) ~[liquibase-core-3.4.1.jar:na]
+	... 35 common frames omitted
+
+2020-03-21 16:57:11.014  INFO 10276 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 10276 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 16:57:11.028 DEBUG 10276 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 16:57:11.031  INFO 10276 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 16:57:13.412  INFO 10276 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 16:57:13.413  INFO 10276 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 16:57:13.438  INFO 10276 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 16:57:13.619  INFO 10276 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 16:57:13.746  INFO 10276 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 16:57:14.615  INFO 10276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 16:57:14.955  INFO 10276 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 16:57:19.246  INFO 10276 --- [main] br.com.naosaia.service.init.Init         : Started Init in 10.471 seconds (JVM running for 21.155)
+2020-03-21 17:53:19.321  INFO 12576 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 12576 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 17:53:19.365 DEBUG 12576 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 17:53:19.368  INFO 12576 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 17:53:21.772  INFO 12576 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 17:53:21.773  INFO 12576 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 17:53:21.804  INFO 12576 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 17:53:22.054  INFO 12576 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 17:53:22.181  INFO 12576 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 17:53:22.858  INFO 12576 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 17:53:23.150  INFO 12576 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 17:53:24.673  INFO 12576 --- [main] br.com.naosaia.service.init.Init         : Started Init in 7.621 seconds (JVM running for 18.58)
+2020-03-21 17:58:02.975  INFO 12576 --- [http-nio-9191-exec-1] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-21 18:04:32.718  INFO 6652 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 6652 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 18:04:32.729 DEBUG 6652 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 18:04:32.730  INFO 6652 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 18:04:35.241  INFO 6652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 18:04:35.242  INFO 6652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 18:04:35.264  INFO 6652 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 18:04:35.451  INFO 6652 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 18:04:35.628  INFO 6652 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 18:04:36.473  INFO 6652 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 18:04:36.857  INFO 6652 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 18:04:38.626  INFO 6652 --- [main] br.com.naosaia.service.init.Init         : Started Init in 8.196 seconds (JVM running for 20.636)
+2020-03-21 18:04:43.204  INFO 6652 --- [http-nio-9191-exec-2] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-21 18:10:52.386  INFO 7760 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 7760 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 18:10:52.462 DEBUG 7760 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 18:10:52.465  INFO 7760 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 18:10:54.877  INFO 7760 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 18:10:54.878  INFO 7760 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 18:10:54.898  INFO 7760 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 18:10:55.068  INFO 7760 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 18:10:55.203  INFO 7760 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 18:10:55.938  INFO 7760 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 18:10:56.269  INFO 7760 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 18:10:57.829  INFO 7760 --- [main] br.com.naosaia.service.init.Init         : Started Init in 7.885 seconds (JVM running for 18.311)
+2020-03-21 18:11:08.986  INFO 7760 --- [http-nio-9191-exec-1] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-03-21 18:22:24.280  INFO 11460 --- [main] br.com.naosaia.service.init.Init         : Starting Init on DESKTOP-EII49C7 with PID 11460 (C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service\target\classes started by ysnob in C:\Users\ysnob\Desktop\mobioh\produtos\naosaia\servidor\nao-saia-service)
+2020-03-21 18:22:24.289 DEBUG 11460 --- [main] br.com.naosaia.service.init.Init         : Running with Spring Boot v2.1.2.RELEASE, Spring v5.1.4.RELEASE
+2020-03-21 18:22:24.291  INFO 11460 --- [main] br.com.naosaia.service.init.Init         : No active profile set, falling back to default profiles: default
+2020-03-21 18:22:26.597  INFO 11460 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-03-21 18:22:26.599  INFO 11460 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.14]
+2020-03-21 18:22:26.623  INFO 11460 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\jre\bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin/server;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/bin;C:/Users/ysnob/Desktop/mobioh/programas/jdk-1.8.0_121/bin/../jre/lib/amd64;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Users\ysnob\Desktop\mobioh\programas\jdk-1.8.0_121\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\TortoiseGit\bin;C:\Program Files\Git\cmd;C:\programas\apache-zookeeper-3.5.5-bin\bin;C:\instantclient;C:\Users\ysnob\Desktop\mobioh\programas\apache-maven-3.3.9\bin;C:\Users\ysnob\Desktop\mobioh\programas\nssm-2.24\win64;C:\Program Files\nodejs\;C:\Users\ysnob\AppData\Local\Microsoft\WindowsApps;C:\Users\ysnob\AppData\Local\Yarn\bin;C:\Users\ysnob\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ysnob\AppData\Roaming\npm;C:\Program Files (x86)\Sophos\Sophos SSL VPN Client\bin;C:\Users\ysnob\Desktop\mobioh\programas\eclipse-java-2019-03-R-win32-x86_64\eclipse;;.]
+2020-03-21 18:22:26.800  INFO 11460 --- [main] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring embedded WebApplicationContext
+2020-03-21 18:22:26.926  INFO 11460 --- [main] br.com.naosaia.service.init.Init         : Iniciando a versao [1] do nao saia
+2020-03-21 18:22:27.755  INFO 11460 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-03-21 18:22:28.200  INFO 11460 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-03-21 18:22:29.849  INFO 11460 --- [main] br.com.naosaia.service.init.Init         : Started Init in 7.728 seconds (JVM running for 18.168)
+2020-03-21 18:22:38.618  INFO 11460 --- [http-nio-9191-exec-2] o.a.c.c.C.[.[localhost].[/naosaia/v1]    : Initializing Spring DispatcherServlet 'dispatcherServlet'
