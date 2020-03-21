@@ -8,54 +8,17 @@ import { Location, PopStateEvent } from '@angular/common';
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+    
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    socialMedias = {
-        github: 'b0nn13/nao-saia',
-        instagram: '@naosaia',
-        facebook: '@naosaia',
-        linkedin: '@naosaia',
-        twitter: '@naosaia'
-    };
-
-    menu: {
-        categories: [
-            {
-                name: "Farmácias"
-                description: "Encontre Farmácias com delivery abertos.",
-                ref: "estabelecimento/famarcias",
-                icon: "ni ni-spaceship"
-            },
-            {
-                name: "Supermercados"
-                description: "Encontre Supermercados com delivery abertos.",
-                ref: "estabelecimento/supermercados",
-                icon: "ni ni-spaceship"
-            },
-            {
-                name: "Lanchonetes"
-                description: "Encontre Restaurantes/Lanchonetes com delivery abertos.",
-                ref: "estabelecimento/lanchonetes",
-                icon: "ni ni-spaceship"
-            },
-            {
-                name: "Restaurantes"
-                description: "Encontre Restaurantes com delivery abertos.",
-                ref: "estabelecimento/restaurantes",
-                icon: "ni ni-spaceship"
-            },
-            {
-                name: "Outros"
-                description: "Encontre outros estabalecimentos.",
-                ref: "estabelecimento",
-                icon: "ni ni-spaceship"
-            },
-        ]
-    };
+    socialMedias: any;
+    menu: any;
 
     constructor(public location: Location, private router: Router) {
+        this.loadMenu();
+        this.loadSocialMedias();
     }
 
     ngOnInit() {
@@ -95,5 +58,52 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    loadMenu() {
+        this.menu = {
+            categories: [
+                {
+                    name: "Farmácias",
+                    description: "Encontre Farmácias com delivery abertos.",
+                    ref: "estabelecimento/famarcias",
+                    icon: "ni ni-ambulance"
+                },
+                {
+                    name: "Supermercados",
+                    description: "Encontre Supermercados com delivery abertos.",
+                    ref: "estabelecimento/supermercados",
+                    icon: "ni ni-cart"
+                },
+                {
+                    name: "Lanchonetes",
+                    description: "Encontre Restaurantes/Lanchonetes com delivery abertos.",
+                    ref: "estabelecimento/lanchonetes",
+                    icon: "ni ni-delivery-fast"
+                },
+                {
+                    name: "Restaurantes",
+                    description: "Encontre Restaurantes com delivery abertos.",
+                    ref: "estabelecimento/restaurantes",
+                    icon: "ni ni-delivery-fast"
+                },
+                {
+                    name: "Outros",
+                    description: "Encontre outros estabalecimentos.",
+                    ref: "estabelecimento",
+                    icon: "ni ni-square-pin"
+                },
+            ]
+        };
+    }
+
+    loadSocialMedias() {
+        this.socialMedias = {
+            github: 'b0nn13/nao-saia',
+            instagram: '@naosaia',
+            facebook: '@naosaia',
+            linkedin: '@naosaia',
+            twitter: '@naosaia'
+        };
     }
 }
