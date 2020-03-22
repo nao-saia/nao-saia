@@ -7,7 +7,9 @@ import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
+import { ContributorsComponent } from './landing/contributors/contributors.component';
 import { LoginComponent } from './login/login.component';
+import { SupportUsComponent } from './landing/support-us/support-us.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -15,6 +17,8 @@ const routes: Routes =[
     { path: 'register',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'login',          component: LoginComponent },
+    { path: 'contribuitors',          component: ContributorsComponent  },
+    { path: 'support-us',          component: SupportUsComponent  },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
