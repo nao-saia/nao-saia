@@ -1,7 +1,7 @@
 package br.com.nao.saia.service;
 
+import br.com.nao.saia.converter.MerchantConverter;
 import br.com.nao.saia.dto.MerchantDTO;
-import br.com.nao.saia.dto.MerchantDTOFactory;
 import br.com.nao.saia.exception.MerchantNotFoundException;
 import br.com.nao.saia.model.Merchant;
 import br.com.nao.saia.repository.MerchantRepository;
@@ -21,27 +21,28 @@ import java.util.stream.Collectors;
 public class MerchantService {
 
     private final MerchantRepository merchantRepository;
-    private final MerchantDTOFactory merchantDTOFactory;
+    private final MerchantConverter merchantConverter;
 
     public MerchantService(MerchantRepository merchantRepository,
-                           MerchantDTOFactory merchantDTOFactory) {
+                           MerchantConverter merchantConverter) {
         this.merchantRepository = merchantRepository;
-        this.merchantDTOFactory = merchantDTOFactory;
+        this.merchantConverter = merchantConverter;
     }
 
     public MerchantDTO findById(UUID id) {
         return merchantRepository.findById(id)
-                .map(merchantDTOFactory::createMerchantDTO)
+                .map(merchantConverter::fromDomainToDTO)
                 .orElseThrow(() -> new MerchantNotFoundException(id));
     }
 
     public List<MerchantDTO> findAll() {
         return merchantRepository.findAll().stream()
-                .map(merchantDTOFactory::createMerchantDTO)
+                .map(merchantConverter::fromDomainToDTO)
                 .collect(Collectors.toList());
     }
 
-    public void save(Merchant merchant) {
+    public void save(MerchantDTO merchantDTO) {
+        Merchant merchant = merchantConverter.fromDTOToDomain(merchantDTO);
         merchantRepository.save(merchant);
     }
 
