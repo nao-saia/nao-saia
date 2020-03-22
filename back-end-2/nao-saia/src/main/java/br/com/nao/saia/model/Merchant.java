@@ -43,6 +43,7 @@ public class Merchant extends EntitySupport {
     
     private boolean displayAddress;
     
+    private String note;
     
     public String getFantasyName() {
         return fantasyName;
@@ -158,6 +159,14 @@ public class Merchant extends EntitySupport {
     
     public boolean isDisplayAddress() {
         return displayAddress;
+    }
+    
+    public String getNote() {
+        return note;
+    }
+    
+    public void setNote(String note) {
+        this.note = note;
     }
     
     public void setDisplayAddress(boolean displayAddress) {
