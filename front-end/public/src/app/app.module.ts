@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,6 +17,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { ContributorsComponent } from './landing/contributors/contributors.component';
+import { BannerRegisterComponent } from './landing/banner-register/banner-register.component';
 
 @NgModule({
   declarations: [
@@ -26,10 +28,12 @@ import { ContributorsComponent } from './landing/contributors/contributors.compo
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    ContributorsComponent
+    ContributorsComponent,
+    BannerRegisterComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgbModule,
     FormsModule,
     RouterModule,
