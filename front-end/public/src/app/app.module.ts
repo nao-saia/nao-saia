@@ -17,6 +17,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { ContributorsComponent } from './landing/contributors/contributors.component';
+import { BannerRegisterComponent } from './landing/banner-register/banner-register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ContributorsComponent } from './landing/contributors/contributors.compo
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    ContributorsComponent
+    ContributorsComponent,
+    BannerRegisterComponent
   ],
   imports: [
     BrowserModule,
