@@ -1,7 +1,9 @@
 package br.com.naosaia.domain.entidade;
 
 import java.util.Date;
-import java.util.UUID;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -12,10 +14,11 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 @NoArgsConstructor(force = true)
+@Document(collection = "usuarios")
 public class Usuario {
  
-	@SerializedName(value = "idusuario", alternate = "idUsuario")
-	private UUID idUsuario;
+	@Id
+	private String id;
 
 	private String email;
 	

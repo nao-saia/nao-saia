@@ -1,8 +1,9 @@
 package br.com.nao.saia.dto;
 
+import br.com.nao.saia.model.Address;
 import br.com.nao.saia.model.Merchant;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -23,10 +24,7 @@ public class MerchantDTO {
     private String fantasyName;
     private String companyName;
     private String cnpj;
-    private GeoJsonPoint geocode;
-    private String endereco;
-    private String bairro;
-    private String cep;
+    private AddressDTO address;
     private boolean acceptTerms;
     private boolean active;
     private String logo;
@@ -87,39 +85,15 @@ public class MerchantDTO {
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
-    
-    public GeoJsonPoint getGeocode() {
-        return geocode;
+
+    public AddressDTO getAddress() {
+        return address;
     }
-    
-    public void setGeocode(GeoJsonPoint geocode) {
-        this.geocode = geocode;
+
+    public void setAddress(AddressDTO address) {
+        this.address = address;
     }
-    
-    public String getEndereco() {
-        return endereco;
-    }
-    
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-    
-    public String getBairro() {
-        return bairro;
-    }
-    
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
-    }
-    
-    public String getCep() {
-        return cep;
-    }
-    
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-    
+
     public boolean isAcceptTerms() {
         return acceptTerms;
     }

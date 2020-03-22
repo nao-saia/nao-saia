@@ -1,10 +1,8 @@
-package br.com.nao.saia.model;
+package br.com.nao.saia.dto;
 
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+public class AddressDTO {
 
-public class Address {
-
-    private GeoJsonPoint location;
+    private GeoLocationDTO location;
 
     private String street;
 
@@ -16,11 +14,11 @@ public class Address {
 
     private String zipcode;
 
-    public GeoJsonPoint getLocation() {
+    public GeoLocationDTO getLocation() {
         return location;
     }
 
-    public void setLocation(GeoJsonPoint location) {
+    public void setLocation(GeoLocationDTO location) {
         this.location = location;
     }
 

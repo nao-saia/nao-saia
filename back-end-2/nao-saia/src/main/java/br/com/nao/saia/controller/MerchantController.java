@@ -43,8 +43,8 @@ public class MerchantController {
 	}
 
 	@PostMapping
-	public void save(@Valid @RequestBody Merchant merchant) {
-		merchantService.save(merchant);
+	public void save(@Valid @RequestBody MerchantDTO merchantDTO) {
+		merchantService.save(merchantDTO);
 	}
 	
 	@DeleteMapping("{id}")

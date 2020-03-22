@@ -27,11 +27,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>br.com.erp</groupId>
-			<artifactId>erp-framework</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>br.com.naosaia.domain</groupId>
 			<artifactId>nao-saia-domain</artifactId>
 			<version>${project.version}</version>
@@ -49,12 +44,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.liquibase</groupId>
-			<artifactId>liquibase-core</artifactId>
-			<version>3.4.1</version>
-		</dependency>
- 
 	</dependencies>
 	
 	<build>

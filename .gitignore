@@ -40,3 +40,4 @@ Thumbs.db
 
 #Eclipse
 target
+/back-end/nao-saia-parent/nao-saia-service/logs
