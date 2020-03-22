@@ -1,42 +1,63 @@
 package br.com.naosaia.domain.usuario;
 
-import java.util.UUID;
+import java.util.Date;
+import java.util.Objects;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
 
-import br.com.erp.framework.dao.DaoService;
-import br.com.erp.framework.utilitario.ValidatorUtils;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+
 import br.com.naosaia.domain.entidade.RespostaSituacao;
 import br.com.naosaia.domain.entidade.Usuario;
- 
 
 @Named
-public class UsuarioBs extends DaoService {
+public class UsuarioBs {
+
+	@Inject
+	private MongoTemplate mongoTemplate;
 
 	public RespostaSituacao logar(Usuario usuario) {
-		Usuario usuarioLogado =  find("consultar-usuario-por-email-e-senha.sql", usuario, Usuario.class);
-		if(ValidatorUtils.isValueValid(usuarioLogado)) {
+		Usuario usuarioLogado = consultarUsuarioPorEmailESenha(usuario);
+		if (Objects.nonNull(usuarioLogado)) {
 			return RespostaSituacao.builder().status(Boolean.TRUE).mensagem("Usuario logado").build();
-		}else {
+		} else {
 			return RespostaSituacao.builder().status(Boolean.FALSE).mensagem("Usuario e senha inválido").build();
 		}
+	}
+	
+	private Usuario consultarUsuarioPorEmailESenha(Usuario usuario) {
+		return mongoTemplate.findOne(Query.query(
+									Criteria.where("email").is(usuario.getEmail().toUpperCase())
+											.and("senha").is(usuario.getSenha())
+									), Usuario.class);
 	}
 
 	public RespostaSituacao cadastrarUsuario(@Valid Usuario usuario) {
 		RespostaSituacao situacao = RespostaSituacao.builder().build();
-		Boolean emailCadastrado = findForBoolean("verificar-se-email-ja-foi-cadastrado.sql", usuario);
+		Boolean emailCadastrado = verificarEmailJaCadastrado(usuario);
 		if (emailCadastrado) {
 			situacao.setStatus(Boolean.FALSE);
 			situacao.setMensagem("E-mail já cadastrado");
 		} else {
-			usuario.setIdUsuario(UUID.randomUUID());
-			Boolean status = add("cadastrar-usuario.sql", usuario);
+			usuario.setDataAtualizacao(new Date());
+			usuario.setEmail(usuario.getEmail().toUpperCase());
+			mongoTemplate.insert(usuario);
+			Boolean status = Boolean.TRUE;
 			situacao.setStatus(status);
 			situacao.setMensagem("Usuário cadastrado com sucesso");
 		}
 
 		return situacao;
+	}
+
+	private Boolean verificarEmailJaCadastrado(Usuario usuario) {
+		Usuario usario = mongoTemplate.findOne(Query.query(
+											Criteria.where("email").is(usuario.getEmail().toUpperCase())), Usuario.class);
+		return Objects.nonNull(usario);
 	}
 
 }
