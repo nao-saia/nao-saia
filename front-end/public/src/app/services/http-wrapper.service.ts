@@ -17,71 +17,70 @@ export class HttpWrapperService {
     this.baseUrl = environment.baseUrl;
   }
 
-  get(url: string, 
-      options?: {
-        headers?: HttpHeaders | {
-            [header: string]: string | string[];
-        };
-        observe?: 'body';
-        params?: HttpParams | {
-            [param: string]: string | string[];
-        };
-        reportProgress?: boolean;
-        responseType?: 'json';
-        withCredentials?: boolean;
-      }): Observable<Object> {
-        url = `${this.baseUrl}/${url}`;
-    return this.http.get(url, options);
+  get<T>(url: string, options?: {
+    headers?: HttpHeaders | {
+      [header: string]: string | string[];
+    };
+    observe?: 'body';
+    params?: HttpParams | {
+      [param: string]: string | string[];
+    };
+    reportProgress?: boolean;
+    responseType?: 'json';
+    withCredentials?: boolean;
+  }): Observable<T> {
+    url = `${this.baseUrl}/${url}`;
+    return this.http.get<T>(url, options);
   }
 
-  post(url: string, body: any | null, 
-       options?: {
-        headers?: HttpHeaders | {
-          [header: string]: string | string[];
-        };
-        observe?: 'body';
-        params?: HttpParams | {
-          [param: string]: string | string[];
-        };
-        reportProgress?: boolean;
-        responseType?: 'json';
-        withCredentials?: boolean;
-      }): Observable<Object> {
-        url = `${this.baseUrl}/${url}`;
-    return this.http.post(url, body, options);
+  post<T>(url: string, body: any | null,
+    options?: {
+      headers?: HttpHeaders | {
+        [header: string]: string | string[];
+      };
+      observe?: 'body';
+      params?: HttpParams | {
+        [param: string]: string | string[];
+      };
+      reportProgress?: boolean;
+      responseType?: 'json';
+      withCredentials?: boolean;
+    }): Observable<T> {
+    url = `${this.baseUrl}/${url}`;
+    return this.http.post<T>(url, body, options);
   }
 
-  put(url: string, body: any | null, 
-      options?: {
-        headers?: HttpHeaders | {
-            [header: string]: string | string[];
-        };
-        observe?: 'body';
-        params?: HttpParams | {
-            [param: string]: string | string[];
-        };
-        reportProgress?: boolean;
-        responseType?: 'json';
-        withCredentials?: boolean;
-      }): Observable<Object> {
-        url = `${this.baseUrl}/${url}`;
-    return this.http.put(url, body, options);
+  put<T>(url: string, body: any | null,
+    options?: {
+      headers?: HttpHeaders | {
+        [header: string]: string | string[];
+      };
+      observe?: 'body';
+      params?: HttpParams | {
+        [param: string]: string | string[];
+      };
+      reportProgress?: boolean;
+      responseType?: 'json';
+      withCredentials?: boolean;
+    }): Observable<T> {
+    url = `${this.baseUrl}/${url}`;
+    return this.http.put<T>(url, body, options);
   }
 
-  delete(url: string, 
-         options: {
-            headers?: HttpHeaders | {
-                [header: string]: string | string[];
-            };
-            observe?: 'body';
-            params?: HttpParams | {
-                [param: string]: string | string[];
-            };
-            reportProgress?: boolean;
-            responseType: 'arraybuffer';
-            withCredentials?: boolean;
-         }): Observable<Object> {
-          url = `${this.baseUrl}/${url}`;
-    return this.http.delete(url, options);
+  delete<T>(url: string,
+    options: {
+      headers?: HttpHeaders | {
+        [header: string]: string | string[];
+      };
+      observe?: 'body';
+      params?: HttpParams | {
+        [param: string]: string | string[];
+      };
+      reportProgress?: boolean;
+      responseType: 'arraybuffer';
+      withCredentials?: boolean;
+    }): Observable<T> {
+    url = `${this.baseUrl}/${url}`;
+    return this.http.delete<T>(url);
   }
 }
