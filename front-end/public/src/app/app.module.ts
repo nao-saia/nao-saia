@@ -15,6 +15,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
+import { ContributorsComponent } from './landing/contributors/contributors.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginComponent } from './login/login.component';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ContributorsComponent
   ],
   imports: [
     BrowserModule,
