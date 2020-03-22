@@ -19,13 +19,27 @@ public class MerchantDTOFactory {
 	public MerchantDTO createMerchantDTO(Merchant merchant) {
 		MerchantDTO merchantDTO = new MerchantDTO();
 		merchantDTO.setId(merchant.getId());
-		merchantDTO.setName(merchant.getName());
-		merchantDTO.setCnpj(merchant.getCnpj());
-		merchantDTO.setAddress(merchant.getAddress());
-		merchantDTO.setCity(merchant.getCity());
-		merchantDTO.setUf(merchant.getUf());
 		merchantDTO.setCreatedAt(merchant.getCreatedAt());
 		merchantDTO.setUpdateAt(merchant.getUpdateAt());
+		merchantDTO.setFantasyName(merchant.getFantasyName());
+		merchantDTO.setCompanyName(merchant.getCompanyName());
+		merchantDTO.setCnpj(merchant.getCnpj());
+		merchantDTO.setGeocode(merchant.getAddress().getGeocode());
+		merchantDTO.setEndereco(merchant.getAddress().getEndereco());
+		merchantDTO.setBairro(merchant.getAddress().getBairro());
+		merchantDTO.setCep(merchant.getAddress().getCep());
+		merchantDTO.setAcceptTerms(merchant.isAcceptTerms());
+		merchantDTO.setActive(merchant.isActive());
+		merchantDTO.setLogo(merchant.getLogo());
+		merchantDTO.setAds(merchant.getAds());
+		merchantDTO.setWhatsapp(merchant.getWhatsapp());
+		merchantDTO.setPhones(merchant.getPhones());
+		merchantDTO.setIfood(merchant.isIfood());
+		merchantDTO.setUberEats(merchant.isUberEats());
+		merchantDTO.setRappi(merchant.isRappi());
+		merchantDTO.setOwnDelivery(merchant.isOwnDelivery());
+		merchantDTO.setDisplayAddress(merchant.isDisplayAddress());
+		merchantDTO.setNote(merchant.getNote());
 		return merchantDTO;
 	}
 }
