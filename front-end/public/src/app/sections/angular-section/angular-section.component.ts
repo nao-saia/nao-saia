@@ -14,6 +14,7 @@ export class AngularSectionComponent implements OnInit {
   closeResult: string;
   model1 : NgbDate;
   model2 : NgbDate;
+  model: any;
 
   focus;
   focus1;
@@ -78,6 +79,15 @@ export class AngularSectionComponent implements OnInit {
       this.model2 = this.model1;
     }
   }
+
+  mama(event) {
+    console.log('FAZ NADA');
+  }
+
+  onDateSelection(date) {
+    console.log('FAZ NADA');
+  }
+  
   ngOnInit() {
   }
 
