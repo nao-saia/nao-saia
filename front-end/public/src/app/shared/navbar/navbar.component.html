@@ -46,23 +46,35 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" [routerLink]="['/landing']" role="button">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
             <span class="nav-link-inner--text">O Projeto</span>
           </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Compartilhe</span>
-          </a>
           <div class="dropdown-menu">
             <a [routerLink]="['/landing']" class="dropdown-item">Conheça o projeto</a>
+            <a [routerLink]="['/contribuitors']" class="dropdown-item">Quem está fazendo a diferença</a>
             <!-- <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a> -->
             <!-- <a [routerLink]="['/login']" class="dropdown-item">Login</a> -->
             <!-- <a [routerLink]="['/register']" class="dropdown-item">Register</a> -->
           </div>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" [routerLink]="['/support-us']" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Doações</span>
+          </a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Compartilhe</span>
+          </a>
+          <div class="dropdown-menu">
+            <a [routerLink]="['/landing']" class="dropdown-item">No Facebook</a>
+            <a [routerLink]="['/landing']" class="dropdown-item">No Intagram</a>
+            <a [routerLink]="['/landing']" class="dropdown-item">No Whatsapp</a>
+          </div>
+        </li> -->
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
