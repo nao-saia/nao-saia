@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.validation.Valid;
 
 /**
@@ -18,12 +19,12 @@ import javax.validation.Valid;
  * @since 22/03/2020
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("users")
 public class UserController {
 
 	private static final String JSON = MediaType.APPLICATION_JSON_VALUE;
 
-	private UserService userService;
+	private final UserService userService;
 	
 	public UserController(UserService userService) {
 		this.userService = userService;
@@ -31,11 +32,11 @@ public class UserController {
 	
 	@PostMapping(path = "/login", consumes = JSON, produces = JSON)
 	public UserStatusDTO login(@Valid @RequestBody User user) {
-		return userService.logar(user);
+		return userService.login(user);
 	}
 	
 	@PostMapping(path = "/create", consumes = JSON, produces = JSON)
-	public UserStatusDTO cadastrarVisitante(@Valid @RequestBody User user) {
+	public UserStatusDTO createUser(@Valid @RequestBody User user) {
 		return userService.createUser(user);
 	}
 

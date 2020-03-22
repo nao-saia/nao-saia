@@ -11,31 +11,30 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
-	
-	private UserRepository userRepository;
-	
-	@Autowired
-	public UserService(UserRepository userRepository) {
-		this.userRepository = userRepository;
-	}
-	
-	public UserStatusDTO logar(User user) {
-		User userBd = userRepository.findByEmailAndSenha(user.getEmail(), user.getSenha());
-		if (userBd != null) {
-		// Implementar regra
-		} else {
-			// Implementar regra
-			userRepository.save(user);
-		}
-		return new UserStatusDTO();
-	}
 
-	public UserStatusDTO createUser(User user) {
-		User userBd = userRepository.findByEmailAndSenha(user.getEmail(), user.getSenha());
-		if (userBd != null) {
-			// Implementar regra
-		}
-		return new UserStatusDTO();
-	}
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public UserStatusDTO login(User user) {
+        User userBd = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (userBd != null) {
+            // Implementar regra
+        } else {
+            // Implementar regra
+            userRepository.save(user);
+        }
+        return new UserStatusDTO();
+    }
+
+    public UserStatusDTO createUser(User user) {
+        User userBd = userRepository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (userBd != null) {
+            // Implementar regra
+        }
+        return new UserStatusDTO();
+    }
 
 }

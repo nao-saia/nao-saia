@@ -1,10 +1,12 @@
 package br.com.nao.saia.repository;
 
 import br.com.nao.saia.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+import java.util.UUID;
+
+public interface UserRepository extends MongoRepository<User, UUID> {
 	
-	User findByEmailAndSenha(String email, String senha);
+	User findByEmailAndPassword(String email, String password);
 	
 }

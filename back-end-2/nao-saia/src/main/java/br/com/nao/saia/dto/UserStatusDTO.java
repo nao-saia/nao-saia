@@ -10,22 +10,22 @@ import br.com.nao.saia.model.User;
  */
 public class UserStatusDTO {
 
-	private boolean status;
-	private String mensagem;
-	
-	public boolean isStatus() {
-		return status;
-	}
-	
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	
-	public String getMensagem() {
-		return mensagem;
-	}
-	
-	public void setMensagem(String mensagem) {
-		this.mensagem = mensagem;
-	}
+    private boolean status;
+    private String message;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
