@@ -1,0 +1,34 @@
+<a
+  [routerLink]="getRouterLinkEstabelecimento()"
+  (click)="selecionarEstabelecimento(estabelecimento)"
+>
+  <div
+    class="rounded bg-white shadow shadow-lg--hover p-3 mb-2"
+    [@estabelecimentoTrigger]="estabelecimentoState"
+  >
+    <div class="d-flex justify-content-start align-items-center">
+      <img
+        class="img-fluid img-thumbnail "
+        src="../../../assets/img/brand/favicon.png"
+      />
+
+      <div class="ml-2 d-flex justify-content-between align-items-center">
+        <div>
+          <label>{{ estabelecimento.nomeFantasia }}</label>
+          <div>
+            <i class="fa fa-whatsapp"></i>
+            <label class="ml-1">{{ estabelecimento.whatsapp }}</label>
+          </div>
+          <div>
+            <i class="fa fa-map-marker"></i>
+            <label class="ml-1">{{ estabelecimento.bairro }}</label>
+          </div>
+        </div>
+        <div *ngFor="let app of apps" class="rounded">
+          <img class="img-fluid m-1 img-thumbnail" [src]="app" />
+        </div>
+      </div>
+    </div>
+    <!-- /.info-box-content -->
+  </div>
+</a>

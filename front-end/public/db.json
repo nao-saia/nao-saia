@@ -1,0 +1,316 @@
+{
+    "estabelecimentos": [
+        {
+            "nomeFantasia": "Restaurante Goiânia VIVA",
+            "razaoSocial": "Restaurante Goiânia VIVA LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Rua GV5",
+            "bairro": "Goiânia viva",
+            "cep": "74409010",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905-480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Goiânia VIVA",
+            "razaoSocial": "Restaurante Goiânia VIVA LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Rua GV5",
+            "bairro": "Goiânia viva",
+            "cep": "74409010",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905-480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Goiânia VIVA",
+            "razaoSocial": "Restaurante Goiânia VIVA LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Rua GV5",
+            "bairro": "Goiânia viva",
+            "cep": "74409010",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905-480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Goiânia VIVA",
+            "razaoSocial": "Restaurante Goiânia VIVA LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Rua GV5",
+            "bairro": "Goiânia viva",
+            "cep": "74409010",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        },
+        {
+            "nomeFantasia": "Restaurante Gente Boa",
+            "razaoSocial": "Restaurante Gente Boa LTDA",
+            "categorias": [
+                "Empório",
+                "Restaurante", 
+                "Conveniência"
+            ],
+            "endereço": "Avenida Rio Verde",
+            "bairro": "Parque Amazonia",
+            "cep": "74905-480",
+            "logo": "",
+            "anuncios": [
+                "imagem.png",
+                "imagem.png"
+            ],
+            "whatsapp": "+55629810599999",
+            "telefones": [
+                "629810599999",
+                "629810599999"
+            ],
+            "ifood": true,
+            "uberEats": true,
+            "rappi": true,
+            "exibirEndereco": true
+        }
+    ]
+  }

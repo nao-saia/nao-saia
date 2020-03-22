@@ -1,3 +1,4 @@
+import { EstabelecimentosComponent } from './estabelecimentos/estabelecimentos.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
@@ -15,6 +16,7 @@ const routes: Routes =[
     { path: 'register',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'login',          component: LoginComponent },
+    { path: 'estabelecimentos',          component: EstabelecimentosComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
