@@ -18,6 +18,10 @@ import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { ContributorsComponent } from './landing/contributors/contributors.component';
 import { BannerRegisterComponent } from './landing/banner-register/banner-register.component';
+import { AdvantagesComponent } from './landing/advantages/advantages.component';
+import { GoalsComponent } from './landing/goals/goals.component';
+import { SupportUsComponent } from './landing/support-us/support-us.component';
+import { MerchantComponent } from './merchant/merchant.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,11 @@ import { BannerRegisterComponent } from './landing/banner-register/banner-regist
     FooterComponent,
     LoginComponent,
     ContributorsComponent,
-    BannerRegisterComponent
+    BannerRegisterComponent,
+    AdvantagesComponent,
+    GoalsComponent,
+    SupportUsComponent,
+    MerchantComponent
   ],
   imports: [
     BrowserModule,
