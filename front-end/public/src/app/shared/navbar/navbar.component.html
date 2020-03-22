@@ -46,9 +46,15 @@
           </div>
         </li>
         <li class="nav-item dropdown">
+          <a class="nav-link no-caret" [routerLink]="['/landing']" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">O Projeto</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Ajude a divulgar</span>
+            <span class="nav-link-inner--text">Compartilhe</span>
           </a>
           <div class="dropdown-menu">
             <a [routerLink]="['/landing']" class="dropdown-item">Conheça o projeto</a>
