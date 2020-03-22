@@ -33,9 +33,8 @@
           <div class="dropdown-menu-xl dropdown-menu" >
             <div class="dropdown-menu-inner">
               <a *ngFor="let item of menu.categories"
-                  routerLinkActive="active" [routerLink]="[item.ref]" class="media d-flex align-items-center">
+                  routerLinkActive="active" [routerLink]="item.ref" class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
-                  <i class="ni ni-spaceship"></i>
                   <i class="{{item.icon}}"></i>
                 </div>
                 <div class="media-body ml-3">
@@ -49,37 +48,37 @@
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Examples</span>
+            <span class="nav-link-inner--text">Ajude a divulgar</span>
           </a>
           <div class="dropdown-menu">
-            <a [routerLink]="['/landing']" class="dropdown-item">Landing</a>
-            <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a>
-            <a [routerLink]="['/login']" class="dropdown-item">Login</a>
-            <a [routerLink]="['/register']" class="dropdown-item">Register</a>
+            <a [routerLink]="['/landing']" class="dropdown-item">Conheça o projeto</a>
+            <!-- <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a> -->
+            <!-- <a [routerLink]="['/login']" class="dropdown-item">Login</a> -->
+            <!-- <a [routerLink]="['/register']" class="dropdown-item">Register</a> -->
           </div>
         </li>
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.facebook.com/{{socialMedias.facebook}}" target="_blank" data-toggle="tooltip" title="Like us on Facebook">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/{{socialMedias.facebook}}" target="_blank" data-toggle="tooltip" title="Curta nossa página no Facebook">
             <i class="fa fa-facebook-square"></i>
             <span class="nav-link-inner--text d-lg-none">Facebook</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/{{socialMedias.instagram}}" target="_blank" data-toggle="tooltip" title="Follow us on Instagram">
+          <a class="nav-link nav-link-icon" href="https://www.instagram.com/{{socialMedias.instagram}}" target="_blank" data-toggle="tooltip" title="Siga-nos no Instagram">
             <i class="fa fa-instagram"></i>
             <span class="nav-link-inner--text d-lg-none">Instagram</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://twitter.com/{{socialMedias.twitter}}" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+          <a class="nav-link nav-link-icon" href="https://twitter.com/{{socialMedias.twitter}}" target="_blank" data-toggle="tooltip" title="Siga-nos no Twitter">
             <i class="fa fa-twitter-square"></i>
             <span class="nav-link-inner--text d-lg-none">Twitter</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.linkedin.com/company/{{socialMedias.linkedin}}" target="_blank" data-toggle="tooltip" title="Follow us on Twitter">
+          <a class="nav-link nav-link-icon" href="https://www.linkedin.com/company/{{socialMedias.linkedin}}" target="_blank" data-toggle="tooltip" title="Siga-nos no Linkedin">
             <i class="fa fa-linkedin-square"></i>
             <span class="nav-link-inner--text d-lg-none">Linkedin</span>
           </a>
