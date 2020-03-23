@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit {
         }
     }
 
-    onCloseAlert(): void {
+    onCloseAlert(data): void {
         this.dataAlert = {};
     }
 }
