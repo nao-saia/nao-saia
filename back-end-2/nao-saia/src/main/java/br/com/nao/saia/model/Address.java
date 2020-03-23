@@ -1,10 +1,13 @@
 package br.com.nao.saia.model;
 
-import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
+import org.springframework.data.geo.Point;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
+import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 
 public class Address {
 
-    private GeoJsonPoint location;
+    @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
+    private Point location;
 
     private String street;
 
@@ -16,11 +19,11 @@ public class Address {
 
     private String zipcode;
 
-    public GeoJsonPoint getLocation() {
+    public Point getLocation() {
         return location;
     }
 
-    public void setLocation(GeoJsonPoint location) {
+    public void setLocation(Point location) {
         this.location = location;
     }
 
