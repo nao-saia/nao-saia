@@ -28,6 +28,7 @@ public class MerchantDTO {
     private boolean acceptTerms;
     private boolean active;
     private String logo;
+    private List<String> categories;
     private List<String> ads;
     private String whatsapp;
     private List<String> phones;
@@ -116,6 +117,14 @@ public class MerchantDTO {
     
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+    
+    public List<String> getCategories() {
+        return categories;
+    }
+    
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
     
     public List<String> getAds() {
