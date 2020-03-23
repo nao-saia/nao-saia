@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: './assets/data'
+  baseUrl: 'http://<server>:8088'
 };

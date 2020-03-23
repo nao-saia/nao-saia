@@ -1,13 +1,18 @@
 package br.com.nao.saia.controller;
 
-import br.com.nao.saia.dto.UserStatusDTO;
+import br.com.nao.saia.dto.MerchantDTO;
+import br.com.nao.saia.dto.ResponseDTO;
 import br.com.nao.saia.model.User;
 import br.com.nao.saia.service.UserService;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -24,20 +29,25 @@ public class UserController {
 
 	private static final String JSON = MediaType.APPLICATION_JSON_VALUE;
 
-	private final UserService userService;
+	private final UserService service;
 	
 	public UserController(UserService userService) {
-		this.userService = userService;
+		this.service = userService;
 	}
 	
 	@PostMapping(path = "/login", consumes = JSON, produces = JSON)
-	public UserStatusDTO login(@Valid @RequestBody User user) {
-		return userService.login(user);
+	public ResponseDTO login(@Valid @RequestBody User user) {
+		return service.login(user);
 	}
 	
-	@PostMapping(path = "/create", consumes = JSON, produces = JSON)
-	public UserStatusDTO createUser(@Valid @RequestBody User user) {
-		return userService.createUser(user);
+	@PostMapping(path = "/", consumes = JSON, produces = JSON)
+	public ResponseDTO createUser(@Valid @RequestBody User user) {
+		return service.createUser(user);
+	}
+	
+	@GetMapping("/{id}")
+	public User findById(@PathVariable UUID id) {
+		return service.findById(id);
 	}
 
 }

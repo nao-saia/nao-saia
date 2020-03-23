@@ -1,3 +1,4 @@
 export interface Geocode {
-    constructor(latitude: number, longitude: number) 
+    latitude: number;
+    longitude: number;
 }
