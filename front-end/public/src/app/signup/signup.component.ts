@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
+import { Alert } from '../shared/alert/alert.component';
+import { error } from 'protractor';
 
 @Component({
     selector: 'app-signup',
@@ -17,8 +19,8 @@ export class SignupComponent implements OnInit {
     focus3: false;
 
     model: User;
-
-    showAlert: boolean = false;
+    showOAuth: boolean = false;
+    dataAlert: Alert = {};
 
     constructor(private service: UserService, private router: Router) { }
 
@@ -28,8 +30,21 @@ export class SignupComponent implements OnInit {
 
     save(): void {
         if (this.model.valid()) {
-            this.service.save(this.model).subscribe(response => this.router.navigate(['/merchant'])
-                , error => alert(JSON.stringify(error)));
+            this.service.save(this.model)
+                .subscribe(
+                    () => this.router.navigate(['/merchant'])
+                    , error => {
+                        this.dataAlert = {
+                            type: 'warning',
+                            strong: 'Warning!',
+                            message: error.statusText,
+                            icon: 'ni ni-bell-55'
+                        };
+                    });
         }
+    }
+
+    onCloseAlert(): void {
+        this.dataAlert = {};
     }
 }
