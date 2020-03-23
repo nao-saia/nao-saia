@@ -1,3 +1,5 @@
+import { IAlert } from './../sections/alerts-section/alerts-section.component';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
@@ -16,9 +18,9 @@ export class SignupComponent implements OnInit {
 
     model: User;
 
-    showOAuth: false;
+    showAlert: boolean = false;
 
-    constructor(private service: UserService) {}
+    constructor(private service: UserService, private router: Router) { }
 
     ngOnInit() {
         this.model = new User();
@@ -26,12 +28,8 @@ export class SignupComponent implements OnInit {
 
     save(): void {
         if (this.model.valid()) {
-            this.service.save(this.model).subscribe(response => {
-                console.log(JSON.stringify(response));
-                alert(JSON.stringify(response));
-            }, error => {
-                alert(JSON.stringify(error));
-            });
+            this.service.save(this.model).subscribe(response => this.router.navigate(['/merchant'])
+                , error => alert(JSON.stringify(error)));
         }
     }
 }

@@ -10,6 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { ContributorsComponent } from './landing/contributors/contributors.component';
 import { LoginComponent } from './login/login.component';
 import { SupportUsComponent } from './landing/support-us/support-us.component';
+import { MerchantComponent} from './merchant/merchant.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -19,6 +20,7 @@ const routes: Routes =[
     { path: 'login',          component: LoginComponent },
     { path: 'contribuitors',          component: ContributorsComponent  },
     { path: 'support-us',          component: SupportUsComponent  },
+    { path: 'merchant',          component: MerchantComponent  },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
