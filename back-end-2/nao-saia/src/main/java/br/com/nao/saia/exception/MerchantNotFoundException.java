@@ -4,7 +4,12 @@ import java.util.UUID;
 
 public class MerchantNotFoundException extends RuntimeException {
 
-    public MerchantNotFoundException(UUID id) {
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = -739084194869614887L;
+
+	public MerchantNotFoundException(UUID id) {
         super(String.format("Merchant not found with id %s", id));
     }
 }

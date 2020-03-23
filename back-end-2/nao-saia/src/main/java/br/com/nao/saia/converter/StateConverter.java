@@ -2,7 +2,6 @@ package br.com.nao.saia.converter;
 
 import br.com.nao.saia.dto.StateDTO;
 import br.com.nao.saia.model.State;
-import org.springframework.stereotype.Component;
 
 public final class StateConverter {
 

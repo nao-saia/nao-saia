@@ -1,7 +1,5 @@
 package br.com.nao.saia.model;
 
-import java.util.UUID;
-
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -18,7 +16,7 @@ public class User extends EntitySupport {
 	private String password;
 	private boolean acceptTerms;
 
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -50,7 +48,7 @@ public class User extends EntitySupport {
 	public void setAcceptTerms(boolean acceptTerms) {
 		this.acceptTerms = acceptTerms;
 	}
-	
-	
+
+
 
 }

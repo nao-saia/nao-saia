@@ -1,15 +1,15 @@
 package br.com.nao.saia.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
 import br.com.nao.saia.converter.CityConverter;
 import br.com.nao.saia.dto.CityDTO;
 import br.com.nao.saia.exception.CityNotFoundException;
 import br.com.nao.saia.model.City;
-import br.com.nao.saia.model.Merchant;
 import br.com.nao.saia.repository.CityRepository;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class CityService {
