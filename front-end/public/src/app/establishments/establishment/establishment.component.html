@@ -1,0 +1,49 @@
+<a
+  (click)="changeRouteDetails()"
+>
+  <div
+    class="rounded bg-white shadow shadow-lg--hover p-3 mb-2 card-scale cursor-pointer text-default"
+    [@estabelecimentoTrigger]="estabelecimentoState"
+  >
+    <div class="d-flex justify-content-start align-items-center">
+      <img
+        class="img-fluid img-thumbnail "
+        src="../../../assets/img/brand/favicon.png"
+      />
+
+      <div class="col-12">
+        <div
+          class="d-flex flex-column justify-content-center align-items-start col"
+        >
+          <div class="col-12">
+            <label class="float-left">{{ establishment.nomeFantasia }}</label>
+            <label class="float-right border-bottom">{{
+              establishment.categorias[0]
+            }}</label>
+          </div>
+          <div class="col-12">
+            <div>
+              <i class="fa fa-whatsapp"></i>
+              <label class="ml-1">{{ establishment.whatsapp }}</label>
+            </div>
+            <div>
+              <i class="fa fa-map-marker"></i>
+              <label class="ml-1">{{ establishment.bairro }}</label>
+            </div>
+          </div>
+        </div>
+
+        <!--
+            <div class="rounded">
+          <img
+            *ngFor="let app of apps"
+            class="img-fluid m-1 img-thumbnail"
+            [src]="app"
+          />
+        </div>
+          -->
+      </div>
+    </div>
+    <!-- /.info-box-content -->
+  </div>
+</a>

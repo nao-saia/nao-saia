@@ -1,4 +1,4 @@
-export interface Estabelecimento {
+export interface Establishment {
     id: string,
     nomeFantasia: string
     razaoSocial: string   

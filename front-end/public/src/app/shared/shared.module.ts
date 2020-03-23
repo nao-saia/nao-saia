@@ -1,4 +1,4 @@
-import { EstabelecimentosService } from "./../estabelecimentos/estabelecimentos.service";
+import { EstablishmentService } from './../establishments/establishments.service';
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { NgModule, ModuleWithProviders } from "@angular/core";
@@ -33,7 +33,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [EstabelecimentosService, FormBuilder]
+      providers: [EstablishmentService, FormBuilder]
     };
   }
 }

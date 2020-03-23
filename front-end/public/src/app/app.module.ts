@@ -1,10 +1,10 @@
-import { EstabelecimentosService } from "./estabelecimentos/estabelecimentos.service";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { RouterModule } from "@angular/router";
 import { AppRoutingModule } from "./app.routing";
+import { CarouselModule } from "ngx-bootstrap/carousel";
 
 import { AppComponent } from "./app.component";
 import { SignupComponent } from "./signup/signup.component";
@@ -14,9 +14,12 @@ import { ProfileComponent } from "./profile/profile.component";
 import { HomeModule } from "./home/home.module";
 import { LoginComponent } from "./login/login.component";
 import { ContributorsComponent } from "./landing/contributors/contributors.component";
-import { EstabelecimentosComponent } from "./estabelecimentos/estabelecimentos.component";
-import { EstabelecimentoComponent } from "./estabelecimentos/estabelecimento/estabelecimento.component";
 import { BannerRegisterComponent } from "./landing/banner-register/banner-register.component";
+import { EstablishmentsComponent } from "./establishments/establishments.component";
+import { CategoriesComponent } from "./establishments/categories/categories.component";
+import { EstablishmentComponent } from './establishments/establishment/establishment.component';
+import { EstablishmentDetailComponent } from './establishments/establishment-detail/establishment-detail.component';
+
 
 @NgModule({
   declarations: [
@@ -26,9 +29,11 @@ import { BannerRegisterComponent } from "./landing/banner-register/banner-regist
     ProfileComponent,
     LoginComponent,
     ContributorsComponent,
-    EstabelecimentosComponent,
-    EstabelecimentoComponent,
-    BannerRegisterComponent
+    BannerRegisterComponent,
+    EstablishmentsComponent,
+    EstablishmentComponent,
+    CategoriesComponent,
+    EstablishmentDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -36,9 +41,10 @@ import { BannerRegisterComponent } from "./landing/banner-register/banner-regist
     RouterModule,
     AppRoutingModule,
     HomeModule,
+    CarouselModule.forRoot(),
     SharedModule.forRoot()
   ],
-  providers: [EstabelecimentosService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

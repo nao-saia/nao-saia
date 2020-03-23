@@ -1,34 +1,32 @@
-import { EstabelecimentosComponent } from './estabelecimentos/estabelecimentos.component';
-import { NgModule } from '@angular/core';
-import { CommonModule, } from '@angular/common';
-import { BrowserModule  } from '@angular/platform-browser';
-import { Routes, RouterModule } from '@angular/router';
+import { EstablishmentsComponent } from "./establishments/establishments.component";
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { Routes, RouterModule } from "@angular/router";
 
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from "./profile/profile.component";
+import { SignupComponent } from "./signup/signup.component";
+import { LandingComponent } from "./landing/landing.component";
+import { LoginComponent } from "./login/login.component";
 
-const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
-    { path: 'profile/:id',     component: ProfileComponent },
-    { path: 'register',           component: SignupComponent },
-    { path: 'landing',          component: LandingComponent },
-    { path: 'login',          component: LoginComponent },
-    { path: 'estabelecimentos',          component: EstabelecimentosComponent },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+const routes: Routes = [
+  { path: "home", component: LandingComponent },
+  { path: "establishment/:id", component: ProfileComponent },
+  { path: "register", component: SignupComponent },
+  { path: "landing", component: LandingComponent },
+  { path: "login", component: LoginComponent },
+  { path: "establishments", component: EstablishmentsComponent },
+  { path: "", redirectTo: "home", pathMatch: "full" }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule.forRoot(routes,{
+    RouterModule.forRoot(routes, {
       useHash: true
     })
   ],
-  exports: [
-  ],
+  exports: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

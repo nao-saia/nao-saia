@@ -1,10 +1,15 @@
-<section class="section bg-gradient-info">
+<section class="section bg-gradient-primary">
+  <div class="mt-5">
+    <ns-categories (categoria)="changeCategoria($event)"></ns-categories>
+  </div>
   <div class="m-2">
-    <div class="row row-grid align-items-center">
+    <div class="align-items-center">
       <div class="col-12">
         <!-- INíCIO do CONTEÚDO -->
         <section class="content-header">
-          <div class="text-white d-flex align-items-center justify-content-between">
+          <div
+            class="text-white d-flex align-items-center justify-content-between"
+          >
             <h1 class="text-white">
               Estabelecimentos
             </h1>
@@ -36,20 +41,29 @@
               *ngFor="let estabelecimento of estabelecimentos"
               class="col-sm-12 col-12 col-xl-4 col-lg-4"
             >
-              <ns-estabelecimento
-                [estabelecimento]="estabelecimento"
-              ></ns-estabelecimento>
+              <ns-establishment
+                [establishment]="estabelecimento"
+              ></ns-establishment>
             </div>
             <div
               *ngIf="estabelecimentos?.length === 0"
               class="col-12 shadow bg-white rounded"
             >
               <p class="lead text-center">
-                Não foram encontrados estabelecimentos para a sua busca.
+                Não foram encontrados estabelecimentos para a categoria
+                {{ categorieSelected }}.
               </p>
             </div>
           </div>
         </section>
+        <div *ngIf="estabelecimentos.length > 0" col="12">
+          <button
+            (click)="addLimit()"
+            class="btn btn-outline-white form-control"
+          >
+            Ver mais estabelecimentos
+          </button>
+        </div>
 
         <!-- FIM  do CONTEÚDO -->
       </div>

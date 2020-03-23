@@ -1,4 +1,4 @@
-import { Estabelecimento } from "./estabelecimento.model";
+import { Establishment } from "./establishment.model";
 
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
@@ -10,11 +10,11 @@ import "rxjs/add/operator/catch";
 import { NAO_SAIA_API } from "../app.api";
 
 @Injectable()
-export class EstabelecimentosService {
+export class EstablishmentService {
   constructor(private http: HttpClient) {}
 
-  listarEstabelecimentos(search: string = ""): Observable<Estabelecimento[]> {
-    return this.http.get<Estabelecimento[]>(
+  listarEstabelecimentos(search: string = ""): Observable<Establishment[]> {
+    return this.http.get<Establishment[]>(
       `${NAO_SAIA_API}/estabelecimentos`,
       { params: { q: search } }
     );

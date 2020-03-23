@@ -1,5 +1,5 @@
-import { EstabelecimentosService } from "./estabelecimentos.service";
-import { Estabelecimento } from "./estabelecimento.model";
+import { EstablishmentService } from "./establishments.service";
+import { Establishment } from "./establishment.model";
 import { Component, OnInit } from "@angular/core";
 import {
   trigger,
@@ -18,10 +18,12 @@ import "rxjs/add/operator/catch";
 import "rxjs/add/observable/from";
 import { Observable } from "rxjs/Observable";
 
+const PAGE_SIZE = 12;
+
 @Component({
-  selector: "ns-estabelecimentos",
-  templateUrl: "./estabelecimentos.component.html",
-  styleUrls: ["./estabelecimentos.component.css"],
+  selector: "ns-establishments",
+  templateUrl: "./establishments.component.html",
+  styleUrls: ["./establishments.component.css"],
   animations: [
     trigger("toggleSearch", [
       state(
@@ -43,15 +45,18 @@ import { Observable } from "rxjs/Observable";
     ])
   ]
 })
-export class EstabelecimentosComponent implements OnInit {
+export class EstablishmentsComponent implements OnInit {
   searchBarState = "hidden";
-  estabelecimentos: Estabelecimento[];
+  estabelecimentos: Establishment[];
 
   searchForm: FormGroup;
   searchControl: FormControl;
 
+  limit: number = PAGE_SIZE;
+  categorieSelected: string = "restaurante"
+
   constructor(
-    private estabelecimentoService: EstabelecimentosService,
+    private estabelecimentoService: EstablishmentService,
     private fb: FormBuilder
   ) {}
 
@@ -76,16 +81,28 @@ export class EstabelecimentosComponent implements OnInit {
     this.listarEstabelecimentos();
   }
 
-  listarEstabelecimentos() {
+  // Realizar aqui a consulta paginada
+  addLimit() {
+    this.limit = this.limit + PAGE_SIZE;
+    this.listarEstabelecimentos();
+  }
+
+  listarEstabelecimentos(search?) {
     this.estabelecimentoService
-      .listarEstabelecimentos()
+      .listarEstabelecimentos(search)
       .subscribe(
-        estabelecimentos => (this.estabelecimentos = estabelecimentos)
+        estabelecimentos =>
+          (this.estabelecimentos = estabelecimentos.slice(0, this.limit))
       );
   }
 
   toggleSearch() {
     this.searchBarState =
       this.searchBarState === "hidden" ? "visible" : "hidden";
+  }
+
+  changeCategoria(categoria: string) {
+    this.categorieSelected = categoria;
+    this.listarEstabelecimentos(categoria);
   }
 }

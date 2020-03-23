@@ -1,0 +1,18 @@
+<carousel
+  [itemsPerSlide]="itemsPerSlide"
+  [singleSlideOffset]="singleSlideOffset"
+  [startFromIndex]="1"
+  [interval]="false"
+  [showIndicators]="false"
+  [indicatorsByChunk]="true"
+>
+  <slide *ngFor="let slide of slides; let index = index">
+    <div
+      (click)="changeCategoria(slide.categoria)"
+      class="categoria cursor-pointer d-flex flex-column align-items-center justify-content-center"
+    >
+      <img [src]="slide.image" alt="image slide" style="display: block" />
+      <h6 class="text-white">{{ slide.label }}</h6>
+    </div>
+  </slide>
+</carousel>

@@ -1,21 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Establishment } from "./../establishments/establishment.model";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
-    selector: 'app-profile',
-    templateUrl: './profile.component.html',
-    styleUrls: ['./profile.component.scss']
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.scss"]
 })
-
 export class ProfileComponent implements OnInit {
+  _id: string;
+  establishment: Establishment;
 
-    _id: string;
+  constructor(private router: Router) {
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.establishment = <Establishment>(
+        this.router.getCurrentNavigation().extras.state
+      );
+    }
 
-    constructor(private route: ActivatedRoute) {
-        this.route.params.subscribe(params => this._id = params['id']);
-        console.log(this._id)
-     }
+  }
 
-    ngOnInit() {}
-
+  ngOnInit() {}
 }
