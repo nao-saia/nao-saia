@@ -62,12 +62,12 @@ public class MerchantService {
 	}
 	
 	public List<MerchantDTO> findByCity(String city) {
-		return merchantRepository.findByAddress_City(city, PageRequest.of(PAGE_ZERO, pageSize)).stream()
+		return merchantRepository.findByAddressCity(city, PageRequest.of(PAGE_ZERO, pageSize)).stream()
 				.map(merchantConverter::fromDomainToDTO).collect(Collectors.toList());
 	}
 	
 	public List<MerchantDTO> findByState(String state) {
-		return merchantRepository.findByAddress_State(state, PageRequest.of(PAGE_ZERO, pageSize)).stream()
+		return merchantRepository.findByAddressState(state, PageRequest.of(PAGE_ZERO, pageSize)).stream()
 				.map(merchantConverter::fromDomainToDTO).collect(Collectors.toList());
 	}
 	
@@ -76,7 +76,7 @@ public class MerchantService {
 	 * https://drissamri.be/blog/2015/08/18/build-a-location-api-with-spring-data-mongodb-and-geojson/
 	 */
 	public List<MerchantDTO> findByLocation(double latitude, double longitude, double distance) {
-		return merchantRepository.findByAddress_LocationNear(new Point(latitude, longitude),
+		return merchantRepository.findByAddressLocationNear(new Point(latitude, longitude),
 				new Distance(distance, Metrics.KILOMETERS), PageRequest.of(PAGE_ZERO, pageSize)).stream()
 				.map(merchantConverter::fromDomainToDTO).collect(Collectors.toList());
 	}

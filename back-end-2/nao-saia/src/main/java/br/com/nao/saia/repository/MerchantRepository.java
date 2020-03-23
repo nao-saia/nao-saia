@@ -14,10 +14,10 @@ public interface MerchantRepository extends MongoRepository<Merchant, UUID> {
 	
 	List<Merchant> findByCategoriesIn(String category, Pageable pageable);
 	
-	List<Merchant> findByAddress_City(String city, Pageable pageable);
+	List<Merchant> findByAddressCity(String city, Pageable pageable);
 	
-	List<Merchant> findByAddress_State(String city, Pageable pageable);
+	List<Merchant> findByAddressState(String city, Pageable pageable);
 	
-	List<Merchant> findByAddress_LocationNear(Point point, Distance distance, Pageable pageable);
+	List<Merchant> findByAddressLocationNear(Point point, Distance distance, Pageable pageable);
 	
 }
