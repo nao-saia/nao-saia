@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.UUID;
 
 /**
@@ -32,12 +33,12 @@ public class CategoryController {
     }
 
     @GetMapping
-    public List<CategoryDTO> findAll() {
+    public Flux<CategoryDTO> findAll() {
         return categoryService.findAll();
     }
 
     @GetMapping("/{id}")
-    public CategoryDTO findById(@PathVariable UUID id) {
+    public Mono<CategoryDTO> findById(@PathVariable UUID id) {
         return categoryService.findById(id);
     }
 

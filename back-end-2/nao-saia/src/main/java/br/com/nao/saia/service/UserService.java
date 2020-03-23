@@ -2,15 +2,13 @@ package br.com.nao.saia.service;
 
 import br.com.nao.saia.dto.ResponseDTO;
 import br.com.nao.saia.exception.BusinessException;
-import br.com.nao.saia.exception.MerchantNotFoundException;
 import br.com.nao.saia.exception.UserNotFoundException;
 import br.com.nao.saia.model.User;
 import br.com.nao.saia.repository.UserRepository;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
 
 import java.util.UUID;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 /**
  * Service de {@link User}
@@ -25,7 +23,7 @@ public class UserService {
     }
 
     public ResponseDTO login(User user) {
-        User userBd = repository.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        Mono<User> userBd = repository.findByEmailAndPassword(user.getEmail(), user.getPassword());
         if (userBd != null) {
             // Implementar regra
         } else {
@@ -35,16 +33,16 @@ public class UserService {
         return new ResponseDTO();
     }
     
-    public User findById(UUID id) {
-    	return this.repository.findById(id).orElseThrow(() -> new UserNotFoundException(id));
+    public Mono<User> findById(UUID id) {
+    	return this.repository.findById(id).switchIfEmpty(Mono.error(new UserNotFoundException(id)));
     }
 
-    public ResponseDTO<User> createUser(User user) {
-        User userBd = repository.findByEmail(user.getEmail());
+    public ResponseDTO<Mono<User>> createUser(User user) {
+        Mono<User> userBd = repository.findByEmail(user.getEmail());
         if (userBd != null) {
             throw new BusinessException("Usuário ja cadastrado");
         }
-        User saved = this.repository.save(user);
+        Mono<User> saved = this.repository.save(user);
         return ResponseDTO.success(saved);
     }
 

@@ -1,9 +1,9 @@
 package br.com.nao.saia.dto;
 
-import br.com.nao.saia.model.Address;
 import br.com.nao.saia.model.Merchant;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -14,7 +14,7 @@ import java.util.UUID;
  * @author Taynan Rezende
  * @since 22/03/2020
  */
-public class MerchantDTO {
+public class MerchantDTO implements Serializable {
 
     private UUID id;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")

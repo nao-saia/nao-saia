@@ -1,25 +1,18 @@
 package br.com.nao.saia.controller;
 
-import br.com.nao.saia.delete.Cidades;
 import br.com.nao.saia.dto.CityDTO;
 import br.com.nao.saia.model.Merchant;
 import br.com.nao.saia.service.CityService;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
 
 /**
  * Classe que armazena os endpoints de {@link Merchant} recebendo as requisicoes,
@@ -39,12 +32,12 @@ public class CityController {
     }
 
     @GetMapping
-    public List<CityDTO> findAll() {
+    public Flux<CityDTO> findAll() {
         return cityService.findAll();
     }
 
     @GetMapping("/{id}")
-    public CityDTO findById(@PathVariable Integer id) {
+    public Mono<CityDTO> findById(@PathVariable Integer id) {
         return cityService.findById(id);
     }
 

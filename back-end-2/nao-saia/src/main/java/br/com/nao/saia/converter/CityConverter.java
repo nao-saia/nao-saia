@@ -18,7 +18,7 @@ public class CityConverter {
         City city = new City();
         city.setCodeIbge(cityDTO.getCodeIbge());
         city.setName(cityDTO.getName());
-        city.setState(stateService.findById(cityDTO.getStateId()));
+        city.setState(stateService.findById(cityDTO.getStateId()).block());
         return city;
     }
 

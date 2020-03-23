@@ -6,9 +6,8 @@ import br.com.nao.saia.exception.StateNotFoundException;
 import br.com.nao.saia.model.State;
 import br.com.nao.saia.repository.StateRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class StateService {
@@ -19,21 +18,20 @@ public class StateService {
         this.stateRepository = stateRepository;
     }
 
-    public State findById(Integer id) {
+    public Mono<State> findById(Integer id) {
         return stateRepository.findById(id)
-                .orElseThrow(() -> new StateNotFoundException(id));
+                .switchIfEmpty(Mono.error(new StateNotFoundException(id)));
     }
 
-    public StateDTO findDTOById(Integer id) {
+    public Mono<StateDTO> findDTOById(Integer id) {
         return stateRepository.findById(id)
                 .map(StateConverter::fromDomainToDTO)
-                .orElseThrow(() -> new StateNotFoundException(id));
+                .switchIfEmpty(Mono.error(new StateNotFoundException(id)));
     }
 
-    public List<StateDTO> findAll() {
-        return stateRepository.findAll().stream()
-                .map(StateConverter::fromDomainToDTO)
-                .collect(Collectors.toList());
+    public Flux<StateDTO> findAll() {
+        return stateRepository.findAll()
+                .map(StateConverter::fromDomainToDTO);
     }
 
     public void save(StateDTO stateDTO) {

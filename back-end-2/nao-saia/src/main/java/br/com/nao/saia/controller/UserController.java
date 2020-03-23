@@ -1,6 +1,5 @@
 package br.com.nao.saia.controller;
 
-import br.com.nao.saia.dto.MerchantDTO;
 import br.com.nao.saia.dto.ResponseDTO;
 import br.com.nao.saia.model.User;
 import br.com.nao.saia.service.UserService;
@@ -11,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 /**
  * Classe que armazena os endpoints de {@link User} recebendo as requisicoes,
@@ -46,7 +45,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/{id}")
-	public User findById(@PathVariable UUID id) {
+	public Mono<User> findById(@PathVariable UUID id) {
 		return service.findById(id);
 	}
 
