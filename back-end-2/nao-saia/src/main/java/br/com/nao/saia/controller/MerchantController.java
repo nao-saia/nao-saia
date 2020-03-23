@@ -3,8 +3,6 @@ package br.com.nao.saia.controller;
 import br.com.nao.saia.dto.MerchantDTO;
 import br.com.nao.saia.model.Merchant;
 import br.com.nao.saia.service.MerchantService;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,13 +28,9 @@ import java.util.UUID;
 public class MerchantController {
 
     private final MerchantService merchantService;
-    private final MongoTemplate mongoTemplate;
-    private final MongoMappingContext mongoMappingContext;
 
-    public MerchantController(MerchantService merchantService, MongoTemplate mongoTemplate, MongoMappingContext mongoMappingContext) {
+    public MerchantController(MerchantService merchantService) {
         this.merchantService = merchantService;
-        this.mongoTemplate = mongoTemplate;
-        this.mongoMappingContext = mongoMappingContext;
     }
 
     @GetMapping
