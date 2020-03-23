@@ -27,6 +27,8 @@ public class Merchant extends EntitySupport {
     
     private String logo;
     
+    private List<String> categories;
+    
     private List<String> ads;
     
     private String whatsapp;
@@ -99,6 +101,14 @@ public class Merchant extends EntitySupport {
     
     public void setLogo(String logo) {
         this.logo = logo;
+    }
+    
+    public List<String> getCategories() {
+        return categories;
+    }
+    
+    public void setCategories(List<String> categories) {
+        this.categories = categories;
     }
     
     public List<String> getAds() {
@@ -187,15 +197,15 @@ public class Merchant extends EntitySupport {
                 displayAddress == merchant.displayAddress && Objects.equals(fantasyName, merchant.fantasyName) &&
                 Objects.equals(companyName, merchant.companyName) && Objects.equals(cnpj, merchant.cnpj) &&
                 Objects.equals(address, merchant.address) && Objects.equals(logo, merchant.logo) &&
-                Objects.equals(ads, merchant.ads) && Objects.equals(whatsapp, merchant.whatsapp) &&
-                Objects.equals(phones, merchant.phones);
+                Objects.equals(categories, merchant.categories) && Objects.equals(ads, merchant.ads) &&
+                Objects.equals(whatsapp, merchant.whatsapp) && Objects.equals(phones, merchant.phones) &&
+                Objects.equals(note, merchant.note);
     }
     
     @Override
     public int hashCode() {
         return Objects
-                .hash(fantasyName, companyName, cnpj, address, acceptTerms, active, logo, ads, whatsapp, phones, ifood,
-                        uberEats, rappi, ownDelivery, displayAddress);
+                .hash(fantasyName, companyName, cnpj, address, acceptTerms, active, logo, categories, ads, whatsapp,
+                        phones, ifood, uberEats, rappi, ownDelivery, displayAddress, note);
     }
-    
 }

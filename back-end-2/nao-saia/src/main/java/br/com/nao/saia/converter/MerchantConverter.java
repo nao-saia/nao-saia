@@ -19,6 +19,7 @@ public class MerchantConverter {
         merchant.setAcceptTerms(merchantDTO.isAcceptTerms());
         merchant.setActive(merchantDTO.isActive());
         merchant.setLogo(merchantDTO.getLogo());
+        merchant.setCategories(merchantDTO.getCategories());
         merchant.setAds(merchantDTO.getAds());
         merchant.setWhatsapp(merchantDTO.getWhatsapp());
         merchant.setPhones(merchantDTO.getPhones());
@@ -43,6 +44,7 @@ public class MerchantConverter {
         merchantDTO.setAcceptTerms(merchant.isAcceptTerms());
         merchantDTO.setActive(merchant.isActive());
         merchantDTO.setLogo(merchant.getLogo());
+        merchantDTO.setCategories(merchant.getCategories());
         merchantDTO.setAds(merchant.getAds());
         merchantDTO.setWhatsapp(merchant.getWhatsapp());
         merchantDTO.setPhones(merchant.getPhones());
@@ -54,5 +56,4 @@ public class MerchantConverter {
         merchantDTO.setNote(merchant.getNote());
         return merchantDTO;
     }
-
 }

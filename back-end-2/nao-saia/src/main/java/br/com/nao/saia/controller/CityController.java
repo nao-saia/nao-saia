@@ -53,7 +53,7 @@ public class CityController {
         cityService.save(cityDTO);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
+    /*@EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         String json = String.join(" ",
@@ -66,6 +66,6 @@ public class CityController {
         cidades.getCidades().stream()
                 .map(cidade -> new CityDTO(cidade.getCodigoibge(), cidade.getNomecidade(), cidade.getIdestadoibge()))
                 .forEach(cityService::save);
-    }
+    }*/
 
 }

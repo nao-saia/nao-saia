@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.validation.Valid;
 import java.util.List;
 import java.util.UUID;
@@ -25,7 +24,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("merchants")
 public class MerchantController {
-
+	
 	private final MerchantService merchantService;
 	
 	public MerchantController(MerchantService merchantService) {
@@ -52,4 +51,25 @@ public class MerchantController {
 		merchantService.deleteById(id);
 	}
 	
+	@GetMapping(path = "/category/{category}")
+	public List<MerchantDTO> findByCategory(@PathVariable String category) {
+		return merchantService.findByCategory(category);
+	}
+	
+	@GetMapping(path = "/city/{city}")
+	public List<MerchantDTO> findByCity(@PathVariable String city) {
+		return merchantService.findByCity(city);
+	}
+	
+	@GetMapping(path = "/state/{state}")
+	public List<MerchantDTO> findByUf(@PathVariable String state) {
+		return merchantService.findByState(state);
+	}
+	
+	@GetMapping(path = "/location/{latitude}/{longitude}/{distance}")
+	public List<MerchantDTO> findByLocation(@PathVariable double latitude,
+									  @PathVariable double longitude,
+									  @PathVariable double distance) {
+		return merchantService.findByLocation(latitude, longitude, distance);
+	}
 }
