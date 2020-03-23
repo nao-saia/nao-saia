@@ -7,20 +7,19 @@ import org.springframework.data.geo.Point;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
-import java.util.Set;
+import java.util.List;
 import java.util.UUID;
 
 @Repository
 public interface MerchantRepository extends MongoRepository<Merchant, UUID> {
 	
-	Set<Merchant> findByCategoriesIn(String category, Pageable pageable);
+	List<Merchant> findByCategoriesIn(String category, Pageable pageable);
 	
-	Set<Merchant> findByAddressCity(String city, Pageable pageable);
+	List<Merchant> findByAddressCity(String city, Pageable pageable);
 	
-	Set<Merchant> findByAddressState(String city, Pageable pageable);
+	List<Merchant> findByAddressState(String city, Pageable pageable);
 	
-	Set<Merchant> findByAddressLocationNear(GeoJsonPoint geoJsonPoint, Pageable pageable);
+	List<Merchant> findByAddressLocationNear(GeoJsonPoint geoJsonPoint, Pageable pageable);
 	
-	Set<Merchant> findByAddressLocationNear(Point point, Distance distance, Pageable pageable);
-	
+	List<Merchant> findByAddressLocationNear(Point point, Distance distance, Pageable pageable);
 }
