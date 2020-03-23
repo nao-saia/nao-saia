@@ -29,6 +29,8 @@ export class SignupComponent implements OnInit {
             this.service.save(this.model).subscribe(response => {
                 console.log(JSON.stringify(response));
                 alert(JSON.stringify(response));
+            }, error => {
+                alert(JSON.stringify(error));
             });
         }
     }
