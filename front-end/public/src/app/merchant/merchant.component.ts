@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MerchantComponent implements OnInit {
 
+  focus: any;
+  focus1: any;
+
   constructor() { }
 
   ngOnInit(): void {
