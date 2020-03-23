@@ -12,14 +12,15 @@ import { LoginComponent } from './login/login.component';
 import { SupportUsComponent } from './landing/support-us/support-us.component';
 
 const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
+    // { path: 'home',             component: HomeComponent },
+    { path: 'home',             component: LandingComponent },
     { path: 'profile/:id',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'contribuitors',          component: ContributorsComponent  },
     { path: 'support-us',          component: SupportUsComponent  },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
 @NgModule({

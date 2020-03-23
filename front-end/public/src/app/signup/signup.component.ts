@@ -9,10 +9,10 @@ import { UserService } from './../services/user.service';
 })
 export class SignupComponent implements OnInit {
 
-    focus: false;
-    focus1: false;
-    focus2: false;
-    focus3: false;
+    focus = false;
+    focus1 = false;
+    focus2 = false;
+    focus3 = false;
 
     model: User;
 
