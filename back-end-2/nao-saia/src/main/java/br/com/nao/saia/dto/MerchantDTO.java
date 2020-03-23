@@ -1,12 +1,12 @@
 package br.com.nao.saia.dto;
 
-import br.com.nao.saia.model.Address;
-import br.com.nao.saia.model.Merchant;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.nao.saia.model.Merchant;
 
 /**
  * Classe representa o DTO de {@link Merchant}
@@ -38,51 +38,51 @@ public class MerchantDTO {
     private boolean ownDelivery;
     private boolean displayAddress;
     private String note;
-    
+
     public UUID getId() {
         return id;
     }
-    
+
     public void setId(UUID id) {
         this.id = id;
     }
-    
+
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    
+
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-    
+
     public LocalDateTime getUpdateAt() {
         return updateAt;
     }
-    
+
     public void setUpdateAt(LocalDateTime updateAt) {
         this.updateAt = updateAt;
     }
-    
+
     public String getFantasyName() {
         return fantasyName;
     }
-    
+
     public void setFantasyName(String fantasyName) {
         this.fantasyName = fantasyName;
     }
-    
+
     public String getCompanyName() {
         return companyName;
     }
-    
+
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
-    
+
     public String getCnpj() {
         return cnpj;
     }
-    
+
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
@@ -98,105 +98,105 @@ public class MerchantDTO {
     public boolean isAcceptTerms() {
         return acceptTerms;
     }
-    
+
     public void setAcceptTerms(boolean acceptTerms) {
         this.acceptTerms = acceptTerms;
     }
-    
+
     public boolean isActive() {
         return active;
     }
-    
+
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
     public String getLogo() {
         return logo;
     }
-    
+
     public void setLogo(String logo) {
         this.logo = logo;
     }
-    
+
     public List<String> getCategories() {
         return categories;
     }
-    
+
     public void setCategories(List<String> categories) {
         this.categories = categories;
     }
-    
+
     public List<String> getAds() {
         return ads;
     }
-    
+
     public void setAds(List<String> ads) {
         this.ads = ads;
     }
-    
+
     public String getWhatsapp() {
         return whatsapp;
     }
-    
+
     public void setWhatsapp(String whatsapp) {
         this.whatsapp = whatsapp;
     }
-    
+
     public List<String> getPhones() {
         return phones;
     }
-    
+
     public void setPhones(List<String> phones) {
         this.phones = phones;
     }
-    
+
     public boolean isIfood() {
         return ifood;
     }
-    
+
     public void setIfood(boolean ifood) {
         this.ifood = ifood;
     }
-    
+
     public boolean isUberEats() {
         return uberEats;
     }
-    
+
     public void setUberEats(boolean uberEats) {
         this.uberEats = uberEats;
     }
-    
+
     public boolean isRappi() {
         return rappi;
     }
-    
+
     public void setRappi(boolean rappi) {
         this.rappi = rappi;
     }
-    
+
     public boolean isOwnDelivery() {
         return ownDelivery;
     }
-    
+
     public void setOwnDelivery(boolean ownDelivery) {
         this.ownDelivery = ownDelivery;
     }
-    
+
     public boolean isDisplayAddress() {
         return displayAddress;
     }
-    
+
     public void setDisplayAddress(boolean displayAddress) {
         this.displayAddress = displayAddress;
     }
-    
+
     public String getNote() {
         return note;
     }
-    
+
     public void setNote(String note) {
         this.note = note;
     }
-    
+
 }
