@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8088'
+  baseUrl: 'https://nao-saia-backend.herokuapp.com'
+  // baseUrl: 'http://localhost:8088'
 };
 
 /*
