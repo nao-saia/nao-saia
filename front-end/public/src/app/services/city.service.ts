@@ -13,9 +13,9 @@ export class CityService {
   constructor(private http: HttpWrapperService) {
 
   }
-  
-  findAll(): Observable<City>  {
-    return this.http.get<City>(this.path);
+
+  list(uf: string): Observable<City[]>  {
+    return this.http.get<City[]>(`${this.path}?uf=${uf}`);
   }
 
 }

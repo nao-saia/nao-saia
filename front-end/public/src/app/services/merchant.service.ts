@@ -13,7 +13,7 @@ export class MerchantService {
   constructor(private http: HttpWrapperService) {
 
   }
-  
+
   save(merchant: Merchant): Observable<Merchant>  {
     return this.http.post<Merchant>(this.path, merchant);
   }

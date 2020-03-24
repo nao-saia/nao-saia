@@ -13,9 +13,9 @@ export class StateService {
   constructor(private http: HttpWrapperService) {
 
   }
-  
-  findAll(): Observable<State>  {
-    return this.http.get<State>(this.path);
+
+  list(): Observable<State[]>  {
+    return this.http.get<State[]>(this.path);
   }
 
 }

@@ -10,10 +10,10 @@ export class Merchant {
         public acceptTerms?: boolean,
         public active?: boolean,
         public logo?: string,
-        public categories?: [],
+        public categories?: string[],
         public ads?: [],
         public whatsapp?: string,
-        public phones?: [],
+        public phones?: string[],
         public ifood?: boolean,
         public uberEats?: boolean,
         public rappi?: boolean,
@@ -21,19 +21,20 @@ export class Merchant {
         public displayAddress?: boolean,
         public note?: string,
         public userId?: string) {
-        this.address = {};
+        this.address = new Address();
         this.displayAddress = true;
+        this.phones = [];
+        this.categories = [];
     }
 
     public valid(): boolean {
         return !!(this.fantasyName &&
                     this.companyName &&
-                    this.cnpj &&
-                    this.address.street &&
-                    this.acceptTerms &&
-                    this.active &&
-                    this.logo &&
                     this.categories && this.categories.length > 0 &&
+                    this.cnpj &&
+                    this.phones && this.phones.length > 0 && this.phones[0] && this.phones[0].length > 0 &&
+                    this.address.state &&
+                    this.address.city &&
                     this.note);
     }
 }

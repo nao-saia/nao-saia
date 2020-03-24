@@ -15,6 +15,7 @@
     <div class="container pt-lg-md">
       <div class="row justify-content-center">
         <div class="col-lg-8">
+          <app-alert [alert]="dataAlert" (closeEvent)="onCloseAlert()"></app-alert>
           <div class="card bg-gradient-secondary shadow">
             <div class="card-body p-lg-5">
               <h4 class="mb-1">Conclua seu cadastro e venda suprimentos para quem não pode sair de casa?</h4>
@@ -47,7 +48,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.categories"
+                  <input class="form-control" [(ngModel)]="category"
                     placeholder="Informe as categorias em que seu estabelecimento se encaixa" type="text">
                 </div>
               </div>
@@ -116,7 +117,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.phones" placeholder="(62)988889999" type="text">
+                  <input class="form-control" [(ngModel)]="phone" placeholder="(62)988889999" type="text">
                 </div>
               </div>
 
@@ -138,7 +139,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text">
+                  <input class="form-control" [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text" (blur)="changeCEP($event)">
                 </div>
               </div>
 
