@@ -3,7 +3,9 @@ package br.com.nao.saia.controller;
 import br.com.nao.saia.dto.ResponseDTO;
 import br.com.nao.saia.model.User;
 import br.com.nao.saia.service.UserService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -33,15 +35,17 @@ public class UserController {
 	public UserController(UserService userService) {
 		this.service = userService;
 	}
-	
+
+	@SuppressWarnings("rawtypes")
 	@PostMapping(path = "/login", consumes = JSON, produces = JSON)
-	public ResponseDTO login(@Valid @RequestBody User user) {
-		return service.login(user);
+	public ResponseEntity<ResponseDTO> login(@Valid @RequestBody User user) {
+		return ResponseEntity.ok(service.login(user));
 	}
-	
-	@PostMapping(path = "/", consumes = JSON, produces = JSON)
-	public ResponseDTO createUser(@Valid @RequestBody User user) {
-		return service.createUser(user);
+
+	@SuppressWarnings("rawtypes")
+	@PostMapping(consumes = JSON, produces = JSON)
+	public ResponseEntity<ResponseDTO> createUser(@Valid @RequestBody User user) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.createUser(user));
 	}
 	
 	@GetMapping("/{id}")
