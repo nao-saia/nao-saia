@@ -1,0 +1,206 @@
+<main>
+  <section class="section section-shaped section-lg">
+
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <app-alert [alert]="dataAlert" (closeEvent)="onCloseAlert()"></app-alert>
+          <div class="card bg-gradient-secondary shadow">
+            <div class="card-body p-lg-5">
+              <h4 class="mb-1">Conclua seu cadastro e venda suprimentos para quem não pode sair de casa?</h4>
+              <p class="mt-0">Preencha o cadastro abaixo e começe a vender.</p>
+
+              <!-- public logo?: string, -->
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.fantasyName}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.fantasyName"
+                    placeholder="Nome do Seu Negocio (Nome de Fantasia)" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.companyName}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.companyName"
+                    placeholder="Razão Social ou Nome do Responsável" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.categories}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="category"
+                    placeholder="Informe as categorias em que seu estabelecimento se encaixa" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.cnpj}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.cnpj" placeholder="CPF/CNPJ" type="text">
+                </div>
+              </div>
+
+
+              <div class="row my-4">
+
+                <div class="col-12 col-lg-4 my-2">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="ifood" type="checkbox" [(ngModel)]="model.ifood">
+                    <label class="custom-control-label" for="ifood">
+                      <span><b>iFood</b></span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-lg-4 my-2">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="uberEats" type="checkbox" [(ngModel)]="model.uberEats">
+                    <label class="custom-control-label" for="uberEats">
+                      <span><b>Uber Eats</b></span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="col-12 col-lg-4 my-2">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="rappi" type="checkbox" [(ngModel)]="model.rappi">
+                    <label class="custom-control-label" for="rappi">
+                      <span><b>Rappi</b></span>
+                    </label>
+                  </div>
+                </div>
+                
+                <div class="col-12 my-2">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="ownDelivery" type="checkbox"
+                      [(ngModel)]="model.ownDelivery">
+                    <label class="custom-control-label" for="ownDelivery">
+                      <span><b>Serviço de Entrega Próprio</b></span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+
+              <p class="mt-0"><b>Seus Produtos/Serviços</b></p>
+              <div class="form-group mb-4" [ngClass]="{'has-danger is-invalid': !model.cnpj}">
+                <textarea class="form-control form-control-alternative" name="note" rows="6" cols="80"
+                  [(ngModel)]="model.note"
+                  placeholder="Use esse espaço para divulgar seus produtos/serviços"></textarea>
+              </div>
+
+              <p class="mt-0"><b>Telefone para contato</b></p>
+              <div class="form-group mt-4" [ngClass]="{'has-danger is-invalid': !model.phones}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="phone" placeholder="(62)988889999" type="text">
+                </div>
+              </div>
+
+              <p class="mt-0"><b>Whatsapp (opcional)</b></p>
+              <div class="form-group mt-4">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-whatsapp"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.whatsapp" placeholder="+5511988889999" type="text">
+                </div>
+              </div>
+
+              <h4 class="mb-1">Endereço e Localização</h4>
+              <p class="mt-0">Preencha os dados de endereço e localização e ajude as pessoas a te encontrar.</p>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.address.zipcode}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text" (blur)="changeCEP($event)">
+                </div>
+              </div>
+
+              <div class="form-group mt-5">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.address.street"
+                    placeholder="Logradouro (Rua, nº, quadra)" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.address.district}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.address.district" placeholder="Bairro" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.address.city}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.address.city" placeholder="Cidade" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.address.state}">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.address.state" placeholder="Estado" type="text">
+                </div>
+              </div>
+
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="displayAddress" type="checkbox"
+                      [(ngModel)]="model.displayAddress">
+                    <label class="custom-control-label" for="displayAddress">
+                      <span><b>Exbir endereço para clientes?</b></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <button type="button" (click)="save()" class="btn btn-default btn-round btn-block btn-lg">Concluir
+                  Cadastro</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

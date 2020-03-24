@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
   api: 'http://localhost:8888',
-  baseUrl: './assets/data'
+  baseUrl: 'https://nao-saia-backend.herokuapp.com'
 };

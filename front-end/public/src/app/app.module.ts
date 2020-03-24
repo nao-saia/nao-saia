@@ -17,9 +17,14 @@ import { ContributorsComponent } from "./landing/contributors/contributors.compo
 import { BannerRegisterComponent } from "./landing/banner-register/banner-register.component";
 import { EstablishmentsComponent } from "./establishments/establishments.component";
 import { CategoriesComponent } from "./establishments/categories/categories.component";
-import { EstablishmentComponent } from './establishments/establishment/establishment.component';
-import { EstablishmentDetailComponent } from './establishments/establishment-detail/establishment-detail.component';
+import { EstablishmentComponent } from "./establishments/establishment/establishment.component";
+import { EstablishmentDetailComponent } from "./establishments/establishment-detail/establishment-detail.component";
 
+import { AdvantagesComponent } from "./landing/advantages/advantages.component";
+import { GoalsComponent } from "./landing/goals/goals.component";
+import { SupportUsComponent } from "./landing/support-us/support-us.component";
+import { MerchantComponent } from "./merchant/merchant.component";
+import { AlertComponent } from "./shared/alert/alert.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { EstablishmentDetailComponent } from './establishments/establishment-det
     EstablishmentsComponent,
     EstablishmentComponent,
     CategoriesComponent,
-    EstablishmentDetailComponent
+    EstablishmentDetailComponent,
+    AdvantagesComponent,
+    GoalsComponent,
+    SupportUsComponent,
+    MerchantComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
