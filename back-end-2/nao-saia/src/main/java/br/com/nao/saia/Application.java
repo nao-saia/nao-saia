@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories;
 
 /**
- * Classe responsável por realizar o boot da aplicação
+ * Classe responsÃ¡vel por realizar o boot da aplicaÃ§Ã£o
  *
  * @author Taynan Rezende Silva
  * @since 22/03/2020

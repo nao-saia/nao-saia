@@ -1,0 +1,84 @@
+<section class="section bg-gradient-primary">
+  <div class="mt-5">
+    <ns-categories (categoria)="changeCategoria($event)"></ns-categories>
+  </div>
+  <div class="m-2">
+    <div class="align-items-center">
+      <div class="col-12">
+        <!-- INíCIO do CONTEÚDO -->
+        <section class="content-header">
+          <div
+            class="text-white d-flex align-items-center justify-content-between"
+          >
+            <h1 class="text-white">
+              Estabelecimentos
+            </h1>
+            <a (click)="toggleSearch()" class="search-link float-right">
+              <i class="fa fa-search fa-2x"></i>
+            </a>
+          </div>
+          <!-- barra de busca-->
+          <div class="row">
+            <div class="col-12 search-bar" [@toggleSearch]="searchBarState">
+              <form [formGroup]="searchForm">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    #iptSearch
+                    formControlName="searchControl"
+                    class="form-control"
+                    placeholder="O que você está procurando?"
+                  />
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section class="content">
+          <div class="row">
+            <div
+              *ngFor="let estabelecimento of estabelecimentos"
+              class="col-sm-12 col-12 col-xl-4 col-lg-4"
+            >
+              <ns-establishment
+                [establishment]="estabelecimento"
+              ></ns-establishment>
+            </div>
+            <div
+              *ngIf="estabelecimentos?.length === 0"
+              class="col-12 shadow bg-white rounded"
+            >
+              <p class="lead text-center">
+                Não foram encontrados estabelecimentos para a categoria
+                {{ categorieSelected }}.
+              </p>
+            </div>
+          </div>
+        </section>
+        <div *ngIf="estabelecimentos.length > 0" col="12">
+          <button
+            (click)="addLimit()"
+            class="btn btn-outline-white form-control"
+          >
+            Ver mais estabelecimentos
+          </button>
+        </div>
+
+        <!-- FIM  do CONTEÚDO -->
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg
+      x="0"
+      y="0"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</section>
