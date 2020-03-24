@@ -1,4 +1,3 @@
-export interface Geocode {
-    latitude: number;
-    longitude: number;
+export class Geocode {
+    constructor(public latitude: number, public longitude: number) {}
 }

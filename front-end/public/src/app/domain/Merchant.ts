@@ -1,21 +1,24 @@
-import { Address } from "./Address";
+import { Address } from './Address';
 
-export interface Merchant {
-    fantasyName?: string;
-    companyName?: string;
-    cnpj?: string;
-    address?: Address;
-    acceptTerms?: boolean;
-    active?: boolean;
-    logo?: string;
-    categories?: [];
-    ads?: [];
-    whatsapp?: string;
-    phones?: [];
-    ifood?: boolean;
-    uberEats?: boolean;
-    rappi?: boolean;
-    ownDelivery?: boolean;
-    displayAddress?: boolean;
-    note?: string;
+export class Merchant {
+    constructor(
+        public fantasyName?: string,
+        public companyName?: string,
+        public cnpj?: string,
+        public address?: Address,
+        public acceptTerms?: boolean,
+        public active?: boolean,
+        public logo?: string,
+        public categories?: [],
+        public ads?: [],
+        public whatsapp?: string,
+        public phones?: [],
+        public ifood?: boolean,
+        public uberEats?: boolean,
+        public rappi?: boolean,
+        public ownDelivery?: boolean,
+        public displayAddress?: boolean,
+        public note?: string) {
+        this.address = {};
+    }
 }

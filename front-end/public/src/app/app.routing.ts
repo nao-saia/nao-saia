@@ -13,7 +13,8 @@ import { SupportUsComponent } from './landing/support-us/support-us.component';
 import { MerchantComponent} from './merchant/merchant.component';
 
 const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
+    // { path: 'home',             component: HomeComponent },
+    { path: 'home',             component: LandingComponent },
     { path: 'profile/:id',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
     { path: 'landing',          component: LandingComponent },
@@ -21,7 +22,7 @@ const routes: Routes =[
     { path: 'contribuitors',          component: ContributorsComponent  },
     { path: 'support-us',          component: SupportUsComponent  },
     { path: 'merchant',          component: MerchantComponent  },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 
 @NgModule({

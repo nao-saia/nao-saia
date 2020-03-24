@@ -1,28 +1,26 @@
-import { IAlert } from './../sections/alerts-section/alerts-section.component';
-import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
-import { Alert } from '../shared/alert/alert.component';
-import { error } from 'protractor';
+import { AbstractViewComponent } from './../shared/abstract.view.component';
 
 @Component({
     selector: 'app-signup',
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss']
 })
-export class SignupComponent implements OnInit {
+export class SignupComponent extends AbstractViewComponent implements OnInit {
 
-    focus: false;
-    focus1: false;
-    focus2: false;
-    focus3: false;
+    focus = false;
+    focus1 = false;
+    focus2 = false;
+    focus3 = false;
 
     model: User;
     showOAuth: boolean = false;
-    dataAlert: Alert = {};
-
-    constructor(private service: UserService, private router: Router) { }
+    constructor(private service: UserService, private router: Router) {
+        super();
+    }
 
     ngOnInit() {
         this.model = new User();
@@ -30,21 +28,16 @@ export class SignupComponent implements OnInit {
 
     save(): void {
         if (this.model.valid()) {
-            this.service.save(this.model)
-                .subscribe(
-                    () => this.router.navigate(['/merchant'])
-                    , error => {
-                        this.dataAlert = {
-                            type: 'warning',
-                            strong: 'Warning!',
-                            message: error.statusText,
-                            icon: 'ni ni-bell-55'
-                        };
-                    });
+            this.service.save(this.model).subscribe(
+                response => {
+                    super.showAlertInfo('Usuário cadastrado com sucesso!');
+                    setTimeout(() => {
+                        this.router.navigate(['/merchant']);
+                    }, 7000);
+                },
+                reject => {
+                    super.showAlertWarning(reject.error.message);
+                });
         }
-    }
-
-    onCloseAlert(): void {
-        this.dataAlert = {};
     }
 }
