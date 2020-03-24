@@ -2,6 +2,7 @@ import { Address } from './Address';
 
 export class Merchant {
     constructor(
+        public id?: string,
         public fantasyName?: string,
         public companyName?: string,
         public cnpj?: string,
@@ -18,8 +19,10 @@ export class Merchant {
         public rappi?: boolean,
         public ownDelivery?: boolean,
         public displayAddress?: boolean,
-        public note?: string) {
+        public note?: string,
+        public userId?: string) {
         this.address = {};
+        this.displayAddress = true;
     }
 
     public valid(): boolean {
@@ -30,7 +33,7 @@ export class Merchant {
                     this.acceptTerms &&
                     this.active &&
                     this.logo &&
-                    this.categories &&
+                    this.categories && this.categories.length > 0 &&
                     this.note);
     }
 }

@@ -1,3 +1,5 @@
+import { Router, ActivatedRoute } from '@angular/router';
+import { MerchantService } from './../services/merchant.service';
 import { AbstractViewComponent } from './../shared/abstract.view.component';
 import { Merchant } from './../domain/Merchant';
 import { Component, OnInit } from '@angular/core';
@@ -11,26 +13,32 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
 
   model: Merchant;
 
-  constructor() {
+  constructor(
+      private service: MerchantService,
+      private router: Router,
+      private route: ActivatedRoute) {
     super();
+    this.model = new Merchant();
+    this.route.params.subscribe(params => this.model.userId = params['id']);
   }
 
   ngOnInit() {
-    this.model = new Merchant();
   }
 
   save(): void {
     if (this.model.valid()) {
       this.service.save(this.model).subscribe(
         response => {
-          super.showAlertInfo('Usuário cadastrado com sucesso!');
+          super.showAlertInfo('Estabelecimento cadastrado com sucesso!');
           setTimeout(() => {
-            this.router.navigate(['/merchant']);
+            this.router.navigate([`/profile/${response.id}`]);
           }, 7000);
         },
         reject => {
           super.showAlertWarning(reject.error.message);
         });
+    } else {
+      super.showAlertWarning('Cadastro inválido verifique os campos obrigatórios!');
     }
   }
 

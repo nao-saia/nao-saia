@@ -21,7 +21,7 @@ const routes: Routes =[
     { path: 'login',          component: LoginComponent },
     { path: 'contribuitors',          component: ContributorsComponent  },
     { path: 'support-us',          component: SupportUsComponent  },
-    { path: 'merchant',          component: MerchantComponent  },
+    { path: 'merchant/:userId',          component: MerchantComponent  },
     { path: '', redirectTo: 'landing', pathMatch: 'full' }
 ];
 

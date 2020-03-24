@@ -32,7 +32,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
                 response => {
                     super.showAlertInfo('Usuário cadastrado com sucesso!');
                     setTimeout(() => {
-                        this.router.navigate(['/merchant']);
+                        this.router.navigate([`/merchant/${response.id}`]);
                     }, 7000);
                 },
                 reject => {
