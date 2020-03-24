@@ -1,3 +1,5 @@
+import { AbstractViewComponent } from './../shared/abstract.view.component';
+import { Merchant } from './../domain/Merchant';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './merchant.component.html',
   styleUrls: ['./merchant.component.css']
 })
-export class MerchantComponent implements OnInit {
+export class MerchantComponent extends AbstractViewComponent implements OnInit {
 
-  focus: any;
-  focus1: any;
+  model: Merchant;
 
-  constructor() { }
+  constructor() {
+    super();
+    this.model = new Merchant();
+  }
 
   ngOnInit(): void {
   }

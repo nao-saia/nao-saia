@@ -1,10 +1,12 @@
-import { Geocode } from "./Geocode";
+import { Geocode } from './Geocode';
 
-export interface Address {
-    location: Geocode;
-    street: string;
-    city: string;
-    state: string;
-    district: string;
-    zipcode: string;
+export class Address {
+    constructor(
+        public location?: Geocode,
+        public street?: string,
+        public city?: string,
+        public state?: string,
+        public district?: string,
+        public zipcode?: string
+    ) {}
 }
