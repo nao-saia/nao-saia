@@ -21,4 +21,16 @@ export class Merchant {
         public note?: string) {
         this.address = {};
     }
+
+    public valid(): boolean {
+        return !!(this.fantasyName &&
+                    this.companyName &&
+                    this.cnpj &&
+                    this.address.street &&
+                    this.acceptTerms &&
+                    this.active &&
+                    this.logo &&
+                    this.categories &&
+                    this.note);
+    }
 }

@@ -20,14 +20,16 @@
               <h4 class="mb-1">Conclua seu cadastro e venda suprimentos para quem não pode sair de casa?</h4>
               <p class="mt-0">Preencha o cadastro abaixo e começe a vender.</p>
 
+              <!-- public logo?: string, -->
+
+
               <div class="form-group mt-5">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
                   <input class="form-control" [(ngModel)]="model.fantasyName"
-                    placeholder="Nome do Seu Negocio (Nome de Fantasia)" type="text" (focus)="focus=true"
-                    (blur)="focus=false">
+                    placeholder="Nome do Seu Negocio (Nome de Fantasia)" type="text">
                 </div>
               </div>
 
@@ -37,7 +39,7 @@
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
                   <input class="form-control" [(ngModel)]="model.companyName"
-                    placeholder="Razão Social ou Nome do Responsável" type="text" (blur)="focus=false">
+                    placeholder="Razão Social ou Nome do Responsável" type="text">
                 </div>
               </div>
 
@@ -46,14 +48,88 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.cnpj"
-                    placeholder="CPF/CNPJ" type="text" >
+                  <input class="form-control" [(ngModel)]="model.categories"
+                    placeholder="Informe as categorias em que seu estabelecimento se encaixa" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5">
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.cnpj" placeholder="CPF/CNPJ" type="text">
+                </div>
+              </div>
+
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="ifood" type="checkbox" [(ngModel)]="model.ifood">
+                    <label class="custom-control-label" for="ifood">
+                      <span><b>iFood</b></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="uberEats" type="checkbox" [(ngModel)]="model.uberEats">
+                    <label class="custom-control-label" for="uberEats">
+                      <span><b>UberEats</b></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="rappi" type="checkbox" [(ngModel)]="model.rappi">
+                    <label class="custom-control-label" for="rappi">
+                      <span><b>Rappi</b></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="ownDelivery" type="checkbox"
+                      [(ngModel)]="model.ownDelivery">
+                    <label class="custom-control-label" for="ownDelivery">
+                      <span><b>Serviço de Entrega Próprio</b></span>
+                    </label>
+                  </div>
                 </div>
               </div>
 
               <div class="form-group mb-4">
-                <textarea class="form-control form-control-alternative" name="name" rows="4" cols="80"
-                  placeholder="Detalhes"></textarea>
+                <textarea class="form-control form-control-alternative" name="note" rows="4" cols="80"
+                  [(ngModel)]="model.note" placeholder="Use esse espaço para divulgar seus produtos/serviços"></textarea>
+              </div>
+
+              <div class="form-group mt-5">
+                <p class="mt-0">Whatsapp (opcional)</p>
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-whatsapp"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.whatsapp" placeholder="+5511988889999" type="text">
+                </div>
+              </div>
+
+              <div class="form-group mt-5">
+                <p class="mt-0">Telefone para contato</p>
+                <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                  </div>
+                  <input class="form-control" [(ngModel)]="model.phones" placeholder="(62)988889999" type="text">
+                </div>
               </div>
 
               <h4 class="mb-1">Endereço e Localização</h4>
@@ -64,8 +140,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.zipcode"
-                    placeholder="CEP" type="text">
+                  <input class="form-control" [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text">
                 </div>
               </div>
 
@@ -75,7 +150,7 @@
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
                   <input class="form-control" [(ngModel)]="model.address.street"
-                    placeholder="Logradouro (Rua, nº, quadra)" type="text" >
+                    placeholder="Logradouro (Rua, nº, quadra)" type="text">
                 </div>
               </div>
 
@@ -84,44 +159,39 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.district"
-                    placeholder="Bairro" type="text">
+                  <input class="form-control" [(ngModel)]="model.address.district" placeholder="Bairro" type="text">
                 </div>
               </div>
 
               <div class="form-group mt-5">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-map-pin"></i></span>
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.city"
-                    placeholder="Cidade" type="text">
+                  <input class="form-control" [(ngModel)]="model.address.city" placeholder="Cidade" type="text">
                 </div>
               </div>
 
               <div class="form-group mt-5">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-map-pin"></i></span>
+                    <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.state"
-                    placeholder="Estado" type="text" >
+                  <input class="form-control" [(ngModel)]="model.address.state" placeholder="Estado" type="text">
                 </div>
               </div>
 
-              <!-- public acceptTerms?: boolean,
-              public active?: boolean,
-              public logo?: string,
-              public categories?: [],
-              public ads?: [],
-              public whatsapp?: string,
-              public phones?: [],
-              public ifood?: boolean,
-              public uberEats?: boolean,
-              public rappi?: boolean,
-              public ownDelivery?: boolean,
-              public displayAddress?: boolean,
-              public note?: string) { -->
+              <div class="row my-4">
+                <div class="col-12">
+                  <div class="custom-control custom-control-alternative custom-checkbox">
+                    <input class="custom-control-input" id="displayAddress" type="checkbox"
+                      [(ngModel)]="model.displayAddress">
+                    <label class="custom-control-label" for="displayAddress">
+                      <span><b>Exbir endereço para clientes?</b></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
 
               <div>
                 <button type="button" class="btn btn-default btn-round btn-block btn-lg">Concluir Cadastro</button>
