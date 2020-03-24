@@ -5,7 +5,7 @@ export class AbstractViewComponent {
 
     constructor() {}
 
-    public onCloseAlert(data): void {
+    public onCloseAlert(): void {
         this.dataAlert = {};
     }
 
