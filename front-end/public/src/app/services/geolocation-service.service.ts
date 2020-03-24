@@ -1,10 +1,6 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-
-export interface Location {
-  latitude?: number;
-  longitude?: number;
-}
+import { Address } from '../domain/Address';
 
 @Injectable({
   providedIn: 'root'
@@ -13,15 +9,14 @@ export class GeolocationService {
 
   constructor() { }
 
-  getCurrentLocation(cep: string): Observable<Location> {
+  getCurrentLocation(address: Address): Observable<Address> {
     return new Observable((observer) => {
       if (navigator.geolocation) {
-        const location: Location = {};
         navigator.geolocation.getCurrentPosition((position: Position) => {
           if (position) {
-            location.latitude = position.coords.latitude;
-            location.longitude = position.coords.longitude;
-            observer.next(location);
+            address.location.latitude = position.coords.latitude;
+            address.location.longitude = position.coords.longitude;
+            observer.next(address);
           } else {
             // TODO:obter a latitude e longitude pelo CEP
             observer.error('Não foi possível obter a localização');
