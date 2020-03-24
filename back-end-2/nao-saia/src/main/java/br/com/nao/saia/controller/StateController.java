@@ -9,9 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Classe que armazena os endpoints de {@link Merchant} recebendo as requisicoes,
@@ -31,12 +32,12 @@ public class StateController {
     }
 
     @GetMapping
-    public List<StateDTO> findAll() {
+    public Flux<StateDTO> findAll() {
         return stateService.findAll();
     }
 
     @GetMapping("/{id}")
-    public StateDTO findById(@PathVariable Integer id) {
+    public Mono<StateDTO> findById(@PathVariable Integer id) {
         return stateService.findDTOById(id);
     }
 

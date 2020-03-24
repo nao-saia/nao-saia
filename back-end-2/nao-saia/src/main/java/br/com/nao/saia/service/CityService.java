@@ -1,15 +1,13 @@
 package br.com.nao.saia.service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-import org.springframework.stereotype.Service;
-
 import br.com.nao.saia.converter.CityConverter;
 import br.com.nao.saia.dto.CityDTO;
 import br.com.nao.saia.exception.CityNotFoundException;
 import br.com.nao.saia.model.City;
 import br.com.nao.saia.repository.CityRepository;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Service
 public class CityService {
@@ -23,16 +21,15 @@ public class CityService {
         this.cityConverter = cityConverter;
     }
 
-    public CityDTO findById(Integer id) {
+    public Mono<CityDTO> findById(Integer id) {
         return cityRepository.findById(id)
                 .map(cityConverter::fromDomainToDTO)
-                .orElseThrow(() -> new CityNotFoundException(id));
+                .switchIfEmpty(Mono.error(new CityNotFoundException(id)));
     }
 
-    public List<CityDTO> findAll() {
-        return cityRepository.findAll().stream()
-                .map(cityConverter::fromDomainToDTO)
-                .collect(Collectors.toList());
+    public Flux<CityDTO> findAll() {
+        return cityRepository.findAll()
+                .map(cityConverter::fromDomainToDTO);
     }
 
     public void save(CityDTO cityDTO) {
