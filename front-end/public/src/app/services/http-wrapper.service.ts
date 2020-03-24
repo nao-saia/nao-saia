@@ -13,8 +13,10 @@ export class HttpWrapperService {
 
   private baseUrl: string;
 
-  constructor(private http: HttpClient) {
-    this.baseUrl = environment.baseUrl;
+  constructor(private http: HttpClient) {}
+
+  setBaseUrl(url: string): void {
+    this.baseUrl = url;
   }
 
   get<T>(url: string, options?: {
