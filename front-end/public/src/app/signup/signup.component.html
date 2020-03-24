@@ -13,6 +13,7 @@
     <div class="container pt-lg-md">
       <div class="row justify-content-center">
         <div class="col-lg-5">
+          <app-alert [alert]="dataAlert" (closeEvent)="onCloseAlert($event)"></app-alert>
           <div class="card bg-secondary shadow border-0">
             <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3">
@@ -43,8 +44,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-user"></i></span>
                     </div>
-                    <input name="name" class="form-control" placeholder="Nome" type="text" (focus)="focus=true" (blur)="focus=false"
-                      [(ngModel)]="model.name">
+                    <input name="name" class="form-control" placeholder="Nome" type="text" (focus)="focus=true"
+                      (blur)="focus=false" [(ngModel)]="model.name">
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus1===true}">
@@ -61,8 +62,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                     </div>
-                    <input name="password" class="form-control" placeholder="Senha" type="password" (focus)="focus2=true"
-                      (blur)="focus2=false" [(ngModel)]="model.password">
+                    <input name="password" class="form-control" placeholder="Senha" type="password"
+                      (focus)="focus2=true" (blur)="focus2=false" [(ngModel)]="model.password">
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus3===true}">
@@ -70,8 +71,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                     </div>
-                    <input name="confirmPassword" class="form-control" placeholder="Confirme Senha" type="password" (focus)="focus3=true"
-                      (blur)="focus3=false" [(ngModel)]="model.confirmPassword">
+                    <input name="confirmPassword" class="form-control" placeholder="Confirme Senha" type="password"
+                      (focus)="focus3=true" (blur)="focus3=false" [(ngModel)]="model.confirmPassword">
                   </div>
                 </div>
                 <div class="text-muted font-italic" *ngIf="!model.isConfirmPasswordOK()">

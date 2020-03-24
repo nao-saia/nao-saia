@@ -22,6 +22,7 @@ import { AdvantagesComponent } from './landing/advantages/advantages.component';
 import { GoalsComponent } from './landing/goals/goals.component';
 import { SupportUsComponent } from './landing/support-us/support-us.component';
 import { MerchantComponent } from './merchant/merchant.component';
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { MerchantComponent } from './merchant/merchant.component';
     AdvantagesComponent,
     GoalsComponent,
     SupportUsComponent,
-    MerchantComponent
+    MerchantComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
