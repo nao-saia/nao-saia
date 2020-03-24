@@ -35,7 +35,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
                 }, 7000);
             },
             reject => {
-                super.showAlertWarning(reject.error);
+                super.showAlertWarning(reject.error.message);
             });
     }
 }
