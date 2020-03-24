@@ -27,17 +27,15 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
     }
 
     save(): void {
-        if (this.model.valid()) {
-            this.service.save(this.model).subscribe(
-                response => {
-                    super.showAlertInfo('Usuário cadastrado com sucesso!');
-                    setTimeout(() => {
-                        this.router.navigate([`/merchant/${response.id}`]);
-                    }, 7000);
-                },
-                reject => {
-                    super.showAlertWarning(reject.error.message);
-                });
-        }
+        this.service.save(this.model).subscribe(
+            response => {
+                super.showAlertInfo('Usuário cadastrado com sucesso!');
+                setTimeout(() => {
+                    this.router.navigate([`/merchant/${response.id}`]);
+                }, 7000);
+            },
+            reject => {
+                super.showAlertWarning(reject.error);
+            });
     }
 }

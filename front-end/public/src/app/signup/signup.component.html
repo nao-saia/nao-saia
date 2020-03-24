@@ -38,14 +38,14 @@
               <div class="text-center text-muted mb-4" *ngIf="showOAuth">
                 <small>ou crie seu usuário e senha</small>
               </div>
-              <form role="form">
+              <form #registerForm="ngForm" role="form">
                 <div class="form-group" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative mb-3">
                     <div class="input-group-prepend">
                       <span class="input-group-text"><i class="fa fa-user"></i></span>
                     </div>
                     <input name="name" class="form-control" placeholder="Nome" type="text" (focus)="focus=true"
-                      (blur)="focus=false" [(ngModel)]="model.name">
+                      (blur)="focus=false" [(ngModel)]="model.name" required>
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus1===true}">
@@ -54,7 +54,7 @@
                       <span class="input-group-text"><i class="fa fa-inbox"></i></span>
                     </div>
                     <input name="email" class="form-control" placeholder="Email" type="email" (focus)="focus1=true"
-                      (blur)="focus1=false" [(ngModel)]="model.email">
+                      (blur)="focus1=false" [(ngModel)]="model.email" required>
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus2===true}">
@@ -63,7 +63,7 @@
                       <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                     </div>
                     <input name="password" class="form-control" placeholder="Senha" type="password"
-                      (focus)="focus2=true" (blur)="focus2=false" [(ngModel)]="model.password">
+                      (focus)="focus2=true" (blur)="focus2=false" [(ngModel)]="model.password" required>
                   </div>
                 </div>
                 <div class="form-group" [ngClass]="{'focused':focus3===true}">
@@ -72,7 +72,7 @@
                       <span class="input-group-text"><i class="fa fa-unlock"></i></span>
                     </div>
                     <input name="confirmPassword" class="form-control" placeholder="Confirme Senha" type="password"
-                      (focus)="focus3=true" (blur)="focus3=false" [(ngModel)]="model.confirmPassword">
+                      (focus)="focus3=true" (blur)="focus3=false" [(ngModel)]="model.confirmPassword" required>
                   </div>
                 </div>
                 <div class="text-muted font-italic" *ngIf="!model.isConfirmPasswordOK()">
@@ -83,8 +83,8 @@
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
-                      <input class="custom-control-input" id="customCheckRegister" type="checkbox" [(ngModel)]="model.acceptTerms">
-                      <label class="custom-control-label" for="customCheckRegister">
+                      <input class="custom-control-input" id="acceptTerms" name="acceptTerms" type="checkbox" [(ngModel)]="model.acceptTerms" required>
+                      <label class="custom-control-label" for="acceptTerms">
                         <span>Eu li e aceito
                           <a href="javascript:void(0)"> os termos de uso e privacidade</a>
                         </span>
@@ -93,7 +93,7 @@
                   </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn btn-primary mt-4" (click)="save()">Cadastrar</button>
+                  <button type="button" class="btn btn-primary mt-4" [disabled]="registerForm.invalid" (click)="save()">Cadastrar</button>
                 </div>
               </form>
             </div>
