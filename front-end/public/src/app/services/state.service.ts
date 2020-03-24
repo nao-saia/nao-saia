@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpWrapperService } from './http-wrapper.service';
-import { Merchant } from '../domain/Merchant';
+import { State } from '../domain/State';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MerchantService {
+export class StateService {
 
-  path = 'merchants';
+  path = 'states';
 
   constructor(private http: HttpWrapperService) {
 
   }
   
-  save(merchant: Merchant): Observable<Merchant>  {
-    return this.http.post<Merchant>(this.path, merchant);
+  findAll(): Observable<State>  {
+    return this.http.get<State>(this.path);
   }
 
 }
