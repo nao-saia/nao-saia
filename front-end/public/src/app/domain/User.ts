@@ -16,4 +16,8 @@ export class User {
     valid(): boolean {
         return !!(this.name && this.email && this.password && this.confirmPassword);
     }
+
+    loginValid(): boolean {
+        return !!(this.email && this.password);
+    }
 }

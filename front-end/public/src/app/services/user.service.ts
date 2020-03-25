@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { environment } from 'src/environments/environment.prod';
 import { User } from './../domain/User';
 import { HttpWrapperService } from './http-wrapper.service';
@@ -13,8 +13,14 @@ export class UserService {
   USER_KEY = 'user';
   path = 'users';
 
+  observerUserLogged;
+  userLogged: Observable<any>;
+
   constructor(private http: HttpWrapperService, private storage: StorageMap) {
     this.http.setBaseUrl(environment.baseUrl);
+    this.userLogged = new Observable((observer) => {
+      this.observerUserLogged = observer;
+    });
   }
 
   public save(user: User): Observable<User> {
@@ -24,6 +30,7 @@ export class UserService {
           this.storage.set(this.USER_KEY, userSaved).subscribe(
             () => {
               observer.next(userSaved);
+              this.observerUserLogged.next(userSaved);
             }, error => {
               observer.error(error);
             });
@@ -41,6 +48,7 @@ export class UserService {
           this.storage.set(this.USER_KEY, userLogged).subscribe(
             () => {
               observer.next(userLogged);
+              this.observerUserLogged.next(userLogged);
             }, error => {
               observer.error(error);
             });
@@ -58,6 +66,7 @@ export class UserService {
           this.storage.delete(this.USER_KEY).subscribe(
             () => {
               observer.next({});
+              this.observerUserLogged.next(null);
             }, error => {
               observer.error(error);
             });
@@ -68,7 +77,13 @@ export class UserService {
     });
   }
 
+  public loadUserFromLocalStorage(): void {
+    this.storage.get(this.USER_KEY).subscribe(user => {
+      this.observerUserLogged.next(user);
+    });
+  }
+
   public getCurrentUser(): Observable<any> {
-    return this.storage.get(this.USER_KEY);
+    return this.userLogged;
   }
 }

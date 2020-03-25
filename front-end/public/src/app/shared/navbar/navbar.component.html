@@ -1,10 +1,12 @@
-<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
+<nav id="navbar-main"
+  class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned">
   <div class="container">
     <a class="navbar-brand mr-lg-5" [routerLink]="['/home']">
-      <img src="./assets/img/brand/logo.png">
+      <i class="fa fa-home"></i>
+      <span class="nav-link-inner--text"><b> Início</b></span>
     </a>
     <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
@@ -12,12 +14,13 @@
         <div class="row">
           <div class="col-6 collapse-brand">
             <a [routerLink]="['/home']">
-              <img src="./assets/img/brand/favico.png">
+              <i class="fa fa-home"></i>
+              <span class="nav-link-inner--text"><b> Início</b></span>
             </a>
           </div>
           <div class="col-6 collapse-close">
             <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
-                  [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
               <span></span>
               <span></span>
             </button>
@@ -28,12 +31,12 @@
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-ui-04 d-lg-none"></i>
-            <span class="nav-link-inner--text">Onde Comprar</span>
+            <span class="nav-link-inner--text">Encontre</span>
           </a>
-          <div class="dropdown-menu-xl dropdown-menu" >
+          <div class="dropdown-menu-xl dropdown-menu">
             <div class="dropdown-menu-inner">
-              <a *ngFor="let item of menu.categories"
-                  routerLinkActive="active" [routerLink]="item.ref" class="media d-flex align-items-center">
+              <a *ngFor="let item of menu.categories" routerLinkActive="active" [routerLink]="item.ref"
+                class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                   <i class="{{item.icon}}"></i>
                 </div>
@@ -74,38 +77,43 @@
         </li> -->
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.facebook.com/{{socialMedias.facebook}}" target="_blank" data-toggle="tooltip" title="Curta nossa página no Facebook">
+        <!-- <li class="nav-item">
+          <a class="nav-link nav-link-icon" href="https://www.facebook.com/{{socialMedias.facebook}}" target="_blank"
+            data-toggle="tooltip" title="Curta nossa página no Facebook">
             <i class="fa fa-facebook-square"></i>
             <span class="nav-link-inner--text d-lg-none">Facebook</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/{{socialMedias.instagram}}" target="_blank" data-toggle="tooltip" title="Siga-nos no Instagram">
+          <a class="nav-link nav-link-icon" href="https://www.instagram.com/{{socialMedias.instagram}}" target="_blank"
+            data-toggle="tooltip" title="Siga-nos no Instagram">
             <i class="fa fa-instagram"></i>
             <span class="nav-link-inner--text d-lg-none">Instagram</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://twitter.com/{{socialMedias.twitter}}" target="_blank" data-toggle="tooltip" title="Siga-nos no Twitter">
+          <a class="nav-link nav-link-icon" href="https://twitter.com/{{socialMedias.twitter}}" target="_blank"
+            data-toggle="tooltip" title="Siga-nos no Twitter">
             <i class="fa fa-twitter-square"></i>
             <span class="nav-link-inner--text d-lg-none">Twitter</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.linkedin.com/company/{{socialMedias.linkedin}}" target="_blank" data-toggle="tooltip" title="Siga-nos no Linkedin">
+          <a class="nav-link nav-link-icon" href="https://www.linkedin.com/company/{{socialMedias.linkedin}}"
+            target="_blank" data-toggle="tooltip" title="Siga-nos no Linkedin">
             <i class="fa fa-linkedin-square"></i>
             <span class="nav-link-inner--text d-lg-none">Linkedin</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://github.com/{{socialMedias.github}}" target="_blank" data-toggle="tooltip" title="Star us on Github">
+          <a class="nav-link nav-link-icon" href="https://github.com/{{socialMedias.github}}" target="_blank"
+            data-toggle="tooltip" title="Star us on Github">
             <i class="fa fa-github"></i>
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a href="#register" target="_blank" class="btn btn-neutral btn-icon">
+          <a href="#register" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
               <i class="fa fa-registered mr-2"></i>
             </span>

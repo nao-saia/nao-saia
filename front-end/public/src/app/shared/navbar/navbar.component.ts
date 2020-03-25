@@ -23,10 +23,11 @@ export class NavbarComponent implements OnInit {
     constructor(public location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
         this.loadMenu();
         this.loadSocialMedias();
-        this.userLogged = userService.getCurrentUser().subscribe(userLogged => {
+        this.userService.getCurrentUser().subscribe(userLogged => {
             this.userLogged = userLogged;
             this.logged = userLogged && userLogged.id;
         });
+        this.userService.loadUserFromLocalStorage();
     }
 
     ngOnInit() {
@@ -119,6 +120,7 @@ export class NavbarComponent implements OnInit {
         this.userService.logout().subscribe(() => {
             this.userLogged = null;
             this.logged = false;
+            this.router.navigate([`/home`]);
         });
     }
 }
