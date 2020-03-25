@@ -1,5 +1,5 @@
 {
-  "name": "argon-design-system-angular",
+  "name": "nao-saia",
   "version": "1.1.0",
   "scripts": {
     "ng": "ng",
@@ -8,8 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
-    "start-api": "json-server --watch db.json --port 8888"
+    "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +23,7 @@
     "@angular/platform-browser-dynamic": "9.0.5",
     "@angular/router": "9.0.5",
     "@ng-bootstrap/ng-bootstrap": "6.0.0",
+    "@ngx-pwa/local-storage": "^9.0.3",
     "jquery": "^3.4.1",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "moment": "^2.24.0",
