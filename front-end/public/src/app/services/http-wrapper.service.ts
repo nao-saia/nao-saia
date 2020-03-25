@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
 
 /**
  * Servico que encapsula o HttpClient do Angular, para tratamentos customizados nas requisições
@@ -13,8 +12,10 @@ export class HttpWrapperService {
 
   private baseUrl: string;
 
-  constructor(private http: HttpClient) {
-    this.baseUrl = environment.baseUrl;
+  constructor(private http: HttpClient) {}
+
+  setBaseUrl(url: string): void {
+    this.baseUrl = url;
   }
 
   get<T>(url: string, options?: {

@@ -1,3 +1,7 @@
+import { Router } from '@angular/router';
+import { AbstractViewComponent } from './../shared/abstract.view.component';
+import { UserService } from './../services/user.service';
+import { User } from './../domain/User';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,12 +9,31 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-  focus;
-  focus1;
-  constructor() { }
+export class LoginComponent extends AbstractViewComponent implements OnInit {
+
+  model: User;
+
+  constructor(private service: UserService, private router: Router) {
+    super();
+   }
 
   ngOnInit() {
+    this.model = new User();
+  }
+
+  login(): void {
+
+    if (this.model.loginValid()) {
+      this.service.login(this.model).subscribe(
+        response => {
+          this.router.navigate([`/home`]);
+        },
+        reject => {
+          super.showAlertWarning(reject.error.message);
+        });
+    } else {
+      super.showAlertWarning('Informe e-mail e senha válidos');
+    }
   }
 
 }

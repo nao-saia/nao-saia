@@ -1,4 +1,4 @@
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { CarouselModule } from "ngx-bootstrap/carousel";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { FooterComponent } from "./shared/footer/footer.component";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { ROUTES } from "./app.routing";
+
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -57,8 +58,8 @@ import { FormBuilder } from "@angular/forms";
   ],
   imports: [
     BrowserModule,
-    NgbModule,
     RouterModule,
+    NgbModule,
     HomeModule,
     CommonModule,
     FormsModule,

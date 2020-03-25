@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { HttpWrapperService } from "./http-wrapper.service";
 import { Merchant } from "../domain/Merchant";
 import { Observable } from "rxjs";
+import { environment } from "src/environments/environment.prod";
 
 @Injectable({
   providedIn: "root"
@@ -10,7 +11,9 @@ import { Observable } from "rxjs";
 export class MerchantService {
   path = "merchants";
 
-  constructor(private http: HttpWrapperService) {}
+  constructor(private http: HttpWrapperService) {
+    this.http.setBaseUrl(environment.baseUrl);
+  }
 
   findAll(search?: string): Observable<Merchant[]> {
     return this.http.get<Merchant[]>(this.path);
