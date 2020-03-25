@@ -68,14 +68,14 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
 
   loadStates(): void {
     this.states = [];
-    this.stateService.list().subscribe(states => {
+    this.stateService.findAll().subscribe(states => {
       this.states = states;
     });
   }
 
   loadCities(): void {
     this.cities = [];
-    this.cityService.list(this.model.address.state).subscribe(cities => {
+    this.cityService.findByUF(this.model.address.state).subscribe(cities => {
       this.cities = cities;
     });
   }

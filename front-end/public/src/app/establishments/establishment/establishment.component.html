@@ -1,6 +1,4 @@
-<a
-  (click)="changeRouteDetails()"
->
+<a (click)="changeRouteDetails()">
   <div
     class="rounded bg-white shadow shadow-lg--hover p-3 mb-2 card-scale cursor-pointer text-default"
     [@estabelecimentoTrigger]="estabelecimentoState"
@@ -16,19 +14,17 @@
           class="d-flex flex-column justify-content-center align-items-start col"
         >
           <div class="col-12">
-            <label class="float-left">{{ establishment.nomeFantasia }}</label>
-            <label class="float-right border-bottom">{{
-              establishment.categorias[0]
-            }}</label>
+            <label class="float-left">{{ merchant.fantasyName }}</label>
+            <label class="float-right border-bottom">{{ category }}</label>
           </div>
           <div class="col-12">
             <div>
               <i class="fa fa-whatsapp"></i>
-              <label class="ml-1">{{ establishment.whatsapp }}</label>
+              <label class="ml-1">{{ merchant.whatsapp }}</label>
             </div>
             <div>
               <i class="fa fa-map-marker"></i>
-              <label class="ml-1">{{ establishment.bairro }}</label>
+              <label class="ml-1">{{ merchant.address.district }}</label>
             </div>
           </div>
         </div>

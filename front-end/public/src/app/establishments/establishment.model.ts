@@ -1,18 +1,22 @@
 export interface Establishment {
     id: string,
-    nomeFantasia: string
-    razaoSocial: string   
-    categorias: string[],
-    endereço: string,
-    bairro: string,
-    cep: string,
+    fantasyName: string
+    companyName: string   
+    phones: string[],
+    ads: string[],
+    address: string,
+    cnpj: string,
+    createdAt: Date,
+    updateAt: Date,
+    acceptTerms: boolean,
+    active: boolean,
     logo: string,
-    anuncios: string[],
     whatsapp: string,
-    telefones: string[],
     ifood: boolean,
     uberEats: boolean,
     rappi: boolean,
-    exibirEndereco: boolean
+    ownDelivery:true,
+    displayAddress: boolean,
+    note: string
   }
   

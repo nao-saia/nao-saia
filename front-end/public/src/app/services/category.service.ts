@@ -14,7 +14,7 @@ export class CategoryService {
 
   }
   
-  findAll(): Observable<Category>  {
-    return this.http.get<Category>(this.path);
+  findAll(): Observable<Category[]>  {
+    return this.http.get<Category[]>(this.path);
   }
 }

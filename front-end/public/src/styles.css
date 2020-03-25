@@ -1,3 +1,27 @@
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.carousel-control.left:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.carousel-control.right:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ns-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
 }

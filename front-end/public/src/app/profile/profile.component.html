@@ -12,7 +12,14 @@
     </div>
     <!-- SVG separator -->
     <div class="separator separator-bottom separator-skew">
-      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <svg
+        x="0"
+        y="0"
+        viewBox="0 0 2560 100"
+        preserveAspectRatio="none"
+        version="1.1"
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
       </svg>
     </div>
@@ -21,51 +28,84 @@
     <div class="container">
       <div class="card card-profile shadow mt--300">
         <div class="px-4">
-          <div class="row justify-content-center">
-            <div class="col-lg-3 order-lg-2">
+          <div class="col-12">
+            <div class="col-12">
               <div class="card-profile-image">
-                <a href="javascript:void(0)">
-                  <img src="./assets/img/estabelecimentos/piquiras.jpg" class="rounded-circle">
+                <a (click)="goBack()" class="cursor-pointer">
+                  <img
+                    src="../../assets/img/icons/close.png"
+                    class="rounded-circle"
+                  />
                 </a>
               </div>
             </div>
-            <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-              <div class="card-profile-actions py-4 mt-lg-0">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info mr-4">Connect</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-default float-right">Message</a>
+            <div class="mt-3 d-flex justify-content-between">
+              <div class="text-center">
+                <h6>Atendemos nos telefones</h6>
+                <i class="fa fa-phone-square m-1"></i>
+                <label>{{ getPhones() }}</label>
+                <div *ngIf="merchant.whatsapp">
+                  <i class="fa fa-whatsapp m-1"></i>
+                  <label>{{ merchant.whatsapp }}</label>
+                </div>
               </div>
-            </div>
-            <div class="col-lg-4 order-lg-1">
-              <div class="card-profile-stats d-flex justify-content-center">
-                <div>
-                  <span class="heading">22</span>
-                  <span class="description">Friends</span>
-                </div>
-                <div>
-                  <span class="heading">10</span>
-                  <span class="description">Photos</span>
-                </div>
-                <div>
-                  <span class="heading">89</span>
-                  <span class="description">Comments</span>
+              <div
+                *ngIf="merchant.ifood || merchant.uberEats || merchant.rappi"
+              >
+                <h6>Vendemos nos APPs</h6>
+                <div class="d-flex flex-row">
+                  <div class="text-center m-2" *ngIf="merchant.ifood">
+                    <img
+                      class="rounded"
+                      src="../../assets/img/establishment/ifood.ico"
+                    />
+                  </div>
+                  <div class="text-center m-2" *ngIf="merchant.uberEats">
+                    <img
+                      class="rounded"
+                      src="../../assets/img/establishment/ubereats.ico"
+                    />
+                  </div>
+                  <div class="text-center m-2" *ngIf="merchant.rappi">
+                    <img
+                      class="rounded"
+                      src="../../assets/img/establishment/rappi.ico"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <div class="text-center mt-5">
-            <h3>
-              {{establishment.nomeFantasia}}
+            <div>
+              <a class="cursor-pointer">
+                <img src="{{ getLogo() }}" class="rounded-circle" />
+              </a>
+            </div>
+            <h3 *ngIf="merchant.fantasyName !== 'undefined'">
+              {{ merchant.fantasyName }}
               <span class="font-weight-light"></span>
             </h3>
-            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>aberto das 08:00 às 00:00</div>
-            <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Restaurante e Empório</div>
-            <div><i class="ni education_hat mr-2"></i>Jardim Goias, Goiânia - GO</div>
+            <div class="h6 font-weight-300">
+              <i class="ni location_pin mr-2"></i>{{ merchant.note }}
+            </div>
+            <div class="h6 mt-4">
+              <i class="ni business_briefcase-24 mr-2"></i>{{ getCategories() }}
+            </div>
+            <div>
+              <i class="ni education_hat mr-2"></i
+              >{{ merchant.address.district }}, {{ merchant.address.city }} -
+              {{ merchant.address.state }}
+            </div>
           </div>
           <div class="mt-5 py-5 border-top text-center">
             <div class="row justify-content-center">
               <div class="col-lg-9">
-                <p>An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.</p>
-                <a href="javascript:void(0)">Show more</a>
+                <google-maps
+                  [endereco]="merchant.address.street"
+                  [lat]="merchant.address.location.latitude"
+                  [lng]="merchant.address.location.longitude"
+                ></google-maps>
               </div>
             </div>
           </div>

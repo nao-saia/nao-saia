@@ -15,7 +15,7 @@ export class CityService {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
-  list(uf: string): Observable<City[]>  {
+  findByUF(uf: string): Observable<City[]>  {
     return this.http.get<City[]>(`${this.path}?uf=${uf}`);
   }
 
