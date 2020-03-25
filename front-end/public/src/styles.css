@@ -1,3 +1,8 @@
 .cursor-pointer {
     cursor: pointer;
 }
+#myCarousel {margin-left: 30px; margin-right: 30px;}
+
+
+.carousel-control.left {margin-left: -85px; color: black; cursor: pointer;}
+.carousel-control.right {margin-right: -85px; color: black; cursor: pointer;}

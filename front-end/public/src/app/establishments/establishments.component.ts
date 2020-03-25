@@ -1,3 +1,9 @@
+import { City } from './../domain/City';
+import { State } from './../domain/State';
+import { CityService } from "./../services/city.service";
+import { StateService } from "./../services/state.service";
+import { MerchantService } from "./../services/merchant.service";
+import { Merchant } from "./../domain/Merchant";
 import { EstablishmentService } from "./establishments.service";
 import { Establishment } from "./establishment.model";
 import { Component, OnInit } from "@angular/core";
@@ -47,16 +53,22 @@ const PAGE_SIZE = 12;
 })
 export class EstablishmentsComponent implements OnInit {
   searchBarState = "hidden";
-  estabelecimentos: Establishment[];
+  merchants: Merchant[] = [];
+  states: State[] = []
+  cities: City[] = []
 
   searchForm: FormGroup;
   searchControl: FormControl;
+  stateControl: FormControl;
+  cityControl: FormControl;
 
   limit: number = PAGE_SIZE;
-  categorieSelected: string = "restaurante"
+  categorieSelected: string = "restaurante";
 
   constructor(
-    private estabelecimentoService: EstablishmentService,
+    private merchantService: MerchantService,
+    private stateService: StateService,
+    private cityService: CityService,
     private fb: FormBuilder
   ) {}
 
@@ -70,30 +82,36 @@ export class EstablishmentsComponent implements OnInit {
       .debounceTime(500)
       .distinctUntilChanged()
       .switchMap(searchTerm =>
-        this.estabelecimentoService
-          .listarEstabelecimentos(searchTerm)
+        this.merchantService
+          .findAll(searchTerm)
           .catch(error => Observable.from([]))
       )
-      .subscribe(
-        estabelecimentos => (this.estabelecimentos = estabelecimentos)
-      );
+      .subscribe(merchants => (this.merchants = merchants));
 
-    this.listarEstabelecimentos();
+    this.listMerchants();
+    this.listStates();
   }
 
   // Realizar aqui a consulta paginada
   addLimit() {
     this.limit = this.limit + PAGE_SIZE;
-    this.listarEstabelecimentos();
+    this.listMerchants();
   }
 
-  listarEstabelecimentos(search?) {
-    this.estabelecimentoService
-      .listarEstabelecimentos(search)
+  listMerchants(search?) {
+    this.merchantService
+      .findAll(search)
       .subscribe(
-        estabelecimentos =>
-          (this.estabelecimentos = estabelecimentos.slice(0, this.limit))
+        merchants => (this.merchants = merchants.slice(0, this.limit))
       );
+  }
+
+  listStates() {
+    this.stateService.findAll().subscribe(states => (this.states = states));
+  }
+
+  listCities() {
+    //this.cityService.()
   }
 
   toggleSearch() {
@@ -103,6 +121,8 @@ export class EstablishmentsComponent implements OnInit {
 
   changeCategoria(categoria: string) {
     this.categorieSelected = categoria;
-    this.listarEstabelecimentos(categoria);
+    this.merchantService
+      .findByCategory(categoria)
+      .subscribe(response => (this.merchants = response.content));
   }
 }

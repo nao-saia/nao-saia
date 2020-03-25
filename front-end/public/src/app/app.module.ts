@@ -1,10 +1,17 @@
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FormsModule } from "@angular/forms";
+import { ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { HttpClientModule } from "@angular/common/http";
+import { FooterComponent } from "./shared/footer/footer.component";
+import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { ROUTES } from "./app.routing";
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { RouterModule } from "@angular/router";
-import { AppRoutingModule } from "./app.routing";
-import { CarouselModule } from "ngx-bootstrap/carousel";
+import { RouterModule, PreloadAllModules } from "@angular/router";
+import { CommonModule } from "@angular/common";
 
 import { AppComponent } from "./app.component";
 import { SignupComponent } from "./signup/signup.component";
@@ -25,6 +32,7 @@ import { GoalsComponent } from "./landing/goals/goals.component";
 import { SupportUsComponent } from "./landing/support-us/support-us.component";
 import { MerchantComponent } from "./merchant/merchant.component";
 import { AlertComponent } from "./shared/alert/alert.component";
+import { FormBuilder } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -43,18 +51,28 @@ import { AlertComponent } from "./shared/alert/alert.component";
     GoalsComponent,
     SupportUsComponent,
     MerchantComponent,
-    AlertComponent
+    AlertComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     RouterModule,
-    AppRoutingModule,
     HomeModule,
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    SharedModule.forRoot(),
     CarouselModule.forRoot(),
-    SharedModule.forRoot()
+    RouterModule.forRoot(ROUTES, {
+      useHash: true,
+      preloadingStrategy: PreloadAllModules
+    })
   ],
-  providers: [],
+  providers: [FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

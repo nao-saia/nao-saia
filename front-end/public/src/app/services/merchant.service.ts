@@ -1,21 +1,28 @@
-import { Injectable } from '@angular/core';
-import { HttpWrapperService } from './http-wrapper.service';
-import { Merchant } from '../domain/Merchant';
-import { Observable } from 'rxjs';
+import { ResponseMerchant } from './../domain/ResponseMerchant';
+import { Injectable } from "@angular/core";
+import { HttpWrapperService } from "./http-wrapper.service";
+import { Merchant } from "../domain/Merchant";
+import { Observable } from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class MerchantService {
+  path = "merchants";
 
-  path = 'merchants';
+  constructor(private http: HttpWrapperService) {}
 
-  constructor(private http: HttpWrapperService) {
-
+  findAll(search?: string): Observable<Merchant[]> {
+    return this.http.get<Merchant[]>(this.path, {params: {q: search}});
   }
 
-  save(merchant: Merchant): Observable<Merchant>  {
+  findByCategory(category, limit = "12"): Observable<ResponseMerchant> {
+    return this.http.get<ResponseMerchant>(`${this.path}/category/${category}`, {
+      params: { size: limit }
+    });
+  }
+
+  save(merchant: Merchant): Observable<Merchant> {
     return this.http.post<Merchant>(this.path, merchant);
   }
-
 }

@@ -14,7 +14,7 @@ export class StateService {
 
   }
 
-  list(): Observable<State[]>  {
+  findAll(): Observable<State[]>  {
     return this.http.get<State[]>(this.path);
   }
 

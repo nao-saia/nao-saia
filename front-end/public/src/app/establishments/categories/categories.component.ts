@@ -1,4 +1,8 @@
+import { Router } from "@angular/router";
+import { Category } from "./../../domain/Category";
+import { CategoryService } from "./../../services/category.service";
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { CarouselComponent } from "ngx-bootstrap/carousel/public_api";
 
 @Component({
   selector: "ns-categories",
@@ -6,49 +10,60 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./categories.component.css"]
 })
 export class CategoriesComponent implements OnInit {
-  constructor() {}
+  constructor(
+    private categorieService: CategoryService,
+    private router: Router
+  ) {}
 
-  itemsPerSlide = 5;
+  itemsPerSlide = 6;
   singleSlideOffset = true;
   @Output() categoria = new EventEmitter();
 
-  slides = [
-    {
-      image: "assets/img/categories/doces.png",
-      label: "Doceria",
-      categoria: "doceria"
-    },
-    { image: "assets/img/categories/beer.png", label: "Bar", categoria: "bar" },
-    {
-      image: "assets/img/categories/clinic.png",
-      label: "Farmácia",
-      categoria: "farmacia"
-    },
-    {
-      image: "assets/img/categories/restaurante.png",
-      label: "Restaurante",
-      categoria: "restaurante"
-    },
-    {
-      image: "assets/img/categories/basket.png",
-      label: "Supermercado",
-      categoria: "supermercado"
-    },
-    {
-      image: "assets/img/categories/bread.png",
-      label: "Padaria",
-      categoria: "padaria"
-    },
-    {
-      image: "assets/img/categories/ice-creams.png",
-      label: "Sorveteria",
-      categoria: "sorveteria"
-    }
+  slides = [];
+
+  carousel: CarouselComponent;
+
+  images = [
+    "assets/img/categories/butchery.png",
+    "assets/img/categories/news.png",
+    "assets/img/categories/tire.png",
+    "assets/img/categories/cafe.png",
+    "assets/img/categories/cafe.png",
+    "assets/img/categories/clinic.png",
+    "assets/img/categories/machinery.png",
+    "assets/img/categories/factory.png",
+    "assets/img/categories/clinic.png",
+    "assets/img/categories/shop.png",
+    "assets/img/categories/bread.png",
+    "assets/img/categories/order.png",
+    "assets/img/categories/petshop.png",
+    "assets/img/categories/gas-station.png",
+    "assets/img/categories/restaurante.png",
+    "assets/img/categories/basket.png",
+    "assets/img/categories/basket.png",
+    "assets/img/categories/basket.png"
   ];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    let categorias = [];
+    this.categorieService.findAll().subscribe(categories => {
+      categories.forEach((categoria, index) => {
+        let category = { ...categoria };
+        category.image = this.images[index];
+        categorias.push(category);
+      });
+    });
 
-  changeCategoria(categoria) {
-    this.categoria.emit(categoria);
+    this.slides = categorias;
+
+    this.carousel.nextSlide();
+  }
+
+  pause() {
+    console.log("pause");
+  }
+
+  changeCategoria(category) {
+    this.categoria.emit(category);
   }
 }

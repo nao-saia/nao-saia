@@ -1,6 +1,11 @@
 <section class="section bg-gradient-primary">
-  <div class="mt-5">
-    <ns-categories (categoria)="changeCategoria($event)"></ns-categories>
+  <div class="col-12">
+    <div class="mt-5 col-12">
+      <h3 class="text-white">Categorias</h3>
+      <div class="border">
+        <ns-categories (categoria)="changeCategoria($event)"></ns-categories>
+      </div>
+    </div>
   </div>
   <div class="m-2">
     <div class="align-items-center">
@@ -10,25 +15,46 @@
           <div
             class="text-white d-flex align-items-center justify-content-between"
           >
-            <h1 class="text-white">
+            <h3 class="text-white">
               Estabelecimentos
-            </h1>
-            <a (click)="toggleSearch()" class="search-link float-right">
-              <i class="fa fa-search fa-2x"></i>
-            </a>
+            </h3>
+            <div
+              class="col-5 d-flex flex-row justify-content-end align-items-end"
+            >
+              <a (click)="toggleSearch()" class="search-link float-right m-3">
+                <i class="fa fa-search fa-2x"></i>
+              </a>
+            </div>
           </div>
           <!-- barra de busca-->
           <div class="row">
             <div class="col-12 search-bar" [@toggleSearch]="searchBarState">
               <form [formGroup]="searchForm">
-                <div class="form-group">
+                <div class="form-group d-flex align-items-center">
                   <input
                     type="text"
                     #iptSearch
                     formControlName="searchControl"
-                    class="form-control"
+                    class="form-control col-6"
                     placeholder="O que você está procurando?"
                   />
+                  <select
+                    class="form-control m-2"
+                    formControlName="stateControl"
+                  >
+                    <option selected>Estado</option>
+                    <option [value]="uf" *ngFor="let state of states">{{state.name}}</option>
+                  </select>
+                  <select
+                    class="form-control m-2"
+                    formControlName="cityControl"
+                  >
+                    <option>Cidade</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
                 </div>
               </form>
             </div>
@@ -38,15 +64,13 @@
         <section class="content">
           <div class="row">
             <div
-              *ngFor="let estabelecimento of estabelecimentos"
+              *ngFor="let merchant of merchants"
               class="col-sm-12 col-12 col-xl-4 col-lg-4"
             >
-              <ns-establishment
-                [establishment]="estabelecimento"
-              ></ns-establishment>
+              <ns-establishment [merchant]="merchant"></ns-establishment>
             </div>
             <div
-              *ngIf="estabelecimentos?.length === 0"
+              *ngIf="merchants.length === 0"
               class="col-12 shadow bg-white rounded"
             >
               <p class="lead text-center">
@@ -56,7 +80,7 @@
             </div>
           </div>
         </section>
-        <div *ngIf="estabelecimentos.length > 0" col="12">
+        <div *ngIf="merchants.length > 0" col="12">
           <button
             (click)="addLimit()"
             class="btn btn-outline-white form-control"

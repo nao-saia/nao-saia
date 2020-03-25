@@ -1,4 +1,5 @@
-import { EstablishmentService } from "./../establishments.service";
+import { Merchant } from "./../../domain/Merchant";
+import { Router } from "@angular/router";
 import { Component, OnInit, Input } from "@angular/core";
 import {
   trigger,
@@ -8,8 +9,6 @@ import {
   animate
 } from "@angular/animations";
 import Mask from "src/app/shared/utils/Mask";
-import { Establishment } from "../establishment.model";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "ns-establishment",
@@ -29,34 +28,22 @@ export class EstablishmentComponent implements OnInit {
   estabelecimentoState = "ready";
   apps: string[] = [];
 
-  @Input() establishment: Establishment;
+  @Input() merchant: Merchant;
+  category: string = "";
 
-  constructor(
-    private router: Router,
-    private restaurantService: EstablishmentService
-  ) {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    this.establishment.whatsapp = Mask.maskValuePhone(
-      this.establishment.whatsapp
-    );
+    this.merchant.whatsapp = Mask.maskValuePhone(this.merchant.whatsapp);
 
-    if (this.establishment.ifood) {
-      this.apps.push("assets/img/establishment/ifood.ico");
-    }
-
-    if (this.establishment.rappi) {
-      this.apps.push("assets/img/establishment/rappi.ico");
-    }
-
-    if (this.establishment.uberEats) {
-      this.apps.push("assets/img/establishment/ubereats.ico");
+    if (this.merchant.categories) {
+      this.category = this.merchant.categories[0];
     }
   }
 
   changeRouteDetails() {
-    this.router.navigate([`/establishment/${this.establishment.id}`], {
-      state: this.establishment
+    this.router.navigate([`/establishment/${this.merchant.id}`], {
+      state: this.merchant
     });
   }
 }
