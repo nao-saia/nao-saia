@@ -1,11 +1,9 @@
-import { City } from './../domain/City';
-import { State } from './../domain/State';
+import { City } from "./../domain/City";
+import { State } from "./../domain/State";
 import { CityService } from "./../services/city.service";
 import { StateService } from "./../services/state.service";
 import { MerchantService } from "./../services/merchant.service";
 import { Merchant } from "./../domain/Merchant";
-import { EstablishmentService } from "./establishments.service";
-import { Establishment } from "./establishment.model";
 import { Component, OnInit } from "@angular/core";
 import {
   trigger,
@@ -54,8 +52,8 @@ const PAGE_SIZE = 12;
 export class EstablishmentsComponent implements OnInit {
   searchBarState = "hidden";
   merchants: Merchant[] = [];
-  states: State[] = []
-  cities: City[] = []
+  states: State[] = [];
+  cities: City[] = [];
 
   searchForm: FormGroup;
   searchControl: FormControl;
@@ -110,8 +108,9 @@ export class EstablishmentsComponent implements OnInit {
     this.stateService.findAll().subscribe(states => (this.states = states));
   }
 
-  listCities() {
-    //this.cityService.()
+  changeState(uf) {
+    this.cityService.findByUF(uf).subscribe(cities => (this.cities = cities));
+    //console.log(uf.target.value)
   }
 
   toggleSearch() {

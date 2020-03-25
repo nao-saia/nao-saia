@@ -12,7 +12,7 @@ import { MerchantComponent } from "./merchant/merchant.component";
 export const ROUTES: Routes = [
   // { path: 'home',             component: HomeComponent },
   { path: "home", component: LandingComponent },
-  { path: "profile/:id", component: ProfileComponent },
+  { path: "merchant/:id", component: ProfileComponent },
   { path: "register", component: SignupComponent },
   { path: "landing", component: LandingComponent },
   { path: "login", component: LoginComponent },

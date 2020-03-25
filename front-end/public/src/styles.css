@@ -1,8 +1,27 @@
 .cursor-pointer {
-    cursor: pointer;
+  cursor: pointer;
 }
-#myCarousel {margin-left: 30px; margin-right: 30px;}
 
+.carousel-control.left:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+}
 
-.carousel-control.left {margin-left: -85px; color: black; cursor: pointer;}
-.carousel-control.right {margin-right: -85px; color: black; cursor: pointer;}
+.carousel-control.right:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.ns-row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.vertical-center {
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}

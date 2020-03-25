@@ -18,10 +18,8 @@
             <h3 class="text-white">
               Estabelecimentos
             </h3>
-            <div
-              class="col-5 d-flex flex-row justify-content-end align-items-end"
-            >
-              <a (click)="toggleSearch()" class="search-link float-right m-3">
+            <div>
+              <a (click)="toggleSearch()" class="search-link float-right">
                 <i class="fa fa-search fa-2x"></i>
               </a>
             </div>
@@ -41,19 +39,21 @@
                   <select
                     class="form-control m-2"
                     formControlName="stateControl"
+                    (change)="changeState($event.target.value)"
                   >
-                    <option selected>Estado</option>
-                    <option [value]="uf" *ngFor="let state of states">{{state.name}}</option>
+                    <option [value]="Estado">Estado</option>
+                    <option [value]="state.uf" *ngFor="let state of states">{{
+                      state.name
+                    }}</option>
                   </select>
                   <select
                     class="form-control m-2"
                     formControlName="cityControl"
                   >
-                    <option>Cidade</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                    <option [value]="Cidade">Cidade</option>
+                    <option [value]="city" *ngFor="let city of cities">{{
+                      city.name
+                    }}</option>
                   </select>
                 </div>
               </form>

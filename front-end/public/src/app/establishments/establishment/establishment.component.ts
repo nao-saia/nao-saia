@@ -42,7 +42,7 @@ export class EstablishmentComponent implements OnInit {
   }
 
   changeRouteDetails() {
-    this.router.navigate([`/establishment/${this.merchant.id}`], {
+    this.router.navigate([`/merchant/${this.merchant.id}`], {
       state: this.merchant
     });
   }
