@@ -1,3 +1,5 @@
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { FooterComponent } from './shared/footer/footer.component';
 import { SharedModule } from "./shared/shared.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -43,13 +45,15 @@ import { AlertComponent } from "./shared/alert/alert.component";
     GoalsComponent,
     SupportUsComponent,
     MerchantComponent,
-    AlertComponent
+    AlertComponent,
+    FooterComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
-    NgbModule,
     RouterModule,
     AppRoutingModule,
+    NgbModule,
     HomeModule,
     CarouselModule.forRoot(),
     SharedModule.forRoot()

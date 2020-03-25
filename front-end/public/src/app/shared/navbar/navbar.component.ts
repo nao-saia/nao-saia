@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 import { Location, PopStateEvent } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router, ActivatedRoute } from '@angular/router';
+import { UserService } from './../../services/user.service';
 
 @Component({
     selector: 'app-navbar',
@@ -15,10 +17,16 @@ export class NavbarComponent implements OnInit {
 
     socialMedias: any;
     menu: any;
+    logged: boolean;
+    userLogged: any;
 
-    constructor(public location: Location, private router: Router) {
+    constructor(public location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
         this.loadMenu();
         this.loadSocialMedias();
+        this.userLogged = userService.getCurrentUser().subscribe(userLogged => {
+            this.userLogged = userLogged;
+            this.logged = userLogged && userLogged.id;
+        });
     }
 
     ngOnInit() {
@@ -105,5 +113,12 @@ export class NavbarComponent implements OnInit {
             linkedin: '@naosaia',
             twitter: '@naosaia'
         };
+    }
+
+    logout(): void {
+        this.userService.logout().subscribe(() => {
+            this.userLogged = null;
+            this.logged = false;
+        });
     }
 }

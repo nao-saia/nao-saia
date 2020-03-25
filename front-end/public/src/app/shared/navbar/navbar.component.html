@@ -53,9 +53,6 @@
           <div class="dropdown-menu">
             <a [routerLink]="['/landing']" class="dropdown-item">Conheça o projeto</a>
             <a [routerLink]="['/contribuitors']" class="dropdown-item">Quem está fazendo a diferença</a>
-            <!-- <a [routerLink]="['/user-profile']" class="dropdown-item">Profile</a> -->
-            <!-- <a [routerLink]="['/login']" class="dropdown-item">Login</a> -->
-            <!-- <a [routerLink]="['/register']" class="dropdown-item">Register</a> -->
           </div>
         </li>
         <li class="nav-item dropdown">
@@ -113,6 +110,18 @@
               <i class="fa fa-registered mr-2"></i>
             </span>
             <span class="nav-link-inner--text">Cadastre Seu Estabelecimento</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="!logged">
+          <a class="nav-link no-caret" [routerLink]="['/login']" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text"><b>Login</b></span>
+          </a>
+        </li>
+        <li class="nav-item dropdown" *ngIf="logged">
+          <a class="nav-link no-caret" (click)="logout()" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text"><b>Sair</b></span>
           </a>
         </li>
       </ul>

@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './../app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,8 +18,8 @@ import { SectionsModule } from '../sections/sections.module';
         RouterModule,
         SectionsModule
     ],
-    declarations: [ HomeComponent ],
-    exports:[ HomeComponent ],
+    declarations: [HomeComponent],
+    exports: [HomeComponent],
     providers: []
 })
 export class HomeModule { }
