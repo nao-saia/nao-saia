@@ -17,7 +17,7 @@
           <div class="card bg-secondary shadow border-0">
             <div class="card-header bg-white pb-5">
               <div class="text-muted text-center mb-3">
-                <small>Cadastre-se com</small>
+                <h4>Cadastre-se</h4>
               </div>
               <div class="text-center" *ngIf="showOAuth">
                 <a href="javascript:void(0)" class="btn btn-neutral btn-icon mr-4">
@@ -83,10 +83,19 @@
                 <div class="row my-4">
                   <div class="col-12">
                     <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input class="custom-control-input" id="ownerUser" name="ownerUser" type="checkbox" [(ngModel)]="ownerUser" required>
+                      <label class="custom-control-label" for="ownerUser">
+                        <span class="text-dark"><b>Quero divulgar meu estabelecimento</b></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row my-4">
+                  <div class="col-12">
+                    <div class="custom-control custom-control-alternative custom-checkbox">
                       <input class="custom-control-input" id="acceptTerms" name="acceptTerms" type="checkbox" [(ngModel)]="model.acceptTerms" required>
                       <label class="custom-control-label" for="acceptTerms">
-                        <span>Eu li e aceito
-                          <a href="javascript:void(0)"> os termos de uso e privacidade</a>
+                        <span class="text-dark"><b>Eu li e aceito <a href="javascript:void(0)"> os termos de uso e privacidade</a></b>
                         </span>
                       </label>
                     </div>
@@ -94,6 +103,11 @@
                 </div>
                 <div class="text-center">
                   <button type="button" class="btn btn-primary mt-4" [disabled]="registerForm.invalid" (click)="save()">Cadastrar</button>
+                </div>
+                <div class="row my-4 text-center">
+                  <div class="col-12">
+                    <span class="text-dark"><b><a [routerLink]="['/login']">Ir para Login</a></b></span>
+                  </div>
                 </div>
               </form>
             </div>
