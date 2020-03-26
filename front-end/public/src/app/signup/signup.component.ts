@@ -57,7 +57,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
     save(): void {
         this.addOwnerRole(this.model);
         this.service.save(this.model).subscribe(
-            userSaved => {
+            () => {
                 super.showAlertInfo('Usuário cadastrado com sucesso!');
                 this.login();
             },
