@@ -36,7 +36,7 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
     private stateService: StateService) {
     super();
     this.model = new Merchant();
-    this.route.params.subscribe(params => this.model.userId = params['id']);
+    this.route.params.subscribe(params => this.model.userId = params['userId']);
   }
 
   ngOnInit() {
