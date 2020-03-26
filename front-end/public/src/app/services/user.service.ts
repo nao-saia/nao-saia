@@ -11,7 +11,7 @@ import { HttpWrapperService } from './http-wrapper.service';
 export class UserService {
 
   USER_KEY = 'user';
-  path = 'users';
+  path = 'auth/signup';
 
   observerUserLogged;
   userLogged: Observable<any>;

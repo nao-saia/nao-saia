@@ -1,12 +1,15 @@
+import { Role } from './Role';
 
 export class User {
     constructor(
         public id?: string,
         public name?: string,
-        public email?: string,
+        public username?: string,
         public password?: string,
         public confirmPassword?: string,
-        public acceptTerms?: boolean) {
+        public acceptTerms?: boolean,
+        public enabled?: boolean,
+        public roles?: Role[]) {
     }
 
     isConfirmPasswordOK(): boolean {
@@ -14,10 +17,25 @@ export class User {
     }
 
     valid(): boolean {
-        return !!(this.name && this.email && this.password && this.confirmPassword);
+        return !!(this.name && this.username && this.password && this.confirmPassword);
     }
 
     loginValid(): boolean {
-        return !!(this.email && this.password);
+        return !!(this.username && this.password);
+    }
+
+    addRoles(...roles: Role[]): void {
+        if (!this.roles) {
+            this.roles = roles;
+        } else {
+            this.roles.push(...roles);
+        }
+    }
+
+    hasRole(role: Role) {
+        if (this.roles) {
+            return !!(this.roles.indexOf(role) === -1);
+        }
+        return false;
     }
 }
