@@ -23,12 +23,6 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     constructor(private service: UserService, private router: Router) {
         super();
-        this.service.getCurrentUser().subscribe(userLogged => {
-            if (userLogged && userLogged.id) {
-                this.navigateToMerchant(userLogged.id);
-            }
-        });
-        this.service.loadUserFromLocalStorage();
     }
 
     ngOnInit() {
@@ -39,8 +33,8 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     navigateToMerchant(id: any) {
         setTimeout(() => {
-            this.router.navigate([`/merchant/${id}`]);
-        });
+            this.router.navigate([`/merchant-register/${id}`]);
+        }, 5000);
     }
 
     isAddOwnerRole() {
@@ -54,12 +48,19 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         }
     }
 
+    login(user: User) {
+        this.service.login(user)
+            .subscribe(() => this.navigateToMerchant(user.id) 
+            , (error) => super.showAlertWarning(error));
+    }
+
     save(): void {
         this.addOwnerRole(this.model);
         this.service.save(this.model).subscribe(
             userSaved => {
                 super.showAlertInfo('Usuário cadastrado com sucesso!');
-                this.navigateToMerchant(userSaved.id);
+                userSaved.password = this.model.password;
+                this.login(userSaved);
             },
             reject => super.showAlertWarning(reject.error.message));
     }

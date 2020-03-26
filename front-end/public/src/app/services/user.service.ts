@@ -10,70 +10,63 @@ import { HttpWrapperService } from './http-wrapper.service';
 })
 export class UserService {
 
+  TOKEN_KEY="token";
   USER_KEY = 'user';
-  path = 'auth/signup';
+  path = 'auth';
 
-  observerUserLogged;
-  userLogged: Observable<any>;
 
   constructor(private http: HttpWrapperService, private storage: StorageMap) {
     this.http.setBaseUrl(environment.baseUrl);
-    this.userLogged = new Observable((observer) => {
-      this.observerUserLogged = observer;
-    });
   }
 
   public save(user: User): Observable<User> {
-    return new Observable((observer) => {
-      this.http.post<User>(this.path, user).subscribe(
+    return new Observable((subscribe) => {
+      this.http.post<User>(`${this.path}/signup`, user).subscribe(
         (userSaved) => {
           this.storage.set(this.USER_KEY, userSaved).subscribe(
             () => {
-              observer.next(userSaved);
-              this.observerUserLogged.next(userSaved);
+              subscribe.next(userSaved);
             }, error => {
-              observer.error(error);
+              subscribe.error(error);
             });
         },
         error => {
-          observer.error(error);
+          subscribe.error(error);
         });
     });
   }
 
   public login(user: User): Observable<User> {
-    return new Observable((observer) => {
-      this.http.post<User>(`${this.path}/login`, user).subscribe(
-        (userLogged) => {
-          this.storage.set(this.USER_KEY, userLogged).subscribe(
-            () => {
-              observer.next(userLogged);
-              this.observerUserLogged.next(userLogged);
-            }, error => {
-              observer.error(error);
-            });
-        },
-        error => {
-          observer.error(error);
-        });
+    return new Observable((subscribe) => {
+      this.http.post<User>(`${this.path}/login`, { username: user.username, password: user.password })
+        .subscribe(
+          (token) => {
+            this.storage.set(this.TOKEN_KEY, token).subscribe(
+              () => {
+                user.password = null;
+                this.observerUserLogged.next(user);
+                subscribe.next(token);
+              }, error => {
+                subscribe.error(error);
+              });
+          },
+          error => {
+            subscribe.error(error);
+          });
     });
   }
 
   public logout(): Observable<any> {
     return new Observable((observer) => {
-      // this.http.post<User>(`${this.path}/login`, user).subscribe(
-        // (userLogged) => {
-          this.storage.delete(this.USER_KEY).subscribe(
-            () => {
-              observer.next({});
-              this.observerUserLogged.next(null);
-            }, error => {
-              observer.error(error);
-            });
-        // },
-        // error => {
-        //   observer.error(error);
-        // });
+      this.storage.delete(this.USER_KEY).subscribe(
+        () => {
+          observer.next({});
+          this.observerUserLogged.next(null);
+        }, error => {
+          observer.error(error);
+        });
+      this.storage.delete(this.TOKEN_KEY)
+        .subscribe(() => console.log('Removed token'));
     });
   }
 
@@ -83,7 +76,7 @@ export class UserService {
     });
   }
 
-  public getCurrentUser(): Observable<any> {
+  public getCurrentUser(): Observable<User> {
     return this.userLogged;
   }
 }

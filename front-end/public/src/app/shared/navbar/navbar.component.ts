@@ -23,11 +23,11 @@ export class NavbarComponent implements OnInit {
     constructor(public location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
         this.loadMenu();
         this.loadSocialMedias();
-        this.userService.getCurrentUser().subscribe(userLogged => {
-            this.userLogged = userLogged;
-            this.logged = userLogged && userLogged.id;
-        });
-        this.userService.loadUserFromLocalStorage();
+        // this.userService.getCurrentUser().subscribe(userLogged => {
+        //     this.userLogged = userLogged;
+        //     this.logged = userLogged && userLogged.id;
+        // });
+        // this.userService.loadUserFromLocalStorage();
     }
 
     ngOnInit() {
