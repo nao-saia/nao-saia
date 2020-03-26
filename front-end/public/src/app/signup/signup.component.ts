@@ -34,7 +34,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
     navigateToMerchant(id: any) {
         setTimeout(() => {
             this.router.navigate([`/merchant-register/${id}`]);
-        }, 5000);
+        }, 3000);
     }
 
     isAddOwnerRole() {
@@ -48,9 +48,9 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         }
     }
 
-    login(user: User) {
-        this.service.login(user)
-            .subscribe(() => this.navigateToMerchant(user.id) 
+    login() {
+        this.service.login(this.model)
+            .subscribe((user: User) => this.navigateToMerchant(user.id) 
             , (error) => super.showAlertWarning(error));
     }
 
@@ -59,8 +59,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         this.service.save(this.model).subscribe(
             userSaved => {
                 super.showAlertInfo('Usuário cadastrado com sucesso!');
-                userSaved.password = this.model.password;
-                this.login(userSaved);
+                this.login();
             },
             reject => super.showAlertWarning(reject.error.message));
     }

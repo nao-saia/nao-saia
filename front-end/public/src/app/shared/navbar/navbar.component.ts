@@ -1,8 +1,9 @@
-import { Observable } from 'rxjs/Observable';
 import { Location, PopStateEvent } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NavigationEnd, NavigationStart, Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { User } from './../../domain/User';
 import { UserService } from './../../services/user.service';
+import { UserlogedNotificationService } from './../../services/userloged-notification.service';
 
 @Component({
     selector: 'app-navbar',
@@ -20,14 +21,17 @@ export class NavbarComponent implements OnInit {
     logged: boolean;
     userLogged: any;
 
-    constructor(public location: Location, private router: Router, private route: ActivatedRoute, private userService: UserService) {
+    constructor(public location: Location, 
+        private router: Router, 
+        private route: ActivatedRoute, 
+        private userService: UserService,
+        private userLogedNotification: UserlogedNotificationService) {
         this.loadMenu();
         this.loadSocialMedias();
-        // this.userService.getCurrentUser().subscribe(userLogged => {
-        //     this.userLogged = userLogged;
-        //     this.logged = userLogged && userLogged.id;
-        // });
-        // this.userService.loadUserFromLocalStorage();
+        this.userLogedNotification.notifier.subscribe((userLogged: User) => {
+            this.userLogged = userLogged;
+            this.logged = !!(userLogged && userLogged.id);
+        });
     }
 
     ngOnInit() {

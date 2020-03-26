@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { environment } from 'src/environments/environment.prod';
 import { User } from './../domain/User';
 import { HttpWrapperService } from './http-wrapper.service';
+import { UserlogedNotificationService } from './userloged-notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class UserService {
   path = 'auth';
 
 
-  constructor(private http: HttpWrapperService, private storage: StorageMap) {
+  constructor(private http: HttpWrapperService, 
+    private storage: StorageMap,
+    private userLogedNotification: UserlogedNotificationService) {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
@@ -38,17 +41,14 @@ export class UserService {
 
   public login(user: User): Observable<User> {
     return new Observable((subscribe) => {
-      this.http.post<User>(`${this.path}/login`, { username: user.username, password: user.password })
+      this.http.post<any>(`${this.path}/login`, { username: user.username, password: user.password })
         .subscribe(
-          (token) => {
-            this.storage.set(this.TOKEN_KEY, token).subscribe(
-              () => {
-                user.password = null;
-                this.observerUserLogged.next(user);
-                subscribe.next(token);
-              }, error => {
-                subscribe.error(error);
-              });
+          (authResponse) => {
+            this.storage.set(this.TOKEN_KEY, authResponse.token)
+              .subscribe(() => console.log('Inserted token in local storage'));
+            const user: User = authResponse.user;
+            this.userLogedNotification.notify(user);
+            subscribe.next(user);
           },
           error => {
             subscribe.error(error);
@@ -56,27 +56,21 @@ export class UserService {
     });
   }
 
+  findUserById(userId: string): Observable<User> {
+    return this.http.get<User>(`users/${userId}`);
+  }
+
   public logout(): Observable<any> {
     return new Observable((observer) => {
       this.storage.delete(this.USER_KEY).subscribe(
         () => {
           observer.next({});
-          this.observerUserLogged.next(null);
+          this.userLogedNotification.notify(null);
         }, error => {
           observer.error(error);
         });
       this.storage.delete(this.TOKEN_KEY)
         .subscribe(() => console.log('Removed token'));
     });
-  }
-
-  public loadUserFromLocalStorage(): void {
-    this.storage.get(this.USER_KEY).subscribe(user => {
-      this.observerUserLogged.next(user);
-    });
-  }
-
-  public getCurrentUser(): Observable<User> {
-    return this.userLogged;
   }
 }
