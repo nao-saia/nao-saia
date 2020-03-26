@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
 import { AbstractViewComponent } from './../shared/abstract.view.component';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Component({
     selector: 'app-signup',
@@ -21,14 +22,9 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     ownerUser: boolean;
 
-    constructor(private service: UserService, private router: Router) {
+    constructor(private service: UserService,
+        private router: Router) {
         super();
-        this.service.getCurrentUser().subscribe(userLogged => {
-            if (userLogged && userLogged.id) {
-                this.navigateToMerchant(userLogged.id);
-            }
-        });
-        this.service.loadUserFromLocalStorage();
     }
 
     ngOnInit() {
@@ -37,10 +33,10 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         this.model.addRoles(userRole);
     }
 
-    navigateToMerchant(id: any) {
+    navigateToMerchant(id: any, timeout = 3000) {
         setTimeout(() => {
-            this.router.navigate([`/merchant/${id}`]);
-        });
+            this.router.navigate([`/merchant-register/${id}`]);
+        }, timeout);
     }
 
     isAddOwnerRole() {
@@ -54,12 +50,18 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         }
     }
 
+    login() {
+        this.service.login(this.model)
+            .subscribe((user: User) => this.navigateToMerchant(user.id)
+                , (error) => super.showAlertWarning(error));
+    }
+
     save(): void {
         this.addOwnerRole(this.model);
         this.service.save(this.model).subscribe(
-            userSaved => {
+            () => {
                 super.showAlertInfo('Usuário cadastrado com sucesso!');
-                this.navigateToMerchant(userSaved.id);
+                this.login();
             },
             reject => super.showAlertWarning(reject.error.message));
     }

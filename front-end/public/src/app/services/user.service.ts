@@ -1,89 +1,66 @@
 import { Injectable } from '@angular/core';
 import { StorageMap } from '@ngx-pwa/local-storage';
-import { Observable } from 'rxjs/Observable';
+import { Observable, combineLatest } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
 import { User } from './../domain/User';
 import { HttpWrapperService } from './http-wrapper.service';
+import { UserlogedNotificationService } from './userloged-notification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  USER_KEY = 'user';
-  path = 'auth/signup';
+  TOKEN_KEY = 'token';
+  USER_KEY = 'user'
+  path = 'auth';
 
-  observerUserLogged;
-  userLogged: Observable<any>;
-
-  constructor(private http: HttpWrapperService, private storage: StorageMap) {
+  constructor(private http: HttpWrapperService,
+    private storage: StorageMap,
+    private userLoggedNotification: UserlogedNotificationService) {
     this.http.setBaseUrl(environment.baseUrl);
-    this.userLogged = new Observable((observer) => {
-      this.observerUserLogged = observer;
-    });
   }
 
   public save(user: User): Observable<User> {
-    return new Observable((observer) => {
-      this.http.post<User>(this.path, user).subscribe(
-        (userSaved) => {
-          this.storage.set(this.USER_KEY, userSaved).subscribe(
-            () => {
-              observer.next(userSaved);
-              this.observerUserLogged.next(userSaved);
-            }, error => {
-              observer.error(error);
-            });
-        },
-        error => {
-          observer.error(error);
-        });
-    });
+    return this.http.post<User>(`${this.path}/signup`, user);
   }
 
   public login(user: User): Observable<User> {
-    return new Observable((observer) => {
-      this.http.post<User>(`${this.path}/login`, user).subscribe(
-        (userLogged) => {
-          this.storage.set(this.USER_KEY, userLogged).subscribe(
-            () => {
-              observer.next(userLogged);
-              this.observerUserLogged.next(userLogged);
-            }, error => {
-              observer.error(error);
-            });
-        },
-        error => {
-          observer.error(error);
-        });
+    return new Observable((subscribe) => {
+      this.http.post<any>(`${this.path}/login`, { username: user.username, password: user.password })
+        .subscribe(
+          (authResponse) => {
+            combineLatest(this.storage.set(this.TOKEN_KEY, authResponse.token),
+              this.storage.set(this.USER_KEY, authResponse.user))
+              .subscribe(() => {
+                const user: User = authResponse.user;
+                this.userLoggedNotification.notify(user);
+                subscribe.next(user);
+              });
+          }, error => subscribe.error(error));
     });
+  }
+
+  findUserById(userId: string): Observable<User> {
+    return this.http.get<User>(`users/${userId}`);
   }
 
   public logout(): Observable<any> {
-    return new Observable((observer) => {
-      // this.http.post<User>(`${this.path}/login`, user).subscribe(
-        // (userLogged) => {
-          this.storage.delete(this.USER_KEY).subscribe(
-            () => {
-              observer.next({});
-              this.observerUserLogged.next(null);
-            }, error => {
-              observer.error(error);
-            });
-        // },
-        // error => {
-        //   observer.error(error);
-        // });
+    return new Observable((subscriber) => {
+      combineLatest(this.storage.delete(this.TOKEN_KEY), this.storage.delete(this.USER_KEY))
+        .subscribe(() => {
+          this.userLoggedNotification.notify(null);
+          subscriber.next();
+        });
     });
+
   }
 
-  public loadUserFromLocalStorage(): void {
-    this.storage.get(this.USER_KEY).subscribe(user => {
-      this.observerUserLogged.next(user);
-    });
+  getToken(): Observable<any> {
+    return this.storage.get(this.TOKEN_KEY);
   }
 
-  public getCurrentUser(): Observable<any> {
-    return this.userLogged;
+  getUserLogged(): Observable<any> {
+    return this.storage.get(this.USER_KEY);
   }
 }
