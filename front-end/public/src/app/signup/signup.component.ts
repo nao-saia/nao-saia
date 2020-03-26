@@ -1,3 +1,4 @@
+import { Role } from './../domain/Role';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from './../domain/User';
@@ -17,6 +18,9 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     model: User;
     showOAuth: boolean = false;
+
+    ownerUser: boolean;
+
     constructor(private service: UserService, private router: Router) {
         super();
         this.service.getCurrentUser().subscribe(userLogged => {
@@ -29,6 +33,8 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     ngOnInit() {
         this.model = new User();
+        const userRole: Role = Role.ROLE_USER;
+        this.model.addRoles(userRole);
     }
 
     navigateToMerchant(id: any) {
@@ -37,14 +43,24 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         });
     }
 
+    isAddOwnerRole() {
+        return this.ownerUser && !this.model.hasRole(Role.ROLE_OWNER)
+    }
+
+    addOwnerRole(user: User) {
+        if (this.isAddOwnerRole()) {
+            const ownerRole: Role = Role.ROLE_OWNER;
+            user.addRoles(ownerRole);
+        }
+    }
+
     save(): void {
+        this.addOwnerRole(this.model);
         this.service.save(this.model).subscribe(
             userSaved => {
                 super.showAlertInfo('Usuário cadastrado com sucesso!');
                 this.navigateToMerchant(userSaved.id);
             },
-            reject => {
-                super.showAlertWarning(reject.error.message);
-            });
+            reject => super.showAlertWarning(reject.error.message));
     }
 }
