@@ -12,9 +12,11 @@ export class GeolocationService {
 
   getCurrentLocation(address: Address): Observable<Address> {
     return new Observable((subscriber) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition((position: Position) => {
+      if (this.isGeolocationEnable()) {
+        const geolocation = navigator.geolocation;
+        geolocation.getCurrentPosition((position: Position) => {
           if (position) {
+            console.log(`http://maps.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`);
             this.getAddressFromLocation(position.coords.latitude, position.coords.longitude)
               .subscribe((responseAddress: Address) => subscriber.next(responseAddress));
           } else {
@@ -30,7 +32,7 @@ export class GeolocationService {
   _handlePositionError(zipCode: string, subscriber: Subscriber<Address>): void {
     this.getAddressFromZipCode(zipCode)
       .subscribe((responseAddress: Address) => subscriber.next(responseAddress)
-      , (error) => subscriber.error(error));
+        , (error) => subscriber.error(error));
   }
 
   getAddressFromZipCode(zipCode: string): Observable<Address> {
@@ -39,5 +41,14 @@ export class GeolocationService {
 
   getAddressFromLocation(latitude: number, longitude: number): Observable<Address> {
     return this.http.get<Address>(`geolocation/location?lat=${latitude}&lon=${longitude}`);
+  }
+
+  isGeolocationEnable(): boolean {
+    return this.isMobile() && !!navigator.geolocation;
+  }
+
+  isMobile(): boolean {
+    const ua = navigator.userAgent;
+    return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua));
   }
 }

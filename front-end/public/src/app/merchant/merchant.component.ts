@@ -24,19 +24,23 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
   states: Array<State>;
   cities: Array<City>;
 
+  useGeolocation: boolean;
+  geolocationEnable: boolean;
+
   constructor(
-      private service: MerchantService,
-      private router: Router,
-      private route: ActivatedRoute,
-      private geoLocation: GeolocationService,
-      private cityService: CityService,
-      private stateService: StateService) {
+    private service: MerchantService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private geoLocation: GeolocationService,
+    private cityService: CityService,
+    private stateService: StateService) {
     super();
     this.model = new Merchant();
     this.route.params.subscribe(params => this.model.userId = params['id']);
   }
 
   ngOnInit() {
+    this.geolocationEnable = this.geoLocation.isGeolocationEnable();
   }
 
   save(): void {
@@ -61,9 +65,28 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
   }
 
   changeCEP(data): void {
-    this.geoLocation.getCurrentLocation(this.model.address).subscribe(address => {
+    const zipcode = this.model?.address?.zipcode ?? null;
+    this.geoLocation.getAddressFromZipCode(zipcode).subscribe(address => {
       this.model.address = address;
+    }, error => {
+      super.showAlertWarning('Erro ao consultar CEP');
+      console.log(error);
     });
+  }
+
+  changeGeolocation(data): void {
+    if (this.useGeolocation) {
+      this.geoLocation.getCurrentLocation(this.model.address).subscribe(
+        address => {
+          this.model.address = address;
+        },
+        error => {
+          super.showAlertWarning('Erro ao obter localização');
+          console.log(error);
+        });
+    } else {
+      this.model.clearAddress();
+    }
   }
 
   loadStates(): void {

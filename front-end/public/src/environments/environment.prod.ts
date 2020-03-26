@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  api: 'http://localhost:8888',
-  baseUrl: 'http://localhost:8088',
+  api: "http://localhost:8088",
+  baseUrl: "https://nao-saia-backend.herokuapp.com"
+  // baseUrl: "http://localhost:8088"
 };

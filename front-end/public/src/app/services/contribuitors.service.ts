@@ -9,13 +9,13 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class ContribuitorsService {
 
-  contribuitorsUrl = 'contribuitors.json';
+  path = 'contributors';
 
   constructor(private http: HttpWrapperService) {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
   list(): Observable<Contribuitor[]> {
-    return this.http.get<Contribuitor[]>(this.contribuitorsUrl);
+    return this.http.get<Contribuitor[]>(this.path);
   }
 }

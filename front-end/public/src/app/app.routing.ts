@@ -19,6 +19,7 @@ export const ROUTES: Routes = [
   { path: "login", component: LoginComponent },
   { path: "contribuitors", component: ContributorsComponent },
   { path: "support-us", component: SupportUsComponent },
+  { path: "merchant/:id", component: ProfileComponent },
   { path: "merchant-register/:userId", component: MerchantComponent },
   { path: "merchants", component: EstablishmentsComponent },
   { path: "", redirectTo: "landing", pathMatch: "full" }
