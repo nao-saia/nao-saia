@@ -7,7 +7,8 @@ export class Address {
         public city?: string,
         public state?: string,
         public district?: string,
-        public zipcode?: string
+        public zipcode?: string,
+        public additionalInfo?: string
     ) {
         this.location = new Geocode();
     }

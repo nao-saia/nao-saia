@@ -37,4 +37,8 @@ export class Merchant {
                     this.address.city &&
                     this.note);
     }
+
+    clearAddress() {
+        this.address = new Address();
+    }
 }

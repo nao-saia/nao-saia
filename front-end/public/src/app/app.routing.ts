@@ -12,13 +12,13 @@ import { MerchantComponent } from "./merchant/merchant.component";
 export const ROUTES: Routes = [
   // { path: 'home',             component: HomeComponent },
   { path: "home", component: LandingComponent },
-  { path: "merchant/:id", component: ProfileComponent },
   { path: "register", component: SignupComponent },
   { path: "landing", component: LandingComponent },
   { path: "login", component: LoginComponent },
   { path: "contribuitors", component: ContributorsComponent },
   { path: "support-us", component: SupportUsComponent },
-  { path: "merchant/:userId", component: MerchantComponent },
+  { path: "merchant/:id", component: ProfileComponent },
+  { path: "merchant-register/:userId", component: MerchantComponent },
   { path: "merchants", component: EstablishmentsComponent },
   { path: "", redirectTo: "landing", pathMatch: "full" }
 ];
