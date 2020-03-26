@@ -2,11 +2,6 @@
 Nós somos uma ponte para levar o que você precisa até a sua casa.
 Encontre o que você precisa durante esta quarentena e evite contaminar-se com o COVID-19 (coronavírus).
 
-# Prerequisites
-
-* Node.js
-* Angular 9
-
 ## Vantagens de ser um Anunciante
 Como anunciante você poderá disponibilizar serviço de delivery do seu comércio de forma gratuita.
 
@@ -19,4 +14,11 @@ Geração de vendas e exposição da sua marca ou produto de forma positiva e as
 ### Corrente do bem
 Agregamos o máximo de deliveries em um só lugar, assim é criado uma corrente do bem, facilitando o comércio e ativando a economia em tempos de coronavírus.
 
+
+# Prerequisites
+
+* Node.js
+* Angular 9
+
 Template utilizado: https://www.creative-tim.com/product/argon-design-system-angular with MIT License
+
