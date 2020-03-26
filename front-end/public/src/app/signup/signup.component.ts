@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
 import { AbstractViewComponent } from './../shared/abstract.view.component';
+import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Component({
     selector: 'app-signup',
@@ -21,7 +22,8 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     ownerUser: boolean;
 
-    constructor(private service: UserService, private router: Router) {
+    constructor(private service: UserService,
+        private router: Router) {
         super();
     }
 
@@ -31,10 +33,10 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         this.model.addRoles(userRole);
     }
 
-    navigateToMerchant(id: any) {
+    navigateToMerchant(id: any, timeout = 3000) {
         setTimeout(() => {
             this.router.navigate([`/merchant-register/${id}`]);
-        }, 3000);
+        }, timeout);
     }
 
     isAddOwnerRole() {
@@ -50,8 +52,8 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     login() {
         this.service.login(this.model)
-            .subscribe((user: User) => this.navigateToMerchant(user.id) 
-            , (error) => super.showAlertWarning(error));
+            .subscribe((user: User) => this.navigateToMerchant(user.id)
+                , (error) => super.showAlertWarning(error));
     }
 
     save(): void {
