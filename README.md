@@ -1,7 +1,7 @@
 # nao-saia
 nao-saia
 
-#Prerequisites
+# Prerequisites
 
 * Node.js
 * Angular 9
