@@ -15,7 +15,7 @@ export class StateService {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
-  list(): Observable<State[]>  {
+  findAll(): Observable<State[]>  {
     return this.http.get<State[]>(this.path);
   }
 
