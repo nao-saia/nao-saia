@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HttpWrapperService {
-
   private baseUrl: string;
 
   constructor(private http: HttpClient) {}
@@ -83,5 +82,9 @@ export class HttpWrapperService {
     }): Observable<T> {
     url = `${this.baseUrl}/${url}`;
     return this.http.delete<T>(url);
+  }
+
+  getQueryParamsFromObj(params: any) {
+    return Object.keys(params).map(key => key + '=' + params[key]).join('&');
   }
 }

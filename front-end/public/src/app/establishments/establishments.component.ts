@@ -1,3 +1,4 @@
+import { MerchanFilter } from './../domain/merchant-filter';
 import { City } from './../domain/City';
 import { State } from './../domain/State';
 import { CityService } from './../services/city.service';
@@ -21,6 +22,8 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/from';
 import { Observable } from 'rxjs/Observable';
+import { GeolocationService } from '../services/geolocation-service.service';
+import { Address } from '../domain/Address';
 
 const PAGE_SIZE = 12;
 
@@ -50,7 +53,14 @@ const PAGE_SIZE = 12;
   ]
 })
 export class EstablishmentsComponent implements OnInit {
-  searchBarState = 'hidden';
+
+  HIDE_FILTER = 'Esconder filtros de pesquisa';
+  SHOW_FILTER = 'Exibir filtros de pesquisa';
+  DEFAULT_CATEGORY = 'RESTAURANTE';
+
+  searchBarState = 'visible';
+  linkSearchBarState = this.HIDE_FILTER;
+
   merchants: Merchant[] = [];
   states: State[] = [];
   cities: City[] = [];
@@ -60,17 +70,28 @@ export class EstablishmentsComponent implements OnInit {
   stateControl: FormControl;
   cityControl: FormControl;
 
+  filter: MerchanFilter;
+
   limit: number = PAGE_SIZE;
-  categorieSelected: string = 'restaurante';
+
+  categorieSelected: string = this.DEFAULT_CATEGORY;
 
   constructor(
     private merchantService: MerchantService,
     private stateService: StateService,
     private cityService: CityService,
+    private geolocation: GeolocationService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
+    this.clearFilter();
+    this.createSearchControl();
+    this.listStates();
+    this.findAll();
+  }
+
+  createSearchControl() {
     this.searchControl = this.fb.control('');
     this.searchForm = this.fb.group({
       searchControl: this.searchControl
@@ -79,49 +100,74 @@ export class EstablishmentsComponent implements OnInit {
     this.searchControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
-      .switchMap(searchTerm =>
-        this.merchantService
-          .findAll(searchTerm)
-          .catch(error => Observable.from([]))
-      )
-      .subscribe(merchants => (this.merchants = merchants));
-
-    this.listMerchants();
-    this.listStates();
+      .subscribe(searchTerm => this.findByFantasyName(searchTerm));
   }
 
   // Realizar aqui a consulta paginada
   addLimit() {
     this.limit = this.limit + PAGE_SIZE;
-    this.listMerchants();
+    this.findAll();
   }
 
-  listMerchants(search?) {
+  findAll(): void {
     this.merchantService
-      .findAll(search)
-      .subscribe(
+      .findAll(this.filter).subscribe(
         merchants => (this.merchants = merchants.slice(0, this.limit))
       );
+  }
+
+  findByFantasyName(search ?: string) {
+    this.filter.fantasyName = search;
+    this.findAll();
   }
 
   listStates() {
     this.stateService.findAll().subscribe(states => (this.states = states));
   }
 
-  changeState(uf) {
-    this.cityService.findByUF(uf).subscribe(cities => (this.cities = cities));
-    //console.log(uf.target.value)
+  changeState(stateID: string) {
+    this.filter.clearGeolocation();
+    this.filter.state = stateID;
+    this.cityService.findByUF(stateID).subscribe(cities => (this.cities = cities));
+    this.findAll();
+  }
+
+  changeCity(city: string) {
+    this.filter.clearGeolocation();
+    this.filter.city = city;
+    this.findAll();
   }
 
   toggleSearch() {
     this.searchBarState =
       this.searchBarState === 'hidden' ? 'visible' : 'hidden';
+      if (this.searchBarState === 'hidden') {
+        this.linkSearchBarState = this.SHOW_FILTER;
+      } else {
+        this.linkSearchBarState = this.HIDE_FILTER;
+      }
   }
 
-  changeCategoria(categoria: string) {
-    this.categorieSelected = categoria;
-    this.merchantService
-      .findByCategory(categoria)
-      .subscribe(response => (this.merchants = response.content));
+  changeCategoria(category: string) {
+    this.filter.category = category;
+    this.findAll();
   }
+
+  private clearFilter(): void {
+    this.filter = new MerchanFilter();
+    this.filter.category = this.DEFAULT_CATEGORY;
+  }
+
+  getCurrentLocation(): void {
+    const address = new Address();
+    this.filter.clearLocation();
+    this.geolocation.getCurrentLocation(address).subscribe((address) => {
+      this.filter.lat = address.location.latitude;
+      this.filter.lon = address.location.longitude;
+      this.filter.state = address.state;
+      this.filter.city = address.city;
+      this.findAll();
+    });
+  }
+
 }

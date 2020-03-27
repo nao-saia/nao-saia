@@ -2,9 +2,7 @@
   <div class="col-12">
     <div class="mt-5 col-12">
       <h3 class="text-white">Categorias</h3>
-      <div class="border">
-        <ns-categories (categoria)="changeCategoria($event)"></ns-categories>
-      </div>
+      <ns-categories (categoria)="changeCategoria($event)"></ns-categories>
     </div>
   </div>
   <div class="m-2">
@@ -12,15 +10,20 @@
       <div class="col-12">
         <!-- INíCIO do CONTEÚDO -->
         <section class="content-header">
-          <div
-            class="text-white d-flex align-items-center justify-content-between"
-          >
+          <div class="text-white d-flex align-items-center justify-content-between">
             <h3 class="text-white">
               Estabelecimentos
             </h3>
             <div>
               <a (click)="toggleSearch()" class="search-link float-right">
-                <i class="fa fa-search fa-2x"></i>
+                {{linkSearchBarState}}
+                <i class="fa fa-filter fa-2x"></i>
+              </a>
+            </div>
+            <div>
+              <a (click)="getCurrentLocation()" class="search-link float-right">
+                Locais próximos a mim
+                <i class="fa fa-map-signs fa-2x"></i>
               </a>
             </div>
           </div>
@@ -29,27 +32,16 @@
             <div class="col-12 search-bar" [@toggleSearch]="searchBarState">
               <form [formGroup]="searchForm">
                 <div class="form-group d-flex align-items-center">
-                  <input
-                    type="text"
-                    #iptSearch
-                    formControlName="searchControl"
-                    class="form-control col-6"
-                    placeholder="O que você está procurando?"
-                  />
-                  <select
-                    class="form-control m-2"
-                    formControlName="stateControl"
-                    (change)="changeState($event.target.value)"
-                  >
+                  <input type="text" #iptSearch formControlName="searchControl" class="form-control col-6"
+                    placeholder="O que você está procurando?" />
+                  <select class="form-control m-2" formControlName="stateControl"
+                    (change)="changeState($event.target.value)">
                     <option [value]="">Estado</option>
                     <option [value]="state.uf" *ngFor="let state of states">{{
                       state.name
                     }}</option>
                   </select>
-                  <select
-                    class="form-control m-2"
-                    formControlName="cityControl"
-                  >
+                  <select class="form-control m-2" formControlName="cityControl">
                     <option [value]="">Cidade</option>
                     <option [value]="city" *ngFor="let city of cities">{{
                       city.name
@@ -63,16 +55,10 @@
 
         <section class="content">
           <div class="row">
-            <div
-              *ngFor="let merchant of merchants"
-              class="col-sm-12 col-12 col-xl-4 col-lg-4"
-            >
+            <div *ngFor="let merchant of merchants" class="col-sm-12 col-12 col-xl-4 col-lg-4">
               <ns-establishment [merchant]="merchant"></ns-establishment>
             </div>
-            <div
-              *ngIf="merchants.length === 0"
-              class="col-12 shadow bg-white rounded"
-            >
+            <div *ngIf="merchants.length === 0" class="col-12 shadow bg-white rounded">
               <p class="lead text-center">
                 Não foram encontrados estabelecimentos para a categoria
                 {{ categorieSelected }}.
@@ -81,10 +67,7 @@
           </div>
         </section>
         <div *ngIf="merchants.length > 0" col="12">
-          <button
-            (click)="addLimit()"
-            class="btn btn-outline-white form-control"
-          >
+          <button (click)="addLimit()" class="btn btn-outline-white form-control">
             Ver mais estabelecimentos
           </button>
         </div>
@@ -94,14 +77,7 @@
     </div>
   </div>
   <div class="separator separator-bottom separator-skew zindex-100">
-    <svg
-      x="0"
-      y="0"
-      viewBox="0 0 2560 100"
-      preserveAspectRatio="none"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
     </svg>
   </div>
