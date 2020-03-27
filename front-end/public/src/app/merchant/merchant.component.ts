@@ -1,3 +1,5 @@
+import { User } from './../domain/User';
+import { UserService } from './../services/user.service';
 import { City } from './../domain/City';
 import { State } from './../domain/State';
 import { StateService } from './../services/state.service';
@@ -33,14 +35,32 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
     private route: ActivatedRoute,
     private geoLocation: GeolocationService,
     private cityService: CityService,
-    private stateService: StateService) {
+    private stateService: StateService,
+    private userService: UserService) {
     super();
     this.model = new Merchant();
-    this.route.params.subscribe(params => this.model.userId = params['userId']);
+  }
+  
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      const merchantId = params['merchantId'];
+      if (merchantId) {
+        this.findMerchantById(merchantId);
+      } else {
+        this.addIdUserLogged();
+      }
+    });
+    this.geolocationEnable = this.geoLocation.isGeolocationEnable();
   }
 
-  ngOnInit() {
-    this.geolocationEnable = this.geoLocation.isGeolocationEnable();
+  findMerchantById(merchantId: string) {
+    this.service.findById(merchantId)
+      .subscribe((merchant: Merchant) => this.model = merchant);
+  }
+
+  addIdUserLogged() {
+    this.userService.getUserLogged()
+      .subscribe((userLogged: User) => this.model.userId = userLogged.id);
   }
 
   save(): void {
@@ -50,11 +70,11 @@ export class MerchantComponent extends AbstractViewComponent implements OnInit {
 
     if (this.model.valid()) {
       this.service.save(this.model).subscribe(
-        response => {
+        () => {
           super.showAlertInfo('Estabelecimento cadastrado com sucesso!');
           setTimeout(() => {
-            this.router.navigate([`/profile/${response.id}`]);
-          }, 7000);
+            this.router.navigate([`/my-merchants`]);
+          }, 3000);
         },
         reject => {
           super.showAlertWarning(reject.error.message);

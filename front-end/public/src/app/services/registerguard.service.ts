@@ -14,7 +14,7 @@ export class RegisterGuardService implements CanActivate {
   async checkAuthentication() {
     const userLogged: User =  await this.userService.getUserLogged().toPromise();
     if (userLogged?.id) {
-      this._navigateToMerchant(userLogged.id);
+      this._navigateToMerchant();
     }
     return !(!!(userLogged));
   }
@@ -23,7 +23,7 @@ export class RegisterGuardService implements CanActivate {
     return this.checkAuthentication();
   }
 
-  _navigateToMerchant(userId: string) {
-    this.router.navigate([`/merchant-register/${userId}`]);
+  _navigateToMerchant() {
+    this.router.navigate([`/merchant-register`]);
   }
 }

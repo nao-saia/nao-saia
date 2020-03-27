@@ -1,43 +1,32 @@
 <a (click)="changeRouteDetails()">
-  <div
-    class="rounded bg-white shadow shadow-lg--hover p-3 mb-2 card-scale cursor-pointer text-default"
-    [@estabelecimentoTrigger]="estabelecimentoState"
-  >
+  <div class="rounded bg-white shadow shadow-lg--hover p-3 mb-2 card-scale cursor-pointer text-default"
+    [@estabelecimentoTrigger]="estabelecimentoState">
     <div class="d-flex justify-content-start align-items-center">
-      <img
-        class="img-fluid img-thumbnail "
-        src="../../../assets/img/brand/favicon.png"
-      />
+      <img class="img-fluid img-thumbnail " src="../../../assets/img/brand/favicon.png" />
 
       <div class="col-12">
-        <div
-          class="d-flex flex-column justify-content-center align-items-start col"
-        >
+        <div class="d-flex flex-column justify-content-center align-items-start col">
           <div class="col-12">
             <label class="float-left">{{ merchant.fantasyName }}</label>
             <label class="float-right border-bottom">{{ category }}</label>
           </div>
           <div class="col-12">
-            <div>
+            <div class="float-left">
               <i class="fa fa-whatsapp"></i>
               <label class="ml-1">{{ merchant.whatsapp }}</label>
             </div>
-            <div>
+          </div>
+          <div class="col-12">
+            <div class="float-left">
               <i class="fa fa-map-marker"></i>
               <label class="ml-1">{{ merchant.address.district }}</label>
             </div>
+            <a title="Editar estabelecimento" *ngIf="showEditLink" class="float-right  nav-link no-caret" 
+              [routerLink]="['/merchant-register', merchant.id]" role="button">
+              <i class="fa fa-edit"></i>
+            </a>
           </div>
         </div>
-
-        <!--
-            <div class="rounded">
-          <img
-            *ngFor="let app of apps"
-            class="img-fluid m-1 img-thumbnail"
-            [src]="app"
-          />
-        </div>
-          -->
       </div>
     </div>
     <!-- /.info-box-content -->

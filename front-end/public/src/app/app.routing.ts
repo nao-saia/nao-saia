@@ -21,7 +21,8 @@ export const ROUTES: Routes = [
   { path: "contributors", component: ContributorsComponent },
   { path: "support-us", component: SupportUsComponent },
   { path: "merchant/:id", component: ProfileComponent },
-  { path: "merchant-register/:userId", component: MerchantComponent },
+  { path: "merchant-register", component: MerchantComponent },
+  { path: "merchant-register/:merchantId", component: MerchantComponent },
   { path: "merchants", component: EstablishmentsComponent },
   { path: "my-merchants", component: OwnerMerchantComponent, canActivate: [LoggedinGuard] },
   { path: "", redirectTo: "landing", pathMatch: "full" }

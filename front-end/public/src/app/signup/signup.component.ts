@@ -32,9 +32,9 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
         this.model.addRoles(userRole);
     }
 
-    navigateToMerchant(id: any, timeout = 3000) {
+    navigateToMerchant(timeout = 3000) {
         setTimeout(() => {
-            this.router.navigate([`/merchant-register/${id}`]);
+            this.router.navigate([`/merchant-register`]);
         }, timeout);
     }
 
@@ -51,7 +51,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
 
     login() {
         this.service.login(this.model)
-            .subscribe((user: User) => this.navigateToMerchant(user.id)
+            .subscribe(() => this.navigateToMerchant()
                 , (error) => super.showAlertWarning(error));
     }
 

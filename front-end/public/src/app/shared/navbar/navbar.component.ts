@@ -55,9 +55,7 @@ export class NavbarComponent implements OnInit {
 
     checkUserLogged() {
         this.userService.getUserLogged()
-            .subscribe((userLogged: User) => {
-                this.updateMenuLoginLogout(userLogged);
-            });
+            .subscribe((userLogged: User) => this.updateMenuLoginLogout(userLogged));
     }
 
     updateMenuLoginLogout(userLogged: User) {
