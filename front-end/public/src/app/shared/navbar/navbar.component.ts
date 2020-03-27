@@ -11,7 +11,7 @@ import { UserlogedNotificationService } from './../../services/userloged-notific
     styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-    
+
     public isCollapsed = true;
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
@@ -21,42 +21,54 @@ export class NavbarComponent implements OnInit {
     logged: boolean;
     userLogged: any;
 
-    constructor(public location: Location, 
-        private router: Router, 
-        private route: ActivatedRoute, 
+    constructor(public location: Location,
+        private router: Router,
+        private route: ActivatedRoute,
         private userService: UserService,
         private userLogedNotification: UserlogedNotificationService) {
         this.loadMenu();
         this.loadSocialMedias();
         this.userLogedNotification.notifier.subscribe((userLogged: User) => {
-            this.userLogged = userLogged;
-            this.logged = !!(userLogged && userLogged.id);
+            this.updateMenuLoginLogout(userLogged);
         });
     }
 
     ngOnInit() {
-      this.router.events.subscribe((event) => {
-        this.isCollapsed = true;
-        if (event instanceof NavigationStart) {
-           if (event.url != this.lastPoppedUrl)
-               this.yScrollStack.push(window.scrollY);
-       } else if (event instanceof NavigationEnd) {
-           if (event.url == this.lastPoppedUrl) {
-               this.lastPoppedUrl = undefined;
-               window.scrollTo(0, this.yScrollStack.pop());
-           } else
-               window.scrollTo(0, 0);
-       }
-     });
-     this.location.subscribe((ev:PopStateEvent) => {
-         this.lastPoppedUrl = ev.url;
-     });
+        this.checkUserLogged();
+        this.router.events.subscribe((event) => {
+            this.isCollapsed = true;
+            if (event instanceof NavigationStart) {
+                if (event.url != this.lastPoppedUrl)
+                    this.yScrollStack.push(window.scrollY);
+            } else if (event instanceof NavigationEnd) {
+                if (event.url == this.lastPoppedUrl) {
+                    this.lastPoppedUrl = undefined;
+                    window.scrollTo(0, this.yScrollStack.pop());
+                } else
+                    window.scrollTo(0, 0);
+            }
+        });
+        this.location.subscribe((ev: PopStateEvent) => {
+            this.lastPoppedUrl = ev.url;
+        });
+    }
+
+    checkUserLogged() {
+        this.userService.getUserLogged()
+            .subscribe((userLogged: User) => {
+                this.updateMenuLoginLogout(userLogged);
+            });
+    }
+
+    updateMenuLoginLogout(userLogged: User) {
+        this.userLogged = userLogged;
+        this.logged = !!(userLogged && userLogged.id);
     }
 
     isHome() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
 
-        if( titlee === '#/home' ) {
+        if (titlee === '#/home') {
             return true;
         }
         else {
@@ -65,7 +77,7 @@ export class NavbarComponent implements OnInit {
     }
     isDocumentation() {
         var titlee = this.location.prepareExternalUrl(this.location.path());
-        if( titlee === '#/documentation' ) {
+        if (titlee === '#/documentation') {
             return true;
         }
         else {

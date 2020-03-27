@@ -15,8 +15,8 @@ export class MerchantService {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
-  findAll(search?: string): Observable<Merchant[]> {
-    return this.http.get<Merchant[]>(this.path);
+  findAll(search?: string): Observable<any> {
+    return this.http.get<any>(this.path);
   }
 
   findByCategory(category, limit = "12"): Observable<ResponseMerchant> {
@@ -36,5 +36,9 @@ export class MerchantService {
 
   save(merchant: Merchant): Observable<Merchant> {
     return this.http.post<Merchant>(this.path, merchant);
+  }
+
+  findByUserId(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.path}/owner/${userId}`)
   }
 }
