@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ContribuitorsService } from 'src/app/services/contribuitors.service';
-import { Contribuitor } from 'src/app/domain/Contribuitor';
+
+import { Contributor } from 'src/app/domain/Contributor';
+import { ContributorsService } from 'src/app/services/contributors.service';
 
 @Component({
   selector: 'app-contributors',
@@ -9,42 +10,42 @@ import { Contribuitor } from 'src/app/domain/Contribuitor';
 })
 export class ContributorsComponent implements OnInit {
 
-  constructor(private service: ContribuitorsService) { }
+  constructor(private service: ContributorsService) { }
 
   list = [];
-  contribuitors: Array<Contribuitor>;
+  contributors: Array<Contributor>;
   interval;
 
   ngOnInit(): void {
-    this.loadContribuitors(() => {
-      this.startShuffleContribuitors();
+    this.loadContributors(() => {
+      this.startShuffleContributors();
     });
   }
 
-  startShuffleContribuitors(): void {
-    this.shuffleContribuitors();
+  startShuffleContributors(): void {
+    this.shuffleContributors();
     this.interval = setInterval(() => {
-      this.shuffleContribuitors();
+      this.shuffleContributors();
     }, 10000);
   }
 
-  shuffleContribuitors(): void {
-    const contribuitorIndexes = this.shuffleContribuitorsIndexes(4);
+  shuffleContributors(): void {
+    const contributorIndexes = this.shuffleContributorsIndexes(4);
     const arr = [];
-    contribuitorIndexes.forEach(index => {
-      arr.push(this.contribuitors[index]);
+    contributorIndexes.forEach(index => {
+      arr.push(this.contributors[index]);
     });
     this.list = arr;
   }
 
-  shuffleContribuitorsIndexes(size: number): Array<number> {
+  shuffleContributorsIndexes(size: number): Array<number> {
     let arr: Array<number>;
     arr = [];
     while (arr.length < size) {
       let exists = false;
       let index = -1;
       do {
-        index = this.randomInteger(0, this.contribuitors.length);
+        index = this.randomInteger(0, this.contributors.length);
         exists = arr.indexOf(index) >= 0;
       } while (exists);
       arr.push(index);
@@ -56,10 +57,10 @@ export class ContributorsComponent implements OnInit {
     return Math.trunc(Math.random() * (max - min) + min);
   }
 
-  loadContribuitors(onReceiveData: Function) {
+  loadContributors(onReceiveData: Function) {
     this.service.list().subscribe(
       data => {
-        this.contribuitors = data;
+        this.contributors = data;
         onReceiveData();
       });
   }
