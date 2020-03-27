@@ -13,10 +13,10 @@ export class LoggedinGuard implements CanActivate {
 
   async checkAuthentication() {
     const userLogged: User =  await this.userService.getUserLogged().toPromise();
-    if (userLogged?.id) {
+    if (!(userLogged?.id)) {
       this._navigateToLogin();
     }
-    return !(!!(userLogged));
+    return (!!(userLogged));
   }
 
   async canActivate(activatedRoute: ActivatedRouteSnapshot, routerState: RouterStateSnapshot) {

@@ -12,7 +12,7 @@ import { UserlogedNotificationService } from './userloged-notification.service';
 export class UserService {
 
   TOKEN_KEY = 'token';
-  USER_KEY = 'user'
+  USER_KEY = 'user';
   path = 'auth';
 
   constructor(private http: HttpWrapperService,
@@ -30,6 +30,7 @@ export class UserService {
       this.http.post<any>(`${this.path}/login`, { username: user.username, password: user.password })
         .subscribe(
           (authResponse) => {
+            localStorage.setItem(this.TOKEN_KEY, authResponse.token);
             combineLatest(this.storage.set(this.TOKEN_KEY, authResponse.token),
               this.storage.set(this.USER_KEY, authResponse.user))
               .subscribe(() => {
@@ -47,6 +48,7 @@ export class UserService {
 
   public logout(): Observable<any> {
     return new Observable((subscriber) => {
+      localStorage.clear();
       combineLatest(this.storage.delete(this.TOKEN_KEY), this.storage.delete(this.USER_KEY))
         .subscribe(() => {
           this.userLoggedNotification.notify(null);
@@ -56,8 +58,8 @@ export class UserService {
 
   }
 
-  getToken(): Observable<any> {
-    return this.storage.get(this.TOKEN_KEY);
+  getToken(): string {
+    return localStorage.getItem(this.TOKEN_KEY);
   }
 
   getUserLogged(): Observable<any> {

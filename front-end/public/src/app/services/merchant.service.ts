@@ -30,4 +30,8 @@ export class MerchantService {
   save(merchant: Merchant): Observable<Merchant> {
     return this.http.post<Merchant>(this.path, merchant);
   }
+
+  findByUserId(userId: string): Observable<any> {
+    return this.http.get<any>(`${this.path}/owner/${userId}`)
+  }
 }
