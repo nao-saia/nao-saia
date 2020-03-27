@@ -1,56 +1,56 @@
-import { City } from "./../domain/City";
-import { State } from "./../domain/State";
-import { CityService } from "./../services/city.service";
-import { StateService } from "./../services/state.service";
-import { MerchantService } from "./../services/merchant.service";
-import { Merchant } from "./../domain/Merchant";
-import { Component, OnInit } from "@angular/core";
+import { City } from './../domain/City';
+import { State } from './../domain/State';
+import { CityService } from './../services/city.service';
+import { StateService } from './../services/state.service';
+import { MerchantService } from './../services/merchant.service';
+import { Merchant } from './../domain/Merchant';
+import { Component, OnInit } from '@angular/core';
 import {
   trigger,
   state,
   style,
   transition,
   animate
-} from "@angular/animations";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+} from '@angular/animations';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
-import "rxjs/add/operator/switchMap";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/distinctUntilChanged";
-import "rxjs/add/operator/catch";
-import "rxjs/add/observable/from";
-import { Observable } from "rxjs/Observable";
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/from';
+import { Observable } from 'rxjs/Observable';
 
 const PAGE_SIZE = 12;
 
 @Component({
-  selector: "ns-establishments",
-  templateUrl: "./establishments.component.html",
-  styleUrls: ["./establishments.component.css"],
+  selector: 'ns-establishments',
+  templateUrl: './establishments.component.html',
+  styleUrls: ['./establishments.component.css'],
   animations: [
-    trigger("toggleSearch", [
+    trigger('toggleSearch', [
       state(
-        "hidden",
+        'hidden',
         style({
           opacity: 0,
-          "max-height": "0px"
+          'max-height': '0px'
         })
       ),
       state(
-        "visible",
+        'visible',
         style({
           opacity: 1,
-          "max-height": "70px",
-          "margin-top": "20px"
+          'max-height': '70px',
+          'margin-top': '20px'
         })
       ),
-      transition("* => *", animate("250ms 0s ease-in-out"))
+      transition('* => *', animate('250ms 0s ease-in-out'))
     ])
   ]
 })
 export class EstablishmentsComponent implements OnInit {
-  searchBarState = "hidden";
+  searchBarState = 'hidden';
   merchants: Merchant[] = [];
   states: State[] = [];
   cities: City[] = [];
@@ -61,7 +61,7 @@ export class EstablishmentsComponent implements OnInit {
   cityControl: FormControl;
 
   limit: number = PAGE_SIZE;
-  categorieSelected: string = "restaurante";
+  categorieSelected: string = 'restaurante';
 
   constructor(
     private merchantService: MerchantService,
@@ -71,7 +71,7 @@ export class EstablishmentsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.searchControl = this.fb.control("");
+    this.searchControl = this.fb.control('');
     this.searchForm = this.fb.group({
       searchControl: this.searchControl
     });
@@ -115,7 +115,7 @@ export class EstablishmentsComponent implements OnInit {
 
   toggleSearch() {
     this.searchBarState =
-      this.searchBarState === "hidden" ? "visible" : "hidden";
+      this.searchBarState === 'hidden' ? 'visible' : 'hidden';
   }
 
   changeCategoria(categoria: string) {
