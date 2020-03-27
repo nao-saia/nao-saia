@@ -1,4 +1,4 @@
-export class Contribuitor {
+export class Contributor {
     name: string;
     description: string;
     github: string;

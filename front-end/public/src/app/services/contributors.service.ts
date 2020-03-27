@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Contributor } from '../domain/Contributor';
 import { HttpWrapperService } from './http-wrapper.service';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Contribuitor } from '../domain/Contribuitor';
 import { environment } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ContribuitorsService {
+export class ContributorsService {
 
   path = 'contributors';
 
@@ -15,7 +15,7 @@ export class ContribuitorsService {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
-  list(): Observable<Contribuitor[]> {
-    return this.http.get<Contribuitor[]>(this.path);
+  list(): Observable<Contributor[]> {
+    return this.http.get<Contributor[]>(this.path);
   }
 }

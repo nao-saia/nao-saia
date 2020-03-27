@@ -1,10 +1,9 @@
-import { Role } from './../domain/Role';
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { Role } from './../domain/Role';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
 import { AbstractViewComponent } from './../shared/abstract.view.component';
-import { StorageMap } from '@ngx-pwa/local-storage';
 
 @Component({
     selector: 'app-signup',
@@ -40,7 +39,7 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
     }
 
     isAddOwnerRole() {
-        return this.ownerUser && !this.model.hasRole(Role.ROLE_OWNER)
+        return this.ownerUser && !this.model.hasRole(Role.ROLE_OWNER);
     }
 
     addOwnerRole(user: User) {

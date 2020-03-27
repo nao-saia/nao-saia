@@ -1,16 +1,21 @@
+<<<<<<< HEAD
 import { LoggedinGuard } from './services/loggedin.service';
 import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.component';
 import { RegisterGuardService } from './services/registerguard.service';
 import { Routes } from "@angular/router";
 import { EstablishmentsComponent } from "./establishments/establishments.component";
+=======
+>>>>>>> master
 import { ContributorsComponent } from "./landing/contributors/contributors.component";
+import { EstablishmentsComponent } from "./establishments/establishments.component";
 import { LandingComponent } from "./landing/landing.component";
-import { SupportUsComponent } from "./landing/support-us/support-us.component";
 import { LoginComponent } from "./login/login.component";
 import { MerchantComponent } from "./merchant/merchant.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { RegisterGuardService } from './services/registerguard.service';
+import { Routes } from "@angular/router";
 import { SignupComponent } from "./signup/signup.component";
-
+import { SupportUsComponent } from "./landing/support-us/support-us.component";
 
 export const ROUTES: Routes = [
   // { path: 'home',             component: HomeComponent },
@@ -19,7 +24,7 @@ export const ROUTES: Routes = [
   { path: "register", component: SignupComponent, canActivate: [RegisterGuardService] },
   { path: "landing", component: LandingComponent },
   { path: "login", component: LoginComponent },
-  { path: "contribuitors", component: ContributorsComponent },
+  { path: "contributors", component: ContributorsComponent },
   { path: "support-us", component: SupportUsComponent },
   { path: "merchant/:id", component: ProfileComponent },
   { path: "merchant-register/:userId", component: MerchantComponent },
