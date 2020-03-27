@@ -34,7 +34,7 @@ export class User {
 
     hasRole(role: Role) {
         if (this.roles) {
-            return !!(this.roles.indexOf(role) === -1);
+            return !!(this.roles.indexOf(role) === 0);
         }
         return false;
     }
