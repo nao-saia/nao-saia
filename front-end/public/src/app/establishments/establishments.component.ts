@@ -1,57 +1,63 @@
-import { City } from "./../domain/City";
-import { State } from "./../domain/State";
-import { CityService } from "./../services/city.service";
-import { StateService } from "./../services/state.service";
-import { MerchantService } from "./../services/merchant.service";
-import { Merchant } from "./../domain/Merchant";
-import { Component, OnInit } from "@angular/core";
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate
-} from "@angular/animations";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
+import { Address } from '../domain/Address';
+import { Page } from '../domain/page';
+import { GeolocationService } from '../services/geolocation-service.service';
+import { City } from './../domain/City';
+import { Merchant } from './../domain/Merchant';
+import { MerchanFilter } from './../domain/merchant-filter';
+import { State } from './../domain/State';
+import { CityService } from './../services/city.service';
+import { MerchantService } from './../services/merchant.service';
+import { StateService } from './../services/state.service';
 
-import "rxjs/add/operator/switchMap";
-import "rxjs/add/operator/do";
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/distinctUntilChanged";
-import "rxjs/add/operator/catch";
-import "rxjs/add/observable/from";
-import { Observable } from "rxjs/Observable";
 
 const PAGE_SIZE = 12;
 
 @Component({
-  selector: "ns-establishments",
-  templateUrl: "./establishments.component.html",
-  styleUrls: ["./establishments.component.css"],
+  selector: 'ns-establishments',
+  templateUrl: './establishments.component.html',
+  styleUrls: ['./establishments.component.css'],
   animations: [
-    trigger("toggleSearch", [
+    trigger('toggleSearch', [
       state(
-        "hidden",
+        'hidden',
         style({
           opacity: 0,
-          "max-height": "0px"
+          'max-height': '0px'
         })
       ),
       state(
-        "visible",
+        'visible',
         style({
           opacity: 1,
-          "max-height": "70px",
-          "margin-top": "20px"
+          'max-height': '70px',
+          'margin-top': '20px'
         })
       ),
-      transition("* => *", animate("250ms 0s ease-in-out"))
+      transition('* => *', animate('250ms 0s ease-in-out'))
     ])
   ]
 })
 export class EstablishmentsComponent implements OnInit {
-  searchBarState = "hidden";
-  merchants: Merchant[] = [];
+
+  HIDE_FILTER = 'Esconder filtros de pesquisa';
+  SHOW_FILTER = 'Exibir filtros de pesquisa';
+  DEFAULT_CATEGORY = 'Restaurante';
+  OVERRIDE = true;
+  PRESERVE = false;
+
+  searchBarState = 'visible';
+  linkSearchBarState = this.HIDE_FILTER;
+
+  merchants: Array<Merchant> = [];
   states: State[] = [];
   cities: City[] = [];
 
@@ -60,18 +66,53 @@ export class EstablishmentsComponent implements OnInit {
   stateControl: FormControl;
   cityControl: FormControl;
 
-  limit: number = PAGE_SIZE;
-  categorieSelected: string = "restaurante";
+  filter: MerchanFilter;
+
+  page: Page<Merchant>;
 
   constructor(
     private merchantService: MerchantService,
     private stateService: StateService,
     private cityService: CityService,
+    private geolocation: GeolocationService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
-    this.searchControl = this.fb.control("");
+    this.clearFilter();
+    this.createSearchControl();
+    this.createStateControl();
+    this.createCityControll();
+    this.listStates();
+    this.findAll(this.OVERRIDE);
+  }
+
+  createStateControl() {
+    this.stateControl = this.fb.control('stateControl');
+    this.searchForm = this.fb.group({
+      stateControl: this.stateControl
+    });
+
+    this.stateControl.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(value => this.findAll(this.OVERRIDE));
+  }
+
+  createCityControll() {
+    this.cityControl = this.fb.control('cityControl');
+    this.searchForm = this.fb.group({
+      cityControl: this.cityControl
+    });
+
+    this.cityControl.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(value => this.findAll(this.OVERRIDE));
+  }
+
+  createSearchControl() {
+    this.searchControl = this.fb.control('');
     this.searchForm = this.fb.group({
       searchControl: this.searchControl
     });
@@ -79,49 +120,82 @@ export class EstablishmentsComponent implements OnInit {
     this.searchControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
-      .switchMap(searchTerm =>
-        this.merchantService
-          .findAll(searchTerm)
-          .catch(error => Observable.from([]))
-      )
-      .subscribe(merchants => (this.merchants = merchants));
-
-    this.listMerchants();
-    this.listStates();
+      .subscribe(searchTerm => this.findByFantasyName(searchTerm));
   }
 
   // Realizar aqui a consulta paginada
-  addLimit() {
-    this.limit = this.limit + PAGE_SIZE;
-    this.listMerchants();
+  fetchMoreRows() {
+    this.findAll(this.PRESERVE);
   }
 
-  listMerchants(search?) {
-    this.merchantService
-      .findAll(search)
-      .subscribe(
-        result => (this.merchants = result.content)
-      );
+  findAll(override: boolean): void {
+    this.filter.page = this.page.pageNumber;
+    this.filter.size = this.page.pageSize;
+    this.merchantService.findAll(this.filter).subscribe(
+        response => {
+          if (override) {
+            this.page = Page.of(response);
+            this.merchants = this.page.content;
+          } else {
+            this.page.update(Page.of(response));
+            this.merchants.concat(this.page.content);
+          }
+        });
+  }
+
+  findByFantasyName(search ?: string) {
+    this.filter.fantasyName = search;
+    this.findAll(this.OVERRIDE);
   }
 
   listStates() {
     this.stateService.findAll().subscribe(states => (this.states = states));
   }
 
-  changeState(uf) {
-    this.cityService.findByUF(uf).subscribe(cities => (this.cities = cities));
-    //console.log(uf.target.value)
+  changeState(stateID: string) {
+    this.filter.clearGeolocation();
+    this.filter.state = stateID;
+    this.cityService.findByUF(stateID).subscribe(cities => (this.cities = cities));
+    this.findAll(this.OVERRIDE);
+  }
+
+  changeCity(city: string) {
+    this.filter.clearGeolocation();
+    this.filter.city = city;
+    this.findAll(this.OVERRIDE);
   }
 
   toggleSearch() {
     this.searchBarState =
-      this.searchBarState === "hidden" ? "visible" : "hidden";
+      this.searchBarState === 'hidden' ? 'visible' : 'hidden';
+      if (this.searchBarState === 'hidden') {
+        this.linkSearchBarState = this.SHOW_FILTER;
+      } else {
+        this.linkSearchBarState = this.HIDE_FILTER;
+      }
   }
 
-  changeCategoria(categoria: string) {
-    this.categorieSelected = categoria;
-    this.merchantService
-      .findByCategory(categoria)
-      .subscribe(response => (this.merchants = response.content));
+  changeCategoria(category: string) {
+    this.filter.category = category;
+    this.findAll(this.OVERRIDE);
   }
+
+  private clearFilter(): void {
+    this.page = new Page<Merchant>(0, PAGE_SIZE);
+    this.filter = new MerchanFilter();
+    this.filter.category = this.DEFAULT_CATEGORY;
+  }
+
+  getCurrentLocation(): void {
+    const address = new Address();
+    this.filter.clearLocation();
+    this.geolocation.getCurrentLocation(address).subscribe((address) => {
+      this.filter.lat = address.location.latitude;
+      this.filter.lon = address.location.longitude;
+      this.filter.state = address.state;
+      this.filter.city = address.city;
+      this.findAll(this.OVERRIDE);
+    });
+  }
+
 }
