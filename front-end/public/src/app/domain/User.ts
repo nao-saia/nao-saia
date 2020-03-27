@@ -32,9 +32,9 @@ export class User {
         }
     }
 
-    hasRole(role: Role) {
+    hasRole(role: Role): boolean {
         if (this.roles) {
-            return !!(this.roles.indexOf(role) === -1);
+            return this.roles.indexOf(role) === 0;
         }
         return false;
     }
