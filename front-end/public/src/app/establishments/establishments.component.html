@@ -41,7 +41,7 @@
                     formControlName="stateControl"
                     (change)="changeState($event.target.value)"
                   >
-                    <option>Estado</option>
+                    <option [value]="">Estado</option>
                     <option [value]="state.uf" *ngFor="let state of states">{{
                       state.name
                     }}</option>
@@ -50,7 +50,7 @@
                     class="form-control m-2"
                     formControlName="cityControl"
                   >
-                    <option>Cidade</option>
+                    <option [value]="">Cidade</option>
                     <option [value]="city" *ngFor="let city of cities">{{
                       city.name
                     }}</option>
