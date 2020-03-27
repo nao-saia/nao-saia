@@ -1,29 +1,23 @@
-import { MerchanFilter } from './../domain/merchant-filter';
-import { City } from './../domain/City';
-import { State } from './../domain/State';
-import { CityService } from './../services/city.service';
-import { StateService } from './../services/state.service';
-import { MerchantService } from './../services/merchant.service';
-import { Merchant } from './../domain/Merchant';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate
-} from '@angular/animations';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/do';
+import 'rxjs/add/observable/from';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/from';
-import { Observable } from 'rxjs/Observable';
-import { GeolocationService } from '../services/geolocation-service.service';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/switchMap';
 import { Address } from '../domain/Address';
+import { Page } from '../domain/page';
+import { GeolocationService } from '../services/geolocation-service.service';
+import { City } from './../domain/City';
+import { Merchant } from './../domain/Merchant';
+import { MerchanFilter } from './../domain/merchant-filter';
+import { State } from './../domain/State';
+import { CityService } from './../services/city.service';
+import { MerchantService } from './../services/merchant.service';
+import { StateService } from './../services/state.service';
+
 
 const PAGE_SIZE = 12;
 
@@ -56,12 +50,14 @@ export class EstablishmentsComponent implements OnInit {
 
   HIDE_FILTER = 'Esconder filtros de pesquisa';
   SHOW_FILTER = 'Exibir filtros de pesquisa';
-  DEFAULT_CATEGORY = 'RESTAURANTE';
+  DEFAULT_CATEGORY = 'Restaurante';
+  OVERRIDE = true;
+  PRESERVE = false;
 
   searchBarState = 'visible';
   linkSearchBarState = this.HIDE_FILTER;
 
-  merchants: Merchant[] = [];
+  merchants: Array<Merchant> = [];
   states: State[] = [];
   cities: City[] = [];
 
@@ -72,9 +68,7 @@ export class EstablishmentsComponent implements OnInit {
 
   filter: MerchanFilter;
 
-  limit: number = PAGE_SIZE;
-
-  categorieSelected: string = this.DEFAULT_CATEGORY;
+  page: Page<Merchant>;
 
   constructor(
     private merchantService: MerchantService,
@@ -87,8 +81,34 @@ export class EstablishmentsComponent implements OnInit {
   ngOnInit() {
     this.clearFilter();
     this.createSearchControl();
+    this.createStateControl();
+    this.createCityControll();
     this.listStates();
-    this.findAll();
+    this.findAll(this.OVERRIDE);
+  }
+
+  createStateControl() {
+    this.stateControl = this.fb.control('stateControl');
+    this.searchForm = this.fb.group({
+      stateControl: this.stateControl
+    });
+
+    this.stateControl.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(value => this.findAll(this.OVERRIDE));
+  }
+
+  createCityControll() {
+    this.cityControl = this.fb.control('cityControl');
+    this.searchForm = this.fb.group({
+      cityControl: this.cityControl
+    });
+
+    this.cityControl.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(value => this.findAll(this.OVERRIDE));
   }
 
   createSearchControl() {
@@ -104,21 +124,28 @@ export class EstablishmentsComponent implements OnInit {
   }
 
   // Realizar aqui a consulta paginada
-  addLimit() {
-    this.limit = this.limit + PAGE_SIZE;
-    this.findAll();
+  fetchMoreRows() {
+    this.findAll(this.PRESERVE);
   }
 
-  findAll(): void {
-    this.merchantService
-      .findAll(this.filter).subscribe(
-        merchants => (this.merchants = merchants.slice(0, this.limit))
-      );
+  findAll(override: boolean): void {
+    this.filter.page = this.page.pageNumber;
+    this.filter.size = this.page.pageSize;
+    this.merchantService.findAll(this.filter).subscribe(
+        response => {
+          if (override) {
+            this.page = Page.of(response);
+            this.merchants = this.page.content;
+          } else {
+            this.page.update(Page.of(response));
+            this.merchants.concat(this.page.content);
+          }
+        });
   }
 
   findByFantasyName(search ?: string) {
     this.filter.fantasyName = search;
-    this.findAll();
+    this.findAll(this.OVERRIDE);
   }
 
   listStates() {
@@ -129,13 +156,13 @@ export class EstablishmentsComponent implements OnInit {
     this.filter.clearGeolocation();
     this.filter.state = stateID;
     this.cityService.findByUF(stateID).subscribe(cities => (this.cities = cities));
-    this.findAll();
+    this.findAll(this.OVERRIDE);
   }
 
   changeCity(city: string) {
     this.filter.clearGeolocation();
     this.filter.city = city;
-    this.findAll();
+    this.findAll(this.OVERRIDE);
   }
 
   toggleSearch() {
@@ -150,10 +177,11 @@ export class EstablishmentsComponent implements OnInit {
 
   changeCategoria(category: string) {
     this.filter.category = category;
-    this.findAll();
+    this.findAll(this.OVERRIDE);
   }
 
   private clearFilter(): void {
+    this.page = new Page<Merchant>(0, PAGE_SIZE);
     this.filter = new MerchanFilter();
     this.filter.category = this.DEFAULT_CATEGORY;
   }
@@ -166,7 +194,7 @@ export class EstablishmentsComponent implements OnInit {
       this.filter.lon = address.location.longitude;
       this.filter.state = address.state;
       this.filter.city = address.city;
-      this.findAll();
+      this.findAll(this.OVERRIDE);
     });
   }
 

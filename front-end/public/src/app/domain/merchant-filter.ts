@@ -9,7 +9,9 @@ export class MerchanFilter {
         public state?: string,
         public distance?: number,
         public lat?: number,
-        public lon?: number) {
+        public lon?: number,
+        public size?: number,
+        public page?: number) {
     }
 
     clearLocation() {

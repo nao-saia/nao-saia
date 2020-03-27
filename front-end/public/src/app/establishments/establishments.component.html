@@ -60,14 +60,13 @@
             </div>
             <div *ngIf="merchants.length === 0" class="col-12 shadow bg-white rounded">
               <p class="lead text-center">
-                Não foram encontrados estabelecimentos para a categoria
-                {{ categorieSelected }}.
+                Não foram encontrados estabelecimentos para a categoria <b>{{ filter.category }}</b>.
               </p>
             </div>
           </div>
         </section>
         <div *ngIf="merchants.length > 0" col="12">
-          <button (click)="addLimit()" class="btn btn-outline-white form-control">
+          <button (click)="fetchMoreRows()" class="btn btn-outline-white form-control">
             Ver mais estabelecimentos
           </button>
         </div>
