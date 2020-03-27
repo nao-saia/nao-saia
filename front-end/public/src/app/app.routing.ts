@@ -1,3 +1,5 @@
+import { LoggedinGuard } from './services/loggedin.service';
+import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.component';
 import { RegisterGuardService } from './services/registerguard.service';
 import { Routes } from "@angular/router";
 import { EstablishmentsComponent } from "./establishments/establishments.component";
@@ -22,5 +24,6 @@ export const ROUTES: Routes = [
   { path: "merchant/:id", component: ProfileComponent },
   { path: "merchant-register/:userId", component: MerchantComponent },
   { path: "merchants", component: EstablishmentsComponent },
+  { path: "my-merchants", component: OwnerMerchantComponent, canActivate: [LoggedinGuard] },
   { path: "", redirectTo: "landing", pathMatch: "full" }
 ];

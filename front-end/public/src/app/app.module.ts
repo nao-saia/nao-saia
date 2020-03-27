@@ -2,7 +2,7 @@ import { CarouselModule } from "ngx-bootstrap/carousel";
 import { FormsModule } from "@angular/forms";
 import { ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FooterComponent } from "./shared/footer/footer.component";
 import { NavbarComponent } from "./shared/navbar/navbar.component";
 import { ROUTES } from "./app.routing";
@@ -34,6 +34,8 @@ import { SupportUsComponent } from "./landing/support-us/support-us.component";
 import { MerchantComponent } from "./merchant/merchant.component";
 import { AlertComponent } from "./shared/alert/alert.component";
 import { FormBuilder } from "@angular/forms";
+import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.component';
+import { AuthInterceptor } from "./security/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -54,7 +56,8 @@ import { FormBuilder } from "@angular/forms";
     MerchantComponent,
     AlertComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    OwnerMerchantComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +76,7 @@ import { FormBuilder } from "@angular/forms";
       preloadingStrategy: PreloadAllModules
     })
   ],
-  providers: [FormBuilder],
+  providers: [FormBuilder, {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -25,9 +25,7 @@ export class LoginComponent extends AbstractViewComponent implements OnInit {
 
     if (this.model.loginValid()) {
       this.service.login(this.model).subscribe(
-        response => {
-          this.router.navigate([`/home`]);
-        },
+        () => this.router.navigate([`/my-merchants`]),
         reject => {
           super.showAlertWarning(reject.error.message);
         });

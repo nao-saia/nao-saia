@@ -100,7 +100,7 @@ export class EstablishmentsComponent implements OnInit {
     this.merchantService
       .findAll(search)
       .subscribe(
-        merchants => (this.merchants = merchants.slice(0, this.limit))
+        result => (this.merchants = result.content)
       );
   }
 
