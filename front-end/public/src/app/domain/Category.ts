@@ -1,8 +1,8 @@
 export class Category {
-  private id: string;
-  private name: string;
-  private updateAt: Date;
-  private createdAt: Date;
+  public id: string;
+  public name: string;
+  public updateAt: Date;
+  public createdAt: Date;
   public image: string;
 
   constructor(id, name, updateAt, createdAt, image) {
