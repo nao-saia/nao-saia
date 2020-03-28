@@ -1,22 +1,22 @@
-import { User } from './../domain/User';
-import { UserService } from './../services/user.service';
-import { City } from './../domain/City';
-import { State } from './../domain/State';
-import { StateService } from './../services/state.service';
-import { CityService } from './../services/city.service';
-import { GeolocationService } from './../services/geolocation-service.service';
+import { User } from '../domain/User';
+import { UserService } from '../services/user.service';
+import { City } from '../domain/City';
+import { State } from '../domain/State';
+import { StateService } from '../services/state.service';
+import { CityService } from '../services/city.service';
+import { GeolocationService } from '../services/geolocation-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MerchantService } from './../services/merchant.service';
-import { AbstractViewComponent } from './../shared/abstract.view.component';
-import { Merchant } from './../domain/Merchant';
+import { MerchantService } from '../services/merchant.service';
+import { AbstractViewComponent } from '../shared/abstract.view.component';
+import { Merchant } from '../domain/Merchant';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-merchant',
-  templateUrl: './merchant.component.html',
-  styleUrls: ['./merchant.component.css']
+  selector: 'app-merchant-register',
+  templateUrl: './merchant-register.component.html',
+  styleUrls: ['./merchant-register.component.css']
 })
-export class MerchantComponent extends AbstractViewComponent implements OnInit {
+export class MerchantRegisterComponent extends AbstractViewComponent implements OnInit {
 
   model: Merchant;
 
