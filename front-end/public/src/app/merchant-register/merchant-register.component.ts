@@ -28,6 +28,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
   useGeolocation: boolean;
   geolocationEnable: boolean;
+  cpfCnjValid: boolean = true;
 
   constructor(
     private service: MerchantService,
@@ -121,5 +122,9 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     this.cityService.findByUF(this.model.address.state).subscribe(cities => {
       this.cities = cities;
     });
+  }
+
+  setCpfCnpjValid(cpfCnpjValid) {
+    this.cpfCnjValid = cpfCnpjValid;
   }
 }
