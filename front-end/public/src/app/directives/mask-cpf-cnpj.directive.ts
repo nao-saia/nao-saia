@@ -84,10 +84,10 @@ export class MaskCpfCnpjDirective implements OnInit {
 
   maskCnpj() {
     let value: string = this.el.nativeElement.value;
-    value = value.replace(/^(\d{2})(\d)/, '$1.$2'); //Coloca ponto entre o segundo e o terceiro dígitos
-    value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3'); //Coloca ponto entre o quinto e o sexto dígitos
-    value = value.replace(/\.(\d{3})(\d)/, '.$1/$2'); //Coloca uma barra entre o oitavo e o nono dígitos
-    value = value.replace(/(\d{4})(\d)/, '$1-$2'); //Col    return value;
+    value = value.replace(/^(\d{2})(\d)/, '$1.$2');
+    value = value.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+    value = value.replace(/\.(\d{3})(\d)/, '.$1/$2');
+    value = value.replace(/(\d{4})(\d)/, '$1-$2');
     return value
   }
 
