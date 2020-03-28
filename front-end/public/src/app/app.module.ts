@@ -1,3 +1,4 @@
+import { MaterialInUseModule } from './material-in-use/material-in-use.module';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -70,6 +71,7 @@ import { AuthInterceptor } from './security/auth.interceptor';
     BrowserAnimationsModule,
     HttpClientModule,
     SharedModule.forRoot(),
+    MaterialInUseModule.forRoot(),
     CarouselModule.forRoot(),
     RouterModule.forRoot(ROUTES, {
       useHash: true,
