@@ -43,7 +43,7 @@ export class MaskCpfCnpjDirective implements OnInit {
     private renderer: Renderer2) { }
 
   ngOnInit(): void {
-    this.renderer.setProperty(this.el.nativeElement, 'maxlength', 14);
+    this.addMaxLength();
   }
 
   @HostListener('keydown', ['$event'])
@@ -61,11 +61,17 @@ export class MaskCpfCnpjDirective implements OnInit {
       return;
     } 
     if (this.isCpf()) {
+      this.addMaxLength();
       this.renderer.setProperty(this.el.nativeElement, 'value', this.maskCpf());
     } else if (this.isCnpj()) {
+      this.addMaxLength('18');
       this.renderer.setProperty(this.el.nativeElement, 'value', this.maskCnpj());
     }
     this.cpfCnpjValid.emit(true);
+  }
+
+  addMaxLength(maxLength: string = '14') {
+    this.renderer.setAttribute(this.el.nativeElement, 'maxlength', maxLength);
   }
 
   maskCpf() {
