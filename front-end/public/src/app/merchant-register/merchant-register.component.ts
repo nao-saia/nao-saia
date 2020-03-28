@@ -69,7 +69,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     this.model.categories.push(this.category);
     this.model.phones.push(this.phone);
 
-    if (this.model.valid()) {
+    if (this.model.valid() && this.cpfCnjValid) {
       this.service.save(this.model).subscribe(
         () => {
           super.showAlertInfo('Estabelecimento cadastrado com sucesso!');

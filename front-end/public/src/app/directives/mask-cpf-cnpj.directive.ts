@@ -48,7 +48,6 @@ export class MaskCpfCnpjDirective implements OnInit {
 
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    console.log(event.keyCode);
     const keyCode = event.keyCode;
     if (this.keyCodesValid.indexOf(keyCode) == -1) {
       event.preventDefault();
@@ -58,7 +57,6 @@ export class MaskCpfCnpjDirective implements OnInit {
   @HostListener('blur')
   onBlur() {
     if (!this.isCpf() && !this.isCnpj()) {
-      this.renderer.setProperty(this.el.nativeElement, 'value', '');
       this.cpfCnpjValid.emit(false);
       return;
     } 
