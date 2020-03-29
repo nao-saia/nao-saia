@@ -1,3 +1,4 @@
+import { CategoryService } from './../services/category.service';
 import { User } from '../domain/User';
 import { UserService } from '../services/user.service';
 import { City } from '../domain/City';
@@ -10,6 +11,7 @@ import { MerchantService } from '../services/merchant.service';
 import { AbstractViewComponent } from '../shared/abstract.view.component';
 import { Merchant } from '../domain/Merchant';
 import { Component, OnInit } from '@angular/core';
+import { Category } from '../domain/Category';
 
 @Component({
   selector: 'app-merchant-register',
@@ -20,7 +22,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
   model: Merchant;
 
-  category: string;
+  categoriesDataSource: string[];
   phone: string;
 
   states: Array<State>;
@@ -37,11 +39,12 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     private geoLocation: GeolocationService,
     private cityService: CityService,
     private stateService: StateService,
-    private userService: UserService) {
+    private userService: UserService,
+    private categoryService: CategoryService) {
     super();
     this.model = new Merchant();
   }
-  
+
   ngOnInit() {
     this.route.params.subscribe(params => {
       const merchantId = params['merchantId'];
@@ -51,6 +54,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
         this.addIdUserLogged();
       }
     });
+    this.loadCategories();
     this.geolocationEnable = this.geoLocation.isGeolocationEnable();
   }
 
@@ -66,7 +70,6 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
   save(): void {
 
-    this.model.categories.push(this.category);
     this.model.phones.push(this.phone);
 
     if (this.model.valid() && this.cpfCnjValid) {
@@ -121,6 +124,14 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     this.cities = [];
     this.cityService.findByUF(this.model.address.state).subscribe(cities => {
       this.cities = cities;
+    });
+  }
+
+  loadCategories(): void {
+    this.categoriesDataSource = [];
+    this.model.categories = ['Restaurante', 'Hamburgueria', 'Pizzaria', 'Outros'];
+    this.categoryService.findAll().subscribe(categories => {
+      this.categoriesDataSource = categories.map(item => item.name);
     });
   }
 
