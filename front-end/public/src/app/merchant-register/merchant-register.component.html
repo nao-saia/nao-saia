@@ -76,7 +76,11 @@
               <p class="mt-0"><b>Canais de Atendimento</b></p>
 
               <div class="row my-4">
-                <div class="col-md-6 col-sm-12 my-2">
+
+                <div class="col-md-1 col-sm-2 my-2">
+                  <img class="rounded" src="../../assets/img/establishment/ifood.ico"/>
+                </div>
+                <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" id="ifood" type="checkbox" [(ngModel)]="model.ifood">
                     <label class="custom-control-label" for="ifood">
@@ -85,7 +89,10 @@
                   </div>
                 </div>
                 
-                <div class="col-md-6 col-sm-12 my-2">
+                <div class="col-md-1 col-sm-2 my-2">
+                  <img class="rounded" src="../../assets/img/establishment/ubereats.ico"/>
+                </div>
+                <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" id="uberEats" type="checkbox" [(ngModel)]="model.uberEats">
                     <label class="custom-control-label" for="uberEats">
@@ -94,7 +101,10 @@
                   </div>
                 </div>
                 
-                <div class="col-md-6 col-sm-12 my-2">
+                <div class="col-md-1 col-sm-2 my-2">
+                  <img class="rounded" src="../../assets/img/establishment/rappi.ico"/>
+                </div>
+                <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" id="rappi" type="checkbox" [(ngModel)]="model.rappi">
                     <label class="custom-control-label" for="rappi">
@@ -103,24 +113,20 @@
                   </div>
                 </div>
 
-                <div class="col-md-6 col-sm-12 my-2">
+                <div class="col-md-1 col-sm-2 my-2">
+                  <img class="rounded inverter-imagem" src="../../assets/img/establishment/delivery-32x32.png"/>
+                </div>
+                <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
                     <input class="custom-control-input" id="ownDelivery" type="checkbox" [(ngModel)]="model.ownDelivery">
                     <label class="custom-control-label" for="ownDelivery">
-                      Serviço de Delivery Próprio
+                      Delivery
                     </label>
                   </div>
                 </div>
                 
               </div>
               
-              <div class="row my-4">
-                <img class="rounded" src="../../assets/img/establishment/ifood.ico" *ngIf="model.ifood"/>
-                <img class="rounded" src="../../assets/img/establishment/ubereats.ico" *ngIf="model.uberEats"/>
-                <img class="rounded" src="../../assets/img/establishment/rappi.ico" *ngIf="model.rappi"/>
-                <img class="rounded inverter-imagem" src="../../assets/img/establishment/delivery-32x32.png" *ngIf="model.ownDelivery"/>
-              </div>
-
               <p class="mt-0"><b>Seus Produtos/Serviços</b></p>
               <div class="form-group mb-4" [ngClass]="{'has-danger is-invalid': !model.cnpj}">
                 <textarea class="form-control form-control-alternative" name="note" rows="6" cols="80"
