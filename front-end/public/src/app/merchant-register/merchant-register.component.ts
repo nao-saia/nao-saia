@@ -30,6 +30,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
   useGeolocation: boolean;
   geolocationEnable: boolean;
+  cpfCnjValid: boolean = true;
 
   constructor(
     private service: MerchantService,
@@ -71,7 +72,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
     this.model.phones.push(this.phone);
 
-    if (this.model.valid()) {
+    if (this.model.valid() && this.cpfCnjValid) {
       this.service.save(this.model).subscribe(
         () => {
           super.showAlertInfo('Estabelecimento cadastrado com sucesso!');
@@ -132,5 +133,9 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     this.categoryService.findAll().subscribe(categories => {
       this.categoriesDataSource = categories.map(item => item.name);
     });
+  }
+
+  setCpfCnpjValid(cpfCnpjValid) {
+    this.cpfCnjValid = cpfCnpjValid;
   }
 }

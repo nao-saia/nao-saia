@@ -63,12 +63,12 @@
                 </app-chips-auto-complete>
               </div>
 
-              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.cnpj}">
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !cpfCnjValid}">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.cnpj" placeholder="CPF/CNPJ" type="text">
+                  <input class="form-control" appMaskCpfCnpj (cpfCnpjValid)="setCpfCnpjValid($event)" [(ngModel)]="model.cnpj" placeholder="CPF/CNPJ" type="text">
                 </div>
               </div>
 

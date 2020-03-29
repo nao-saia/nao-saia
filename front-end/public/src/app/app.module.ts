@@ -37,6 +37,7 @@ import { AlertComponent } from './shared/alert/alert.component';
 import { FormBuilder } from '@angular/forms';
 import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.component';
 import { AuthInterceptor } from './security/auth.interceptor';
+import { MaskCpfCnpjDirective } from './directives/mask-cpf-cnpj.directive';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { AuthInterceptor } from './security/auth.interceptor';
     FooterComponent,
     NavbarComponent,
     OwnerMerchantComponent,
+    MaskCpfCnpjDirective,
   ],
   imports: [
     BrowserModule,
