@@ -39,6 +39,7 @@ import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.componen
 import { AuthInterceptor } from './security/auth.interceptor';
 import { MaskCpfCnpjDirective } from './directives/mask-cpf-cnpj.directive';
 import { MaskTelCelDirective } from './directives/mask-tel-cel.directive';
+import { MaskZipCodeDirective } from './directives/mask-zipcode.directive';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { MaskTelCelDirective } from './directives/mask-tel-cel.directive';
     OwnerMerchantComponent,
     MaskCpfCnpjDirective,
     MaskTelCelDirective,
+    MaskZipCodeDirective,
   ],
   imports: [
     BrowserModule,

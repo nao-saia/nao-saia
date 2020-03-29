@@ -172,13 +172,14 @@
                 </div>
               </div>
 
-              <div class="form-group mt-5">
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !zipCodeValid}">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text"
-                    [disabled]="useGeolocation" (blur)="changeCEP($event)">
+                  <input class="form-control" appMaskZipCode (notification)="setZipCodeValid($event)" name="zipcode"
+                    [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text" [disabled]="useGeolocation"
+                    (blur)="changeCEP($event)">
                 </div>
               </div>
 
