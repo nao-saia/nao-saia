@@ -31,6 +31,8 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
   useGeolocation: boolean;
   geolocationEnable: boolean;
   cpfCnjValid: boolean = true;
+  telephoneValid: boolean = true;
+  cellPhoneValid: boolean = true;
 
   constructor(
     private service: MerchantService,
@@ -135,7 +137,15 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     });
   }
 
-  setCpfCnpjValid(cpfCnpjValid) {
+  setCpfCnpjValid(cpfCnpjValid: boolean) {
     this.cpfCnjValid = cpfCnpjValid;
+  }
+
+  setTelephoneValid(telephone: boolean) {
+    this.telephoneValid = telephone;
+  }
+
+  setCellPhoneValid(cellPhone: boolean) {
+    this.cellPhoneValid = cellPhone;
   }
 }
