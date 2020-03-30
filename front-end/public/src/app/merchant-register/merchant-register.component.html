@@ -55,11 +55,8 @@
 
               <p class="mt-0">Adicione ou remova as categorias em que seu estabelecimento se enquadra.</p>
               <div class="form-group mt-3" [ngClass]="{'has-danger is-invalid': !model.categories}">
-                <app-chips-auto-complete
-                 placeholder="Categorias de Estabelecimento"
-                 [acceptNewValues]="false"
-                 [availableItems]="categoriesDataSource"
-                 [selectedItems]="model.categories">
+                <app-chips-auto-complete placeholder="Categorias de Estabelecimento" [acceptNewValues]="false"
+                  [availableItems]="categoriesDataSource" [selectedItems]="model.categories">
                 </app-chips-auto-complete>
               </div>
 
@@ -68,7 +65,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-user"></i></span>
                   </div>
-                  <input class="form-control" appMaskCpfCnpj (cpfCnpjValid)="setCpfCnpjValid($event)" [(ngModel)]="model.cnpj" placeholder="CPF/CNPJ" type="text">
+                  <input class="form-control" appMaskCpfCnpj (notification)="setCpfCnpjValid($event)"
+                    [(ngModel)]="model.cnpj" placeholder="CPF/CNPJ" type="text">
                 </div>
               </div>
 
@@ -78,7 +76,7 @@
               <div class="row my-4">
 
                 <div class="col-md-1 col-sm-2 my-2">
-                  <img class="rounded" src="../../assets/img/establishment/ifood.ico"/>
+                  <img class="rounded" src="../../assets/img/establishment/ifood.ico" />
                 </div>
                 <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
@@ -88,9 +86,9 @@
                     </label>
                   </div>
                 </div>
-                
+
                 <div class="col-md-1 col-sm-2 my-2">
-                  <img class="rounded" src="../../assets/img/establishment/ubereats.ico"/>
+                  <img class="rounded" src="../../assets/img/establishment/ubereats.ico" />
                 </div>
                 <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
@@ -100,9 +98,9 @@
                     </label>
                   </div>
                 </div>
-                
+
                 <div class="col-md-1 col-sm-2 my-2">
-                  <img class="rounded" src="../../assets/img/establishment/rappi.ico"/>
+                  <img class="rounded" src="../../assets/img/establishment/rappi.ico" />
                 </div>
                 <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
@@ -114,19 +112,20 @@
                 </div>
 
                 <div class="col-md-1 col-sm-2 my-2">
-                  <img class="rounded inverter-imagem" src="../../assets/img/establishment/delivery-32x32.png"/>
+                  <img class="rounded inverter-imagem" src="../../assets/img/establishment/delivery-32x32.png" />
                 </div>
                 <div class="col-md-3 col-sm-10 my-2">
                   <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="ownDelivery" type="checkbox" [(ngModel)]="model.ownDelivery">
+                    <input class="custom-control-input" id="ownDelivery" type="checkbox"
+                      [(ngModel)]="model.ownDelivery">
                     <label class="custom-control-label" for="ownDelivery">
                       Delivery
                     </label>
                   </div>
                 </div>
-                
+
               </div>
-              
+
               <p class="mt-0"><b>Seus Produtos/Serviços</b></p>
               <div class="form-group mb-4" [ngClass]="{'has-danger is-invalid': !model.cnpj}">
                 <textarea class="form-control form-control-alternative" name="note" rows="6" cols="80"
@@ -135,22 +134,26 @@
               </div>
 
               <p class="mt-0"><b>Telefone para contato</b></p>
-              <div class="form-group mt-4" [ngClass]="{'has-danger is-invalid': !model.phones}">
+              <div class="form-group mt-4" [ngClass]="{'has-danger is-invalid': !telephoneValid}">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-phone"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="phone" placeholder="(62)988889999" type="text">
+                  <input class="form-control" appMaskTelCel maskType="telephone"
+                    (notification)="setTelephoneValid($event)" name="phone" [(ngModel)]="phone" placeholder="Telefone"
+                    type="text">
                 </div>
               </div>
 
               <p class="mt-0"><b>Whatsapp (opcional)</b></p>
-              <div class="form-group mt-4">
+              <div class="form-group mt-4" [ngClass]="{'has-danger is-invalid': !cellPhoneValid}">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-whatsapp"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.whatsapp" placeholder="+5511988889999" type="text">
+                  <input class="form-control" appMaskTelCel maskType="cellPhone"
+                    (notification)="setCellPhoneValid($event)" name="whatsapp" [(ngModel)]="model.whatsapp"
+                    placeholder="Whatsapp" type="text">
                 </div>
               </div>
 
@@ -160,8 +163,8 @@
               <div class="row my-4" *ngIf="geolocationEnable">
                 <div class="col-12">
                   <div class="custom-control custom-control-alternative custom-checkbox">
-                    <input class="custom-control-input" id="useGeolocation" type="checkbox" (change)="changeGeolocation($event)"
-                      [(ngModel)]="useGeolocation">
+                    <input class="custom-control-input" id="useGeolocation" type="checkbox"
+                      (change)="changeGeolocation($event)" [(ngModel)]="useGeolocation">
                     <label class="custom-control-label" for="useGeolocation">
                       <span><b>Usar localização atual?</b></span>
                     </label>
@@ -169,13 +172,14 @@
                 </div>
               </div>
 
-              <div class="form-group mt-5">
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !zipCodeValid}">
                 <div class="input-group input-group-alternative">
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text"
-                    [disabled]="useGeolocation" (blur)="changeCEP($event)">
+                  <input class="form-control" appMaskZipCode (notification)="setZipCodeValid($event)" name="zipcode"
+                    [(ngModel)]="model.address.zipcode" placeholder="CEP" type="text" [disabled]="useGeolocation"
+                    (blur)="changeCEP($event)">
                 </div>
               </div>
 
@@ -194,7 +198,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.district" placeholder="Bairro" type="text"  [disabled]="true">
+                  <input class="form-control" [(ngModel)]="model.address.district" placeholder="Bairro" type="text"
+                    [disabled]="true">
                 </div>
               </div>
 
@@ -203,7 +208,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.city" placeholder="Cidade" type="text"  [disabled]="true">
+                  <input class="form-control" [(ngModel)]="model.address.city" placeholder="Cidade" type="text"
+                    [disabled]="true">
                 </div>
               </div>
 
@@ -212,7 +218,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.state" placeholder="Estado" type="text"  [disabled]="true">
+                  <input class="form-control" [(ngModel)]="model.address.state" placeholder="Estado" type="text"
+                    [disabled]="true">
                 </div>
               </div>
 
@@ -221,7 +228,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fa fa-map"></i></span>
                   </div>
-                  <input class="form-control" [(ngModel)]="model.address.additionalInfo" placeholder="Complemento ex. Bloco, Apto." type="text">
+                  <input class="form-control" [(ngModel)]="model.address.additionalInfo"
+                    placeholder="Complemento ex. Bloco, Apto." type="text">
                 </div>
               </div>
 

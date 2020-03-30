@@ -31,6 +31,9 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
   useGeolocation: boolean;
   geolocationEnable: boolean;
   cpfCnjValid: boolean = true;
+  telephoneValid: boolean = true;
+  cellPhoneValid: boolean = true;
+  zipCodeValid: boolean = true;
 
   constructor(
     private service: MerchantService,
@@ -72,7 +75,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
     this.model.phones.push(this.phone);
 
-    if (this.model.valid() && this.cpfCnjValid) {
+    if (this.isFormValid()) {
       this.service.save(this.model).subscribe(
         () => {
           super.showAlertInfo('Estabelecimento cadastrado com sucesso!');
@@ -88,14 +91,21 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     }
   }
 
+  isFormValid() {
+    return this.model.valid() && this.cpfCnjValid 
+            && this.telephoneValid;
+  }
+
   changeCEP(data): void {
     const zipcode = this.model?.address?.zipcode ?? null;
-    this.geoLocation.getAddressFromZipCode(zipcode).subscribe(address => {
-      this.model.address = address;
-    }, error => {
-      super.showAlertWarning('Erro ao consultar CEP');
-      console.log(error);
-    });
+    if (zipcode && this.zipCodeValid) {
+      this.geoLocation.getAddressFromZipCode(zipcode).subscribe(address => {
+        this.model.address = address;
+      }, error => {
+        super.showAlertWarning('Erro ao consultar CEP');
+        console.log(error);
+      });
+    }
   }
 
   changeGeolocation(data): void {
@@ -135,7 +145,19 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     });
   }
 
-  setCpfCnpjValid(cpfCnpjValid) {
+  setCpfCnpjValid(cpfCnpjValid: boolean) {
     this.cpfCnjValid = cpfCnpjValid;
+  }
+
+  setTelephoneValid(telephone: boolean) {
+    this.telephoneValid = telephone;
+  }
+
+  setCellPhoneValid(cellPhone: boolean) {
+    this.cellPhoneValid = cellPhone;
+  }
+
+  setZipCodeValid(zipCode: boolean) {
+    this.zipCodeValid = zipCode;
   }
 }

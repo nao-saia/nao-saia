@@ -64,6 +64,12 @@
             <span class="nav-link-inner--text">Doações</span>
           </a>
         </li>
+        <li class="nav-item dropdown" *ngIf="logged">
+          <a class="nav-link no-caret" [routerLink]="['/my-merchants']" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Meus estabelecimentos</span>
+          </a>
+        </li>
         <!-- <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="ni ni-collection d-lg-none"></i>
@@ -112,14 +118,14 @@
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
         </li> -->
-        <li class="nav-item d-none d-lg-block ml-lg-4">
+        <!-- <li class="nav-item d-none d-lg-block ml-lg-4">
           <a [routerLink]="['/register']" class="btn btn-neutral btn-icon">
             <span class="btn-inner--icon">
               <i class="fa fa-registered mr-2"></i>
             </span>
             <span class="nav-link-inner--text">Cadastre Seu Estabelecimento</span>
           </a>
-        </li>
+        </li> -->
         <li class="nav-item dropdown" *ngIf="!logged">
           <a class="nav-link no-caret" [routerLink]="['/login']" role="button">
             <i class="ni ni-collection d-lg-none"></i>
