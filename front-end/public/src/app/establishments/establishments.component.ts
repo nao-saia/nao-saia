@@ -1,3 +1,4 @@
+import { CategoryService } from './../services/category.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
@@ -17,6 +18,7 @@ import { State } from './../domain/State';
 import { CityService } from './../services/city.service';
 import { MerchantService } from './../services/merchant.service';
 import { StateService } from './../services/state.service';
+import { Category } from '../domain/Category';
 
 
 const PAGE_SIZE = 12;
@@ -60,11 +62,13 @@ export class EstablishmentsComponent implements OnInit {
   merchants: Array<Merchant> = [];
   states: State[] = [];
   cities: City[] = [];
+  categories: Category[] = [];
 
   searchForm: FormGroup;
   searchControl: FormControl;
   stateControl: FormControl;
   cityControl: FormControl;
+  categoryControl: FormControl;
 
   filter: MerchanFilter;
 
@@ -75,24 +79,22 @@ export class EstablishmentsComponent implements OnInit {
     private stateService: StateService,
     private cityService: CityService,
     private geolocation: GeolocationService,
-    private fb: FormBuilder
-  ) { }
+    private categoryService: CategoryService,
+    private fb: FormBuilder) {
+    this.createForm();
+   }
 
   ngOnInit() {
     this.clearFilter();
-    this.createSearchControl();
-    this.createStateControl();
-    this.createCityControll();
+    
     this.listStates();
+    this.listCategories();
     this.findAll(this.OVERRIDE);
   }
 
   createStateControl() {
-    this.stateControl = this.fb.control('stateControl');
-    this.searchForm = this.fb.group({
-      stateControl: this.stateControl
-    });
-
+    this.stateControl = this.fb.control('');
+    this.stateControl.setValue('');
     this.stateControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
@@ -100,12 +102,19 @@ export class EstablishmentsComponent implements OnInit {
   }
 
   createCityControll() {
-    this.cityControl = this.fb.control('cityControl');
-    this.searchForm = this.fb.group({
-      cityControl: this.cityControl
-    });
-
+    this.cityControl = this.fb.control('');
+    this.cityControl.disable();
+    this.cityControl.setValue('');
     this.cityControl.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .subscribe(value => this.findAll(this.OVERRIDE));
+  }
+
+  createCategoryControll() {
+    this.categoryControl = this.fb.control('');
+    this.categoryControl.setValue('');
+    this.categoryControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
       .subscribe(value => this.findAll(this.OVERRIDE));
@@ -113,14 +122,24 @@ export class EstablishmentsComponent implements OnInit {
 
   createSearchControl() {
     this.searchControl = this.fb.control('');
-    this.searchForm = this.fb.group({
-      searchControl: this.searchControl
-    });
-
     this.searchControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
       .subscribe(searchTerm => this.findByFantasyName(searchTerm));
+  }
+
+  createForm(): void {
+    this.createSearchControl();
+    this.createStateControl();
+    this.createCityControll();
+    this.createCategoryControll();
+
+    this.searchForm = this.fb.group({
+      searchControl: this.searchControl,
+      categoryControl: this.categoryControl,
+      stateControl: this.stateControl,
+      cityControl: this.cityControl
+    });
   }
 
   // Realizar aqui a consulta paginada
@@ -132,18 +151,18 @@ export class EstablishmentsComponent implements OnInit {
     this.filter.page = this.page.pageNumber;
     this.filter.size = this.page.pageSize;
     this.merchantService.findAll(this.filter).subscribe(
-        response => {
-          if (override) {
-            this.page = Page.of(response);
-            this.merchants = this.page.content;
-          } else {
-            this.page.update(Page.of(response));
-            this.merchants.concat(this.page.content);
-          }
-        });
+      response => {
+        if (override) {
+          this.page = Page.of(response);
+          this.merchants = this.page.content;
+        } else {
+          this.page.update(Page.of(response));
+          this.merchants.concat(this.page.content);
+        }
+      });
   }
 
-  findByFantasyName(search ?: string) {
+  findByFantasyName(search?: string) {
     this.filter.fantasyName = search;
     this.findAll(this.OVERRIDE);
   }
@@ -152,10 +171,21 @@ export class EstablishmentsComponent implements OnInit {
     this.stateService.findAll().subscribe(states => (this.states = states));
   }
 
+  listCategories() {
+    this.categoryService.findAll().subscribe(categories => (this.categories = categories));
+  }
+
   changeState(stateID: string) {
     this.filter.clearGeolocation();
     this.filter.state = stateID;
-    this.cityService.findByUF(stateID).subscribe(cities => (this.cities = cities));
+    this.cities = [];
+    this.cityControl.disable();
+    this.cityService.findByUF(stateID).subscribe(cities => {
+      if (cities) {
+        this.cityControl.enable();
+      }
+      this.cities = cities;
+    });
     this.findAll(this.OVERRIDE);
   }
 
@@ -168,14 +198,14 @@ export class EstablishmentsComponent implements OnInit {
   toggleSearch() {
     this.searchBarState =
       this.searchBarState === 'hidden' ? 'visible' : 'hidden';
-      if (this.searchBarState === 'hidden') {
-        this.linkSearchBarState = this.SHOW_FILTER;
-      } else {
-        this.linkSearchBarState = this.HIDE_FILTER;
-      }
+    if (this.searchBarState === 'hidden') {
+      this.linkSearchBarState = this.SHOW_FILTER;
+    } else {
+      this.linkSearchBarState = this.HIDE_FILTER;
+    }
   }
 
-  changeCategoria(category: string) {
+  changeCategory(category: string) {
     this.filter.category = category;
     this.findAll(this.OVERRIDE);
   }
