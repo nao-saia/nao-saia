@@ -86,7 +86,11 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
           }, 3000);
         },
         reject => {
-          super.showAlertWarning(reject.error.message);
+          let message = reject.error.message;
+          if (!message) {
+            message =  'Erro ao cadastrar usuário';
+          }
+          super.showAlertWarning(message);
         });
     } else {
       super.showAlertWarning('Cadastro inválido verifique os campos obrigatórios!');
