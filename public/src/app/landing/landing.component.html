@@ -22,11 +22,11 @@
               </h1>
               <p class="lead text-white">Encontre o que você precisa durante esta quarentena e evite contaminar-se com o COVID-19 (coronavírus).</p>
               <div class="btn-wrapper">
-                <a href="#opcoes-compra" class="btn btn-info btn-icon mb-3 mb-sm-0">
+                <a   [routerLink]="['/merchants']" class="btn btn-info btn-icon mb-3 mb-sm-0">
                   <span class="btn-inner--text">Como Encontrar</span>
                   <span class="btn-inner--icon"><i class="fa fa-cart-plus"></i></span>
                 </a>
-                <a href="#register" class="btn btn-white btn-icon mb-3 mb-sm-0">
+                <a  [routerLink]="['/register']" class="btn btn-white btn-icon mb-3 mb-sm-0">
                   <span class="btn-inner--text">Cadastre Seu Estabelecimento</span>
                   <span class="btn-inner--icon"><i class="fa fa-registered"></i></span>
                 </a>
@@ -61,12 +61,12 @@
                   </h6>
                   <p class="description mt-3">Encontre suprimentos por região.</p>
                   <div>
-                    <span class="badge badge-pill badge-primary">SP</span>
-                    <span class="badge badge-pill badge-info">DF</span>
-                    <span class="badge badge-pill badge-info">RJ</span>
-                    <span class="badge badge-pill badge-info">Outros</span>
+                    <span class="badge badge-pill badge-primary" [routerLink]="['/merchants']">SP</span>
+                    <span class="badge badge-pill badge-info"  [routerLink]="['/merchants']">DF</span>
+                    <span class="badge badge-pill badge-info"  [routerLink]="['/merchants']">RJ</span>
+                    <span class="badge badge-pill badge-info"  [routerLink]="['/merchants']">Outros</span>
                   </div>
-                  <a [routerLink]="['/merchants']" class="btn btn-primary mt-4">Estabelecimentos por Região</a>
+                  <a  [routerLink]="['/merchants']" class="btn btn-primary mt-4">Estabelecimentos por Região</a>
                 </div>
               </div>
             </div>
@@ -81,12 +81,12 @@
                   </h6>
                   <p class="description mt-3">Encontre suprimentos por categorias.</p>
                   <div>
-                    <span class="badge badge-pill badge-success">supermercados</span>
-                    <span class="badge badge-pill badge-info">farmacias</span>
-                    <span class="badge badge-pill badge-info">restaurantes</span>
-                    <span class="badge badge-pill badge-info">outros</span>
+                    <span class="badge badge-pill badge-success"  [routerLink]="['/merchants']">supermercados</span>
+                    <span class="badge badge-pill badge-info"  [routerLink]="['/merchants']">farmacias</span>
+                    <span class="badge badge-pill badge-info"  [routerLink]="['/merchants']">restaurantes</span>
+                    <span class="badge badge-pill badge-info"  [routerLink]="['/merchants']">outros</span>
                   </div>
-                  <a href="javascript:void(0)" class="btn btn-success mt-4" [routerLink]="['/merchants']">Estabelecimentos por Categorias</a>
+                  <a class="btn btn-success mt-4"  [routerLink]="['/merchants']">Estabelecimentos por Categorias</a>
                 </div>
               </div>
             </div>
