@@ -54,7 +54,7 @@
         <div class="form-group">
           <select class="form-control m-2" formControlName="cityControl" (change)="changeCity($event.target.value)">
             <option [value]="null">Cidade</option>
-            <option [value]="city" *ngFor="let city of cities">{{
+            <option [value]="city.name" *ngFor="let city of cities">{{
             city.name
           }}</option>
           </select>

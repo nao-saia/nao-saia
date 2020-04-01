@@ -113,7 +113,7 @@ export class EstablishmentsComponent implements OnInit {
 
   createCategoryControll() {
     this.categoryControl = this.fb.control('');
-    this.categoryControl.setValue('');
+    this.categoryControl.setValue(this.DEFAULT_CATEGORY);
     this.categoryControl.valueChanges
       .debounceTime(500)
       .distinctUntilChanged()
