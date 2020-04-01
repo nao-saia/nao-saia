@@ -13,7 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 
 export const ROUTES: Routes = [
   // { path: 'home',             component: HomeComponent },
-  { path: 'home', component: LandingComponent },
+  { path: 'home', component: EstablishmentsComponent },
   { path: 'register', component: SignupComponent, canActivate: [RegisterGuardService] },
   { path: 'landing', component: LandingComponent },
   { path: 'login', component: LoginComponent },
@@ -24,5 +24,5 @@ export const ROUTES: Routes = [
   { path: 'merchant-register/:merchantId', component: MerchantRegisterComponent },
   { path: 'merchants', component: EstablishmentsComponent },
   { path: 'my-merchants', component: OwnerMerchantComponent, canActivate: [LoggedinGuard] },
-  { path: '', redirectTo: 'landing', pathMatch: 'full' }
+  { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -44,10 +44,10 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
     }
 
     addOwnerRole(user: User) {
-        if (this.isAddOwnerRole()) {
+        // if (this.isAddOwnerRole()) {
             const ownerRole: Role = Role.ROLE_OWNER;
             user.addRoles(ownerRole);
-        }
+        // }
     }
 
     login() {
