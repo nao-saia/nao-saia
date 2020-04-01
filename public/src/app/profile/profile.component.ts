@@ -60,6 +60,10 @@ export class ProfileComponent implements OnInit {
     return phonesLabel;
   }
 
+  getWhatsapp() {
+    return Mask.maskValuePhone(this.merchant.whatsapp);
+  }
+
   getLogo() {
     let logo = this.merchant.logo;
     if (!logo) {
@@ -69,11 +73,11 @@ export class ProfileComponent implements OnInit {
   }
 
   getCategories() {
-    let categoriesLabel: string = "";
+    let categoriesLabel: string = '';
     if (this.merchant.categories) {
       this.merchant.categories.forEach((categorie, index) => {
         if (index > 0) {
-          categoriesLabel = categoriesLabel.concat(" e ").concat(categorie);
+          categoriesLabel = categoriesLabel.concat(', ').concat(categorie);
         } else {
           categoriesLabel = categoriesLabel.concat(categorie);
         }
