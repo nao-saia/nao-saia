@@ -25,6 +25,8 @@ export class Merchant {
         this.displayAddress = true;
         this.phones = [];
         this.categories = [];
+        this.active = true;
+        this.acceptTerms = true;
     }
 
     public valid(): boolean {
