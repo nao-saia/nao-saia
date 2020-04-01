@@ -4,6 +4,7 @@ import { Role } from './../domain/Role';
 import { User } from './../domain/User';
 import { UserService } from './../services/user.service';
 import { AbstractViewComponent } from './../shared/abstract.view.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-signup',
@@ -22,8 +23,8 @@ export class SignupComponent extends AbstractViewComponent implements OnInit {
     ownerUser: boolean;
 
     constructor(private service: UserService,
-        private router: Router) {
-        super();
+        private router: Router, toastr: ToastrService) {
+        super(toastr);
     }
 
     ngOnInit() {

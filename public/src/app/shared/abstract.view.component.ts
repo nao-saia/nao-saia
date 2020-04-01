@@ -1,38 +1,33 @@
 import { Alert } from './alert/alert.component';
+import { ToastrService } from 'ngx-toastr';
 
 export class AbstractViewComponent {
     dataAlert: Alert = {};
 
-    constructor() {}
+    constructor(private toastr: ToastrService) {}
 
     public onCloseAlert(): void {
         this.dataAlert = {};
     }
 
-    public showAlertWarning(message: string): void {
-        this.dataAlert = {
-            type: 'warning',
-            strong: 'Warning!',
-            message: message,
-            icon: 'ni ni-bell-55'
-        };
+    public showAlertWarning(message: string, title?: string): void {
+        if (!title) {
+            title =  'Atenção!';
+        }
+        this.toastr.warning(message, title);
     }
 
-    public showAlertInfo(message: string): void {
-        this.dataAlert = {
-            type: 'info',
-            strong: 'Info!',
-            message: message,
-            icon: 'ni ni-bell-55'
-        };
+    public showAlertInfo(message: string, title?: string): void {
+        if (!title) {
+            title =  'Info!';
+        }
+        this.toastr.info(message, title);
     }
 
-    public showAlertError(message: string): void {
-        this.dataAlert = {
-            type: 'error',
-            strong: 'Erro!',
-            message: message,
-            icon: 'ni ni-bell-55'
-        };
+    public showAlertError(message: string, title?: string): void {
+        if (!title) {
+            title =  'Erro!';
+        }
+        this.toastr.error(message, title);
     }
 }

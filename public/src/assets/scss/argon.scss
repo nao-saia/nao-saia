@@ -136,3 +136,7 @@ $argon-design-system-angular-theme: mat-light-theme($argon-design-system-angular
 @import "angular/tabs.scss";
 @import "angular/datepicker.scss";
 @import "angular/input-group.scss";
+
+
+// regular style toast 
+@import '~ngx-toastr/toastr';

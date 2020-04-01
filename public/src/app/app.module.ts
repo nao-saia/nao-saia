@@ -1,45 +1,44 @@
-import { MaterialInUseModule } from './material-in-use/material-in-use.module';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FooterComponent } from './shared/footer/footer.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { ROUTES } from './app.routing';
-
-import { SharedModule } from './shared/shared.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { RouterModule, PreloadAllModules } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PreloadAllModules, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-
-import { HomeModule } from './home/home.module';
-import { LoginComponent } from './login/login.component';
-import { ContributorsComponent } from './landing/contributors/contributors.component';
-import { BannerRegisterComponent } from './landing/banner-register/banner-register.component';
-import { EstablishmentsComponent } from './establishments/establishments.component';
-import { CategoriesComponent } from './establishments/categories/categories.component';
-import { EstablishmentComponent } from './establishments/establishment/establishment.component';
-import { EstablishmentDetailComponent } from './establishments/establishment-detail/establishment-detail.component';
-
-import { AdvantagesComponent } from './landing/advantages/advantages.component';
-import { GoalsComponent } from './landing/goals/goals.component';
-import { SupportUsComponent } from './landing/support-us/support-us.component';
-import { MerchantRegisterComponent } from './merchant-register/merchant-register.component';
-import { AlertComponent } from './shared/alert/alert.component';
-import { FormBuilder } from '@angular/forms';
-import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.component';
-import { AuthInterceptor } from './security/auth.interceptor';
+import { ROUTES } from './app.routing';
 import { MaskCpfCnpjDirective } from './directives/mask-cpf-cnpj.directive';
 import { MaskTelCelDirective } from './directives/mask-tel-cel.directive';
 import { MaskZipCodeDirective } from './directives/mask-zipcode.directive';
+import { CategoriesComponent } from './establishments/categories/categories.component';
+import { EstablishmentDetailComponent } from './establishments/establishment-detail/establishment-detail.component';
+import { EstablishmentComponent } from './establishments/establishment/establishment.component';
+import { EstablishmentsComponent } from './establishments/establishments.component';
+import { HomeModule } from './home/home.module';
+import { AdvantagesComponent } from './landing/advantages/advantages.component';
+import { BannerRegisterComponent } from './landing/banner-register/banner-register.component';
+import { ContributorsComponent } from './landing/contributors/contributors.component';
+import { GoalsComponent } from './landing/goals/goals.component';
+import { LandingComponent } from './landing/landing.component';
+import { SupportUsComponent } from './landing/support-us/support-us.component';
+import { LoginComponent } from './login/login.component';
+import { MaterialInUseModule } from './material-in-use/material-in-use.module';
+import { MerchantRegisterComponent } from './merchant-register/merchant-register.component';
+import { OwnerMerchantComponent } from './owner-merchant/owner-merchant.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthInterceptor } from './security/auth.interceptor';
+import { AlertComponent } from './shared/alert/alert.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+import { SharedModule } from './shared/shared.module';
+import { SignupComponent } from './signup/signup.component';
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -75,6 +74,11 @@ import { MaskZipCodeDirective } from './directives/mask-zipcode.directive';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
     HttpClientModule,
     SharedModule.forRoot(),
     MaterialInUseModule.forRoot(),

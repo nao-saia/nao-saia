@@ -12,6 +12,7 @@ import { AbstractViewComponent } from '../shared/abstract.view.component';
 import { Merchant } from '../domain/Merchant';
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../domain/Category';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-merchant-register',
@@ -43,8 +44,9 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     private cityService: CityService,
     private stateService: StateService,
     private userService: UserService,
-    private categoryService: CategoryService) {
-    super();
+    private categoryService: CategoryService,
+    toastr: ToastrService) {
+    super(toastr);
     this.model = new Merchant();
   }
 
