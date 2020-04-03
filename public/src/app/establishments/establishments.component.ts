@@ -95,29 +95,29 @@ export class EstablishmentsComponent implements OnInit {
   createStateControl() {
     this.stateControl = this.fb.control('');
     this.stateControl.setValue('');
-    this.stateControl.valueChanges
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .subscribe(value => this.findAll(this.OVERRIDE));
+    // this.stateControl.valueChanges
+    //   .debounceTime(500)
+    //   .distinctUntilChanged()
+    //   .subscribe(value => this.findAll(this.OVERRIDE));
   }
 
   createCityControll() {
     this.cityControl = this.fb.control('');
     this.cityControl.disable();
     this.cityControl.setValue('');
-    this.cityControl.valueChanges
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .subscribe(value => this.findAll(this.OVERRIDE));
+    // this.cityControl.valueChanges
+    //   .debounceTime(500)
+    //   .distinctUntilChanged()
+    //   .subscribe(value => this.findAll(this.OVERRIDE));
   }
 
   createCategoryControll() {
     this.categoryControl = this.fb.control('');
     this.categoryControl.setValue(this.DEFAULT_CATEGORY);
-    this.categoryControl.valueChanges
-      .debounceTime(500)
-      .distinctUntilChanged()
-      .subscribe(value => this.findAll(this.OVERRIDE));
+    // this.categoryControl.valueChanges
+    //   .debounceTime(500)
+    //   .distinctUntilChanged()
+    //   .subscribe(value => this.findAll(this.OVERRIDE));
   }
 
   createSearchControl() {
