@@ -10,9 +10,9 @@ export class GeolocationService {
 
   constructor(private http: HttpWrapperService) { }
 
-  getCurrentLocation(address: Address): Observable<Address> {
+  getCurrentLocation(address: Address, anyDevice?: boolean): Observable<Address> {
     return new Observable((subscriber) => {
-      if (this.isGeolocationEnable()) {
+      if (this.isGeolocationEnable(anyDevice)) {
         const geolocation = navigator.geolocation;
         geolocation.getCurrentPosition((position: Position) => {
           if (position) {
@@ -43,8 +43,8 @@ export class GeolocationService {
     return this.http.get<Address>(`geolocation/location?lat=${latitude}&lon=${longitude}`);
   }
 
-  isGeolocationEnable(): boolean {
-    return this.isMobile() && !!navigator.geolocation;
+  isGeolocationEnable(anyDevice?: boolean): boolean {
+    return (this.isMobile() || anyDevice) && !!navigator.geolocation;
   }
 
   isMobile(): boolean {

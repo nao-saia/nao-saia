@@ -165,7 +165,7 @@ export class EstablishmentsComponent implements OnInit {
 
   changeState(stateID: string) {
     this.filter.clearGeolocation();
-    this.filter.state = stateID;
+    this.filter.state = stateID ? stateID : null;
     this.cities = [];
     this.cityControl.disable();
     this.cityService.findByUF(stateID).subscribe(cities => {
@@ -179,7 +179,7 @@ export class EstablishmentsComponent implements OnInit {
 
   changeCity(city: string) {
     this.filter.clearGeolocation();
-    this.filter.city = city;
+    this.filter.city = city ? city : null;
     this.findAll(this.OVERRIDE);
   }
 
@@ -194,7 +194,7 @@ export class EstablishmentsComponent implements OnInit {
   }
 
   changeCategory(category: string) {
-    this.filter.category = category;
+    this.filter.category = category ? category : null;
     this.findAll(this.OVERRIDE);
   }
 
@@ -207,11 +207,11 @@ export class EstablishmentsComponent implements OnInit {
   getCurrentLocation(): void {
     const address = new Address();
     this.filter.clearLocation();
-    this.geolocation.getCurrentLocation(address).subscribe((address) => {
+    this.geolocation.getCurrentLocation(address, true).subscribe((address) => {
       this.filter.lat = address.location.latitude;
       this.filter.lon = address.location.longitude;
-      this.filter.state = address.state;
-      this.filter.city = address.city;
+      this.filter.state = address.state ? address.state : null;
+      this.filter.city = address.city ? address.city : null;
       this.findAll(this.OVERRIDE);
     });
   }
