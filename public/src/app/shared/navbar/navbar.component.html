@@ -30,7 +30,7 @@
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-ui-04 d-lg-none"></i>
+            <i class="fa fa-search d-lg-none"></i>
             <span class="nav-link-inner--text">Encontre</span>
           </a>
           <div class="dropdown-menu-xl dropdown-menu">
@@ -50,76 +50,30 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" [routerLink]="['/landing']" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Conheça o projeto</span>
+            <i class="fa fa-info d-lg-none"></i>
+            <span class="nav-link-inner--text">Sobre</span>
           </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" [routerLink]="['/contributors']" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
+            <i class="fa fa-users d-lg-none"></i>
             <span class="nav-link-inner--text">Colaboradores</span>
           </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" [routerLink]="['/support-us']" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
+            <i class="fa fa-heart d-lg-none"></i>
             <span class="nav-link-inner--text">Doações</span>
           </a>
         </li>
         <li class="nav-item dropdown" *ngIf="logged">
           <a class="nav-link no-caret" [routerLink]="['/my-merchants']" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
+            <i class="fa fa-cart-plus d-lg-none"></i>
             <span class="nav-link-inner--text">Meus estabelecimentos</span>
           </a>
         </li>
-        <!-- <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">Compartilhe</span>
-          </a>
-          <div class="dropdown-menu">
-            <a [routerLink]="['/landing']" class="dropdown-item">No Facebook</a>
-            <a [routerLink]="['/landing']" class="dropdown-item">No Intagram</a>
-            <a [routerLink]="['/landing']" class="dropdown-item">No Whatsapp</a>
-          </div>
-        </li> -->
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
-        <!-- <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.facebook.com/{{socialMedias.facebook}}" target="_blank"
-            data-toggle="tooltip" title="Curta nossa página no Facebook">
-            <i class="fa fa-facebook-square"></i>
-            <span class="nav-link-inner--text d-lg-none">Facebook</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.instagram.com/{{socialMedias.instagram}}" target="_blank"
-            data-toggle="tooltip" title="Siga-nos no Instagram">
-            <i class="fa fa-instagram"></i>
-            <span class="nav-link-inner--text d-lg-none">Instagram</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://twitter.com/{{socialMedias.twitter}}" target="_blank"
-            data-toggle="tooltip" title="Siga-nos no Twitter">
-            <i class="fa fa-twitter-square"></i>
-            <span class="nav-link-inner--text d-lg-none">Twitter</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://www.linkedin.com/company/{{socialMedias.linkedin}}"
-            target="_blank" data-toggle="tooltip" title="Siga-nos no Linkedin">
-            <i class="fa fa-linkedin-square"></i>
-            <span class="nav-link-inner--text d-lg-none">Linkedin</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-link-icon" href="https://github.com/{{socialMedias.github}}" target="_blank"
-            data-toggle="tooltip" title="Star us on Github">
-            <i class="fa fa-github"></i>
-            <span class="nav-link-inner--text d-lg-none">Github</span>
-          </a>
-        </li> -->
         <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!logged">
           <a [routerLink]="['/register']" class="btn btn-warning btn-icon">
             <span class="btn-inner--icon">
@@ -130,13 +84,13 @@
         </li>
         <li class="nav-item dropdown" *ngIf="!logged">
           <a class="nav-link no-caret" [routerLink]="['/login']" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
+            <i class="fa fa-sign-in d-lg-none"></i>
             <span class="nav-link-inner--text"><b>Login</b></span>
           </a>
         </li>
         <li class="nav-item dropdown" *ngIf="logged">
           <a class="nav-link no-caret" (click)="logout()" role="button">
-            <i class="ni ni-collection d-lg-none"></i>
+            <i class="fa fa-sign-out d-lg-none"></i>
             <span class="nav-link-inner--text"><b>Sair</b></span>
           </a>
         </li>
