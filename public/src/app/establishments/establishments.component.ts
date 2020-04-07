@@ -165,11 +165,11 @@ export class EstablishmentsComponent implements OnInit {
 
   changeState(stateID: string) {
     this.filter.clearGeolocation();
-    this.filter.state = stateID ? stateID : null;
+    this.filter.state = stateID && stateID !== 'Estado' ? stateID : null;
     this.cities = [];
     this.cityControl.disable();
     this.cityService.findByUF(stateID).subscribe(cities => {
-      if (cities) {
+      if (cities && cities.length > 0) {
         this.cityControl.enable();
       }
       this.cities = cities;
@@ -179,7 +179,7 @@ export class EstablishmentsComponent implements OnInit {
 
   changeCity(city: string) {
     this.filter.clearGeolocation();
-    this.filter.city = city ? city : null;
+    this.filter.city = city && city !== 'Cidade' ? city : null;
     this.findAll(this.OVERRIDE);
   }
 
@@ -194,7 +194,7 @@ export class EstablishmentsComponent implements OnInit {
   }
 
   changeCategory(category: string) {
-    this.filter.category = category ? category : null;
+    this.filter.category = category && category !== 'Categoria' ? category : null;
     this.findAll(this.OVERRIDE);
   }
 
