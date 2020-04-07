@@ -15,7 +15,7 @@ export const ROUTES: Routes = [
   // { path: 'home',             component: HomeComponent },
   { path: 'home', component: EstablishmentsComponent },
   { path: 'register', component: SignupComponent, canActivate: [RegisterGuardService] },
-  { path: 'landing', component: LandingComponent },
+  { path: 'about', component: LandingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contributors', component: ContributorsComponent },
   { path: 'support-us', component: SupportUsComponent },
