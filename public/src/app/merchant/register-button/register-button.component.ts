@@ -1,5 +1,8 @@
-import { registerButtonAnimations } from './../register.buttons.animations';
+import { User } from './../../domain/User';
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { UserlogedNotificationService } from './../../services/userloged-notification.service';
+import { registerButtonAnimations } from './../register.buttons.animations';
 
 @Component({
   selector: 'app-register-button',
@@ -9,42 +12,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterButtonComponent implements OnInit {
 
-  fabButtons = [
-    {
-      icon: 'timeline'
-    },
-    {
-      icon: 'view_headline'
-    },
-    {
-      icon: 'room'
-    },
-    {
-      icon: 'lightbulb_outline'
-    },
-    {
-      icon: 'lock'
-    }
-  ];
-  buttons = [];
-  fabTogglerState = 'inactive';
+  logged: boolean;
+  userLogged: any;
 
   ngOnInit(): void {
   }
 
-  constructor() { }
-
-  showItems() {
-    this.fabTogglerState = 'active';
-    this.buttons = this.fabButtons;
+  constructor(private userLogedNotification: UserlogedNotificationService,
+    private location: Location) {
+    this.userLogedNotification.notifier.subscribe((userLogged: User) => {
+      this.updateAuthStatus(userLogged);
+    });
   }
 
-  hideItems() {
-    this.fabTogglerState = 'inactive';
-    this.buttons = [];
+  updateAuthStatus(userLogged: User) {
+    this.userLogged = userLogged;
+    this.logged = !!(userLogged && userLogged.id);
+}
+
+  isVisibleOnThisPage(): boolean {
+    const visiblePaths = [
+    ];
+    const pagePath = this.location.prepareExternalUrl(this.location.path());
+    return visiblePaths.length === 0 || visiblePaths.indexOf(pagePath) >= 0;
   }
 
-  onToggleFab() {
-    this.buttons.length ? this.hideItems() : this.showItems();
-  }
 }

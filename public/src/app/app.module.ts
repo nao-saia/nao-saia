@@ -35,6 +35,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SharedModule } from './shared/shared.module';
 import { SignupComponent } from './signup/signup.component';
+import { RegisterButtonComponent } from './merchant/register-button/register-button.component';
 
 
 
@@ -64,6 +65,7 @@ import { SignupComponent } from './signup/signup.component';
     MaskCpfCnpjDirective,
     MaskTelCelDirective,
     MaskZipCodeDirective,
+    RegisterButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -27,7 +27,8 @@ export let options: Partial<IConfig> | (() => Partial<IConfig>);
     MatChipsModule,
     MatAutocompleteModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule
   ],
   declarations: [
     GoogleMapsComponent,
