@@ -33,8 +33,12 @@ export class RegisterButtonComponent implements OnInit {
   isVisibleOnThisPage(): boolean {
     const visiblePaths = [
     ];
+    const notVisiblePaths = [
+      '#/merchant-register'
+    ];
     const pagePath = this.location.prepareExternalUrl(this.location.path());
-    return visiblePaths.length === 0 || visiblePaths.indexOf(pagePath) >= 0;
+    return (visiblePaths.length === 0 || visiblePaths.indexOf(pagePath) >= 0)
+      && (notVisiblePaths.length === 0 || notVisiblePaths.indexOf(pagePath) < 0);
   }
 
 }
