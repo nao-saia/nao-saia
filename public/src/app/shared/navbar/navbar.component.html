@@ -49,14 +49,16 @@
           </div>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link no-caret" data-toggle="dropdown" role="button">
+          <a class="nav-link no-caret" [routerLink]="['/landing']" role="button">
             <i class="ni ni-collection d-lg-none"></i>
-            <span class="nav-link-inner--text">O Projeto</span>
+            <span class="nav-link-inner--text">Conheça o projeto</span>
           </a>
-          <div class="dropdown-menu">
-            <a [routerLink]="['/landing']" class="dropdown-item">Conheça o projeto</a>
-            <a [routerLink]="['/contributors']" class="dropdown-item">Quem está fazendo a diferença</a>
-          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link no-caret" [routerLink]="['/contributors']" role="button">
+            <i class="ni ni-collection d-lg-none"></i>
+            <span class="nav-link-inner--text">Colaboradores</span>
+          </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" [routerLink]="['/support-us']" role="button">
@@ -118,14 +120,14 @@
             <span class="nav-link-inner--text d-lg-none">Github</span>
           </a>
         </li> -->
-        <!-- <li class="nav-item d-none d-lg-block ml-lg-4">
-          <a [routerLink]="['/register']" class="btn btn-neutral btn-icon">
+        <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!logged">
+          <a [routerLink]="['/register']" class="btn btn-warning btn-icon">
             <span class="btn-inner--icon">
-              <i class="fa fa-registered mr-2"></i>
+              <i class="fa fa-plus mr-2"></i>
             </span>
             <span class="nav-link-inner--text">Cadastre Seu Estabelecimento</span>
           </a>
-        </li> -->
+        </li>
         <li class="nav-item dropdown" *ngIf="!logged">
           <a class="nav-link no-caret" [routerLink]="['/login']" role="button">
             <i class="ni ni-collection d-lg-none"></i>
