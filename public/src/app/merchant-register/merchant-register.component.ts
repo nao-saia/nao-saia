@@ -1,3 +1,4 @@
+import { GoogleAnalyticsService } from './../service/google-analytics.service';
 import { CategoryService } from './../services/category.service';
 import { User } from '../domain/User';
 import { UserService } from '../services/user.service';
@@ -45,7 +46,8 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     private stateService: StateService,
     private userService: UserService,
     private categoryService: CategoryService,
-    toastr: ToastrService) {
+    toastr: ToastrService,
+    private googleAnalytics: GoogleAnalyticsService) {
     super(toastr);
     this.model = new Merchant();
   }
@@ -80,6 +82,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
     if (this.isFormValid()) {
       this.service.save(this.model).subscribe(
         () => {
+          this.googleAnalytics.eventEmitter('add_merchant', 'merchant', 'register', 'new', 1);
           super.showAlertInfo('Estabelecimento cadastrado com sucesso!');
           setTimeout(() => {
             this.router.navigate([`/my-merchants`]);
