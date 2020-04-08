@@ -6,10 +6,12 @@ import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 
-var didScroll;
-var lastScrollTop = 0;
-var delta = 5;
-var navbarHeight = 0;
+declare let gtag: Function;
+
+// var didScroll;
+// var lastScrollTop = 0;
+// var delta = 5;
+// var navbarHeight = 0;
 
 @Component({
     selector: 'app-root',
@@ -60,6 +62,7 @@ export class AppComponent implements OnInit {
     // };
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement.children[0].children[0];
+        navbar.classList.add('headroom--not-top');
         //   this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
         //       if (window.outerWidth > 991) {
         //           window.document.children[0].scrollTop = 0;
@@ -84,6 +87,15 @@ export class AppComponent implements OnInit {
             .subscribe((event: NavigationStart) => {
                 this.loader.clearStatus();
             });
-        navbar.classList.add('headroom--not-top');
+
+        this.router.events
+            .filter(event => event instanceof NavigationEnd)
+            .subscribe((event: NavigationEnd) => {
+                gtag('config', 'G-K2Z2E4X017',
+                   {
+                     'page_path': event.urlAfterRedirects
+                   }
+                  );
+            });
     }
 }
