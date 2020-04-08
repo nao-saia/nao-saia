@@ -67,7 +67,13 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
 
   findMerchantById(merchantId: string) {
     this.service.findById(merchantId)
-      .subscribe((merchant: Merchant) => this.model = merchant);
+      .subscribe((merchant: Merchant) => {
+        this.model = Merchant.of(merchant);
+        if (this.model.phones && this.model.phones.length > 0) {
+          this.phone = this.model.phones[0];
+          this.model.phones = [];
+        }
+      });
   }
 
   addIdUserLogged() {
@@ -101,7 +107,7 @@ export class MerchantRegisterComponent extends AbstractViewComponent implements 
   }
 
   isFormValid() {
-    return this.model.valid() && this.cpfCnjValid 
+    return this.model.valid() && this.cpfCnjValid
             && this.telephoneValid;
   }
 
