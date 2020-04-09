@@ -35,7 +35,7 @@
           </a>
           <div class="dropdown-menu-xl dropdown-menu">
             <div class="dropdown-menu-inner">
-              <a *ngFor="let item of menu.categories" routerLinkActive="active" [routerLink]="item.ref"
+              <a *ngFor="let item of menu.categories" routerLinkActive="active" [routerLink]="item.ref" [queryParams]="{ category: item.category}"
                 class="media d-flex align-items-center">
                 <div class="icon icon-shape bg-gradient-primary rounded-circle text-white">
                   <i class="{{item.icon}}"></i>
