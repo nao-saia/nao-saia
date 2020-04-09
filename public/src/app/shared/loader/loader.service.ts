@@ -18,13 +18,13 @@ export class LoaderService {
 
   show(): void {
     this.counter++;
-    console.log(`show() counter [${this.counter}]`);
+    // console.log(`show() counter [${this.counter}]`);
     this.loaderSubject.next(<LoaderState>{ show: this.counter > 0 });
   }
 
   hide(): void {
     this.counter--;
-    console.log(`hide() counter [${this.counter}]`);
+    // console.log(`hide() counter [${this.counter}]`);
     this.loaderSubject.next(<LoaderState>{ show: this.counter > 0 });
   }
 
