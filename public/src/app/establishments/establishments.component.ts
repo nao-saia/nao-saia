@@ -19,6 +19,7 @@ import { CityService } from './../services/city.service';
 import { MerchantService } from './../services/merchant.service';
 import { StateService } from './../services/state.service';
 import { Category } from '../domain/Category';
+import { ActivatedRoute } from '@angular/router';
 
 
 const PAGE_SIZE = 12;
@@ -52,7 +53,8 @@ export class EstablishmentsComponent implements OnInit {
 
   HIDE_FILTER = 'Esconder filtros de pesquisa';
   SHOW_FILTER = 'Exibir filtros de pesquisa';
-  DEFAULT_CATEGORY = 'Restaurante';
+  DEFAULT_CATEGORY = null;
+  // DEFAULT_CATEGORY = 'Categoria';
   OVERRIDE = true;
   PRESERVE = false;
 
@@ -80,7 +82,8 @@ export class EstablishmentsComponent implements OnInit {
     private cityService: CityService,
     private geolocation: GeolocationService,
     private categoryService: CategoryService,
-    private fb: FormBuilder) {
+    private fb: FormBuilder,
+    private route: ActivatedRoute) {
     this.createForm();
    }
 
@@ -90,6 +93,24 @@ export class EstablishmentsComponent implements OnInit {
     this.listStates();
     this.listCategories();
     this.findAll(this.OVERRIDE);
+
+    this.handleQueryParams();
+  }
+
+  handleQueryParams(): void  {
+    this.route.queryParams
+      // .filter(params => params.order)
+      .subscribe(params => {
+        console.log(params);
+        if (params && params.category) {
+          this.categoryControl.setValue(params.category);
+          this.changeCategory(params.category);
+        }
+        if (params && params.stateID) {
+          this.stateControl.setValue(params.stateID);
+          this.changeState(params.stateID);
+        }
+      });
   }
 
   createStateControl() {
@@ -106,6 +127,7 @@ export class EstablishmentsComponent implements OnInit {
   createCategoryControll() {
     this.categoryControl = this.fb.control('');
     this.categoryControl.setValue(this.DEFAULT_CATEGORY);
+    this.categoryControl.setValue(null);
   }
 
   createSearchControl() {
