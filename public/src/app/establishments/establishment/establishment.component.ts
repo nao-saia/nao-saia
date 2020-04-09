@@ -49,7 +49,7 @@ export class EstablishmentComponent implements OnInit {
   checkUserLogged() {
     this.userService.getUserLogged()
       .subscribe((userLogged: User) => {
-        this.showEditLink = userLogged?.id === this.merchant.userId 
+        this.showEditLink = userLogged?.id === this.merchant.userId
           && this.router.url === '/my-merchants';
       });
   }
@@ -58,5 +58,29 @@ export class EstablishmentComponent implements OnInit {
     this.router.navigate([`/merchant/${this.merchant.id}`], {
       state: this.merchant
     });
+  }
+
+  getIcon(category: string): string {
+    switch (category.toUpperCase()) {
+      case 'SERVIÇOS': { return 'fa-wrench'; }
+      case 'FARMÁCIA': { return 'fa-medkit'; }
+      case 'LOJA': { return 'fa-shopping-cart'; }
+      case 'EMPRESAS': { return 'fa-shopping-cart'; }
+      case 'OUTROS(AS)': { return 'fa-shopping-cart'; }
+      case 'SUPERMERCADO': { return 'fa-shopping-cart'; }
+      case 'PAPELARIA': { return 'fa-paperclip'; }
+      case 'BORRACHARIA': { return 'fa-car'; }
+      case 'BAR': { return 'fa-beer'; }
+      case 'DISTRIBUIDORA DE BEBIDAS': { return 'fa-beer'; }
+      case 'PADARIA': { return 'fa-birthday-cake'; }
+
+      case 'RESTAURANTE': { return 'fa-shopping-cart'; }
+      case 'HAMBURGUERIA': { return 'fa-shopping-cart'; }
+      case 'LANCHONETE': { return 'fa-shopping-cart'; }
+      case 'PET SHOP': { return 'fa-shopping-cart'; }
+      case 'PIZZARIA': { return 'fa-shopping-cart'; }
+      case 'AÇOUGUE': { return 'fa-shopping-cart'; }
+      default: { return 'fa-shopping-cart'; }
+    }
   }
 }
