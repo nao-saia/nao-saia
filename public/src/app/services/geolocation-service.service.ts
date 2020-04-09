@@ -16,7 +16,7 @@ export class GeolocationService {
         const geolocation = navigator.geolocation;
         geolocation.getCurrentPosition((position: Position) => {
           if (position) {
-            console.log(`http://maps.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`);
+            // console.log(`http://maps.google.com/maps?q=${position.coords.latitude},${position.coords.longitude}`);
             this.getAddressFromLocation(position.coords.latitude, position.coords.longitude)
               .subscribe((responseAddress: Address) => subscriber.next(responseAddress));
           } else {

@@ -24,23 +24,39 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = userService.getToken();
     if (token) {
       const authRequest = request.clone({ setHeaders: { 'Authorization': `Bearer ${token}` } });
-      return next.handle(authRequest).pipe(
-        tap((event) => {
-          if (event instanceof HttpResponse) {
-            this.decrementRequest();
-          }
+      return next.handle(authRequest)
+        .pipe(tap((event) => {
+          this.handleResponse(request, event);
         },
-        (err: any) => {
-          if (err instanceof HttpErrorResponse) {
-            this.decrementRequest();
-            if (err.status !== 401) {
-              return;
-            }
-            this.router.navigate(['/login']);
-          }
-        }));
+          (err: any) => {
+            this.handleResponseError(request, err);
+          }));
     }
-    return next.handle(request);
+    return next.handle(request)
+      .pipe(tap((event) => {
+        this.handleResponse(request, event);
+      },
+        (err: any) => {
+          this.handleResponseError(request, err);
+        }));
+  }
+
+  private handleResponse(request: HttpRequest<unknown>, event: HttpEvent<any>) {
+    // console.log(`request: ${request.url} : ${JSON.stringify(event)}`);
+    if (event instanceof HttpResponse) {
+      this.decrementRequest();
+    }
+  }
+
+  private handleResponseError(request: HttpRequest<unknown>, err: HttpErrorResponse) {
+    // console.log(`request: ${request.url} : ${JSON.stringify(err)}`);
+    if (err instanceof HttpErrorResponse) {
+      this.decrementRequest();
+      if (err.status !== 401) {
+        return;
+      }
+      this.router.navigate(['/login']);
+    }
   }
 
   incrementRequest(): void {

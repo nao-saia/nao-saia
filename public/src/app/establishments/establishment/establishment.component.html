@@ -2,13 +2,17 @@
   <div class="rounded bg-white shadow shadow-lg--hover p-3 mb-2 card-scale cursor-pointer text-default"
     [@estabelecimentoTrigger]="estabelecimentoState">
     <div class="d-flex justify-content-start align-items-center">
-      <img class="img-fluid img-thumbnail " src="../../../assets/img/brand/favicon.png" />
+      
+      <i class="fa {{getIcon(category)}} fa-2x"></i>
 
       <div class="col-12">
         <div class="d-flex flex-column justify-content-center align-items-start col">
+          <div class="col-12 ml-1">
+            <span class="badge badge-pill badge-primary float-right" style="cursor: pointer;" [routerLink]="['/merchants']"
+              [queryParams]="{ category: category }">{{ category }}</span>
+          </div>
           <div class="col-12">
-            <label class="float-left">{{ merchant.fantasyName }}</label>
-            <label class="float-right border-bottom">{{ category }}</label>
+            <span class="float-left bold">{{ merchant.fantasyName }}</span>
           </div>
           <div class="col-12">
             <div class="float-left">
@@ -19,7 +23,7 @@
           <div class="col-12">
             <div class="float-left">
               <i class="fa fa-map-marker"></i>
-              <label class="ml-1">{{ merchant.address.district }}</label>
+              <span class="ml-1 small">{{ merchant.address.district }}, {{ merchant.address.city }} - {{ merchant.address.state }}</span>
             </div>
             <a title="Editar estabelecimento" *ngIf="showEditLink" class="float-right  nav-link no-caret" 
               [routerLink]="['/merchant-register', merchant.id]" role="button">

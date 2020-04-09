@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class GoogleMapsComponent implements OnInit {
 
-  @Input() endereco : string;
+  @Input() endereco: string;
   @Input() lat: number
   @Input() lng: number;
   zoom: number = 15;
@@ -15,7 +15,7 @@ export class GoogleMapsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.lat, this.lng)
+    // console.log(this.lat, this.lng);
   }
 
 }

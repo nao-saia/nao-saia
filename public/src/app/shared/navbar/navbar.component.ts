@@ -88,30 +88,35 @@ export class NavbarComponent implements OnInit {
             categories: [
                 {
                     name: "Farmácias",
+                    category: "Farmácia",
                     description: "Encontre Farmácias com delivery abertos.",
                     ref: "merchants",
                     icon: "ni ni-ambulance"
                 },
                 {
                     name: "Supermercados",
+                    category: "Supermercado",
                     description: "Encontre Supermercados com delivery abertos.",
                     ref: "merchants",
                     icon: "ni ni-cart"
                 },
                 {
                     name: "Lanchonetes",
+                    category: "Lanchonete",
                     description: "Encontre Restaurantes/Lanchonetes com delivery abertos.",
                     ref: "merchants",
                     icon: "ni ni-delivery-fast"
                 },
                 {
                     name: "Restaurantes",
+                    category: "Restaurante",
                     description: "Encontre Restaurantes com delivery abertos.",
                     ref: "merchants",
                     icon: "ni ni-delivery-fast"
                 },
                 {
                     name: "Outros",
+                    category: "Outros(as)",
                     description: "Encontre outros estabalecimentos.",
                     ref: "merchants",
                     icon: "ni ni-square-pin"

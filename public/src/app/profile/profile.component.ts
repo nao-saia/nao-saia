@@ -14,6 +14,7 @@ import Mask from "../shared/utils/Mask";
 export class ProfileComponent implements OnInit {
   id: string;
   merchant: Merchant;
+  whatsappMessage = 'Olá vi seu anúncio no naosaia.com.br, gostaria de fazer meu pedido.';
 
   constructor(
     private router: ActivatedRoute,
