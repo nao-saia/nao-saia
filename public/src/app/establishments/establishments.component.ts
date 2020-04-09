@@ -85,30 +85,28 @@ export class EstablishmentsComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute) {
     this.createForm();
-   }
+  }
 
   ngOnInit() {
     this.clearFilter();
-    
+
     this.listStates();
     this.listCategories();
-    this.findAll(this.OVERRIDE);
-
     this.handleQueryParams();
   }
 
-  handleQueryParams(): void  {
+  handleQueryParams(): void {
     this.route.queryParams
       // .filter(params => params.order)
       .subscribe(params => {
-        console.log(params);
         if (params && params.category) {
           this.categoryControl.setValue(params.category);
           this.changeCategory(params.category);
-        }
-        if (params && params.stateID) {
+        } else if (params && params.stateID) {
           this.stateControl.setValue(params.stateID);
           this.changeState(params.stateID);
+        } else {
+          this.findAll(this.OVERRIDE);
         }
       });
   }
