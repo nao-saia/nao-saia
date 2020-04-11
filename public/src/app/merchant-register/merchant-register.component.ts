@@ -1,4 +1,4 @@
-import { GoogleAnalyticsService } from './../service/google-analytics.service';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { CategoryService } from './../services/category.service';
 import { User } from '../domain/User';
 import { UserService } from '../services/user.service';
