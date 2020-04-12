@@ -168,7 +168,7 @@ export class EstablishmentsComponent implements OnInit {
           this.merchants = this.page.content;
         } else {
           this.page.update(Page.of(response));
-          this.merchants.concat(this.page.content);
+          this.merchants.push(...this.page.content);
         }
       });
   }
