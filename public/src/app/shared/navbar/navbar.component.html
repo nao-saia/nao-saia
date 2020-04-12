@@ -28,7 +28,7 @@
         </div>
       </div>
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="!isMobile()">
           <a class="nav-link no-caret" data-toggle="dropdown" role="button">
             <i class="fa fa-search d-lg-none"></i>
             <span class="nav-link-inner--text">Encontre</span>
@@ -47,6 +47,12 @@
               </a>
             </div>
           </div>
+        </li>
+        <li class="nav-item" *ngIf="isMobile()">
+          <a class="nav-link no-caret" [routerLink]="['/home']" role="button">
+            <i class="fa fa-search d-lg-none"></i>
+            <span class="nav-link-inner--text">Encontre</span>
+          </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link no-caret" [routerLink]="['/about']" role="button">

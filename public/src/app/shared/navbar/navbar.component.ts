@@ -142,4 +142,9 @@ export class NavbarComponent implements OnInit {
             this.router.navigate([`/home`]);
         });
     }
+
+    isMobile(): boolean {
+        const ua = navigator.userAgent;
+        return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua));
+    }
 }
