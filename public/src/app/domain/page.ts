@@ -25,12 +25,12 @@ export class Page<T> {
     }
 
     hasNext(): boolean  {
-        return this.pageNumber < this.totalPages;
+        return this.pageNumber < (this.totalPages - 1);
     }
 
     next(): number {
         if (this.hasNext()) {
-            return this.pageNumber + 1;
+            return this.pageNumber++;
         } else {
             return this.pageNumber;
         }
@@ -42,7 +42,7 @@ export class Page<T> {
 
     previous(): number {
         if (this.hasPrevious()) {
-            return this.pageNumber - 1;
+            return this.pageNumber--;
         } else {
             return this.pageNumber;
         }

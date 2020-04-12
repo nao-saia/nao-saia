@@ -152,7 +152,10 @@ export class EstablishmentsComponent implements OnInit {
 
   // Realizar aqui a consulta paginada
   fetchMoreRows() {
-    this.findAll(this.PRESERVE);
+    if (this.page.hasNext()) {
+      this.page.next();
+      this.findAll(this.PRESERVE);
+    }
   }
 
   findAll(override: boolean): void {
