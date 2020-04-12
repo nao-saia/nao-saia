@@ -1,16 +1,10 @@
+import { animate, state, style, transition, trigger } from "@angular/animations";
+import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import Mask from "src/app/shared/utils/Mask";
+import { Merchant } from "./../../domain/Merchant";
 import { User } from './../../domain/User';
 import { UserService } from './../../services/user.service';
-import { Merchant } from "./../../domain/Merchant";
-import { Router, ActivatedRouteSnapshot } from "@angular/router";
-import { Component, OnInit, Input } from "@angular/core";
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate
-} from "@angular/animations";
-import Mask from "src/app/shared/utils/Mask";
 
 @Component({
   selector: "ns-establishment",
@@ -30,9 +24,10 @@ export class EstablishmentComponent implements OnInit {
   estabelecimentoState = "ready";
   apps: string[] = [];
   showEditLink: boolean = false;
+  category: string = "";
 
   @Input() merchant: Merchant;
-  category: string = "";
+  @Input() selectedCategory: String;
 
   constructor(private router: Router,
     private userService: UserService) { }
@@ -42,7 +37,11 @@ export class EstablishmentComponent implements OnInit {
     this.merchant.whatsapp = Mask.maskValuePhone(this.merchant.whatsapp);
 
     if (this.merchant.categories) {
-      this.category = this.merchant.categories[0];
+      if (this.selectedCategory) {
+        this.category = this.merchant.categories.find(catetory => catetory === this.selectedCategory);
+      } else {
+        this.category = this.merchant.categories[0];
+      }
     }
   }
 

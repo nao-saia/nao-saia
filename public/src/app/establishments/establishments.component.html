@@ -76,7 +76,7 @@
       </p>
     </div>
     <div *ngFor="let merchant of merchants" class="col-sm-12 col-12 col-xl-4 col-lg-4 mt-2">
-      <ns-establishment [merchant]="merchant"></ns-establishment>
+      <ns-establishment [merchant]="merchant" [selectedCategory]="filter.category"></ns-establishment>
     </div>
     <div *ngIf="merchants.length > 0" class="col-12 mt-4">
       <button class="btn btn-block btn-success mb-3" (click)="fetchMoreRows()">
