@@ -36,6 +36,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SharedModule } from './shared/shared.module';
 import { SignupComponent } from './signup/signup.component';
 import { RegisterButtonComponent } from './merchant/register-button/register-button.component';
+import { TermsComponent } from './terms/terms.component';
 
 
 
@@ -66,6 +67,7 @@ import { RegisterButtonComponent } from './merchant/register-button/register-but
     MaskTelCelDirective,
     MaskZipCodeDirective,
     RegisterButtonComponent,
+    TermsComponent,
   ],
   imports: [
     BrowserModule,

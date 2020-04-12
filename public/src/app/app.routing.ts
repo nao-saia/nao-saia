@@ -1,3 +1,4 @@
+import { TermsComponent } from './terms/terms.component';
 import { Routes } from '@angular/router';
 import { EstablishmentsComponent } from './establishments/establishments.component';
 import { ContributorsComponent } from './landing/contributors/contributors.component';
@@ -19,6 +20,7 @@ export const ROUTES: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'contributors', component: ContributorsComponent },
   { path: 'support-us', component: SupportUsComponent },
+  { path: 'terms', component: TermsComponent },
   { path: 'merchant/:id', component: ProfileComponent },
   { path: 'merchant-register', component: MerchantRegisterComponent },
   { path: 'merchant-register/:merchantId', component: MerchantRegisterComponent },

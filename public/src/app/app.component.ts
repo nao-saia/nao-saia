@@ -1,3 +1,4 @@
+import { environment } from './../environments/environment';
 import { LoaderService } from './shared/loader/loader.service';
 import { Component, OnInit, Inject, Renderer2, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
@@ -20,13 +21,16 @@ declare let gtag: Function;
 })
 export class AppComponent implements OnInit {
     private _router: Subscription;
+    private _production = false;
 
     constructor(private renderer: Renderer2,
         private router: Router,
         @Inject(DOCUMENT) private document: any,
         private element: ElementRef,
         public location: Location,
-        private loader: LoaderService) { }
+        private loader: LoaderService) {
+        this._production = environment.production;
+    }
     // @HostListener('window:scroll', ['$event'])
     // hasScrolled() {
 
@@ -91,11 +95,13 @@ export class AppComponent implements OnInit {
         this.router.events
             .filter(event => event instanceof NavigationEnd)
             .subscribe((event: NavigationEnd) => {
-                gtag('config', 'G-K2Z2E4X017',
-                   {
-                     'page_path': event.urlAfterRedirects
-                   }
-                  );
+                if (this._production) {
+                    gtag('config', 'G-K2Z2E4X017',
+                        {
+                            'page_path': event.urlAfterRedirects
+                        }
+                    );
+                }
             });
     }
 }

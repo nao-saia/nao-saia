@@ -95,7 +95,7 @@
                     <div class="custom-control custom-control-alternative custom-checkbox">
                       <input class="custom-control-input" id="acceptTerms" name="acceptTerms" type="checkbox" [(ngModel)]="model.acceptTerms" required>
                       <label class="custom-control-label" for="acceptTerms">
-                        <span class="text-dark"><b>Eu li e aceito <a href="javascript:void(0)"> os termos de uso e privacidade</a></b>
+                        <span class="text-dark"><b>Eu li e aceito <a [routerLink]="['/terms']" target="_blank"> os termos de uso e privacidade</a></b>
                         </span>
                       </label>
                     </div>
