@@ -1,3 +1,4 @@
+import { MerchantService } from './../../services/merchant.service';
 import { Location, PopStateEvent } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
@@ -25,7 +26,9 @@ export class NavbarComponent implements OnInit {
         private router: Router,
         private route: ActivatedRoute,
         private userService: UserService,
-        private userLogedNotification: UserlogedNotificationService) {
+        private userLogedNotification: UserlogedNotificationService,
+        private merchantService: MerchantService) {
+
         this.loadMenu();
         this.loadSocialMedias();
         this.userLogedNotification.notifier.subscribe((userLogged: User) => {
@@ -146,5 +149,9 @@ export class NavbarComponent implements OnInit {
     isMobile(): boolean {
         const ua = navigator.userAgent;
         return (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(ua));
+    }
+
+    openRegister(): void {
+        this.merchantService.intentRegister();
     }
 }

@@ -9,7 +9,7 @@
             <i class="material-icons">{{btn.icon}}</i>
         </button>
     </div> -->
-    <a [routerLink]="['/register']" class="btn btn-warning btn-icon" *ngIf="logged || isVisibleOnThisPage()">
+    <a [routerLink]="['/register']" (click)="openRegister()" class="btn btn-warning btn-icon" *ngIf="logged || isVisibleOnThisPage()">
         <span class="btn-inner--icon">
           <i class="fa fa-plus mr-2"></i>
         </span>

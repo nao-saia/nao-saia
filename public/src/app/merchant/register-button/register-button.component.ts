@@ -1,3 +1,5 @@
+import { MerchantService } from './../../services/merchant.service';
+import { Router } from '@angular/router';
 import { User } from './../../domain/User';
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +21,8 @@ export class RegisterButtonComponent implements OnInit {
   }
 
   constructor(private userLogedNotification: UserlogedNotificationService,
-    private location: Location) {
+              private location: Location,
+              private merchantService: MerchantService) {
     this.userLogedNotification.notifier.subscribe((userLogged: User) => {
       this.updateAuthStatus(userLogged);
     });
@@ -43,6 +46,10 @@ export class RegisterButtonComponent implements OnInit {
     const allowedPath = notAllowedPaths.length === 0 ||
                         notAllowedPaths.filter(item => pagePath.indexOf(item) >= 0).length === 0;
     return visiblePath && allowedPath;
+  }
+
+  openRegister(): void {
+    this.merchantService.intentRegister();
   }
 
 }

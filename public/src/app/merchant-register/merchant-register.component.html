@@ -18,7 +18,7 @@
           <app-alert [alert]="dataAlert" (closeEvent)="onCloseAlert()"></app-alert>
           <div class="card bg-gradient-secondary shadow">
             <div class="card-body p-lg-5">
-              <h4 class="mb-1">Conclua seu cadastro e venda suprimentos para quem não pode sair de casa?</h4>
+              <h4 class="mb-1">Conclua seu cadastro e venda suprimentos para quem não pode sair de casa</h4>
               <p class="mt-0">Preencha o cadastro abaixo e começe a vender.</p>
 
               <!-- public logo?: string, -->
@@ -53,8 +53,8 @@
                 </div>
               </div> -->
 
-              <p class="mt-0">Adicione ou remova as categorias em que seu estabelecimento se enquadra.</p>
-              <div class="form-group mt-3" [ngClass]="{'has-danger is-invalid': !model.categories}">
+              <div class="form-group mt-5" [ngClass]="{'has-danger is-invalid': !model.categories}">
+                <p class="mt-3" style="font-weight: bold;">Adicione ou remova as categorias em que seu estabelecimento se enquadra.</p>
                 <app-chips-auto-complete placeholder="Categorias de Estabelecimento" [acceptNewValues]="false"
                   [availableItems]="categoriesDataSource" [selectedItems]="model.categories">
                 </app-chips-auto-complete>

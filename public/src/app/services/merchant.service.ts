@@ -1,3 +1,4 @@
+import { GoogleAnalyticsService } from './google-analytics.service';
 import { MerchanFilter } from './../domain/merchant-filter';
 import { ResponseMerchant } from './../domain/ResponseMerchant';
 import { Injectable } from '@angular/core';
@@ -12,7 +13,7 @@ import { environment } from 'src/environments/environment.prod';
 export class MerchantService {
   path = 'merchants';
 
-  constructor(private http: HttpWrapperService) {
+  constructor(private http: HttpWrapperService, private googleAnalytics: GoogleAnalyticsService) {
     this.http.setBaseUrl(environment.baseUrl);
   }
 
@@ -38,5 +39,9 @@ export class MerchantService {
 
   findByUserId(userId: string): Observable<any> {
     return this.http.get<any>(`${this.path}/owner/${userId}`);
+  }
+
+  intentRegister(): void {
+    this.googleAnalytics.eventEmitter('intent_merchant', 'merchant', 'register', 'new', 1);
   }
 }

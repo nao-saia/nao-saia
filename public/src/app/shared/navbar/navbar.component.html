@@ -81,7 +81,7 @@
       </ul>
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
         <li class="nav-item d-none d-lg-block ml-lg-4" *ngIf="!logged">
-          <a [routerLink]="['/register']" class="btn btn-warning btn-icon">
+          <a [routerLink]="['/register']"  (click)="openRegister()" class="btn btn-warning btn-icon">
             <span class="btn-inner--icon">
               <i class="fa fa-plus mr-2"></i>
             </span>

@@ -1,6 +1,6 @@
 <mat-form-field class="chip-list">
-    <mat-chip-list #chipList aria-label="Fruit selection">
-      <mat-chip
+    <mat-chip-list #chipList aria-label="placeholder">
+      <mat-chip style="background-color: #FB6340; color: honeydew;"
         *ngFor="let item of selectedItems"
         [selectable]="selectable"
         [removable]="removable"
@@ -18,8 +18,8 @@
         (matChipInputTokenEnd)="add($event)">
     </mat-chip-list>
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-      <mat-option *ngFor="let fruit of filtered | async" [value]="fruit">
-        {{fruit}}
+      <mat-option *ngFor="let item of filtered | async" [value]="item">
+        {{item}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
