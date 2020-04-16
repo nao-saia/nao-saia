@@ -16,12 +16,14 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
+  userService: UserService = null;
+
   constructor(private injector: Injector, private router: Router, private loaderService: LoaderService) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.incrementRequest();
-    const userService = this.injector.get(UserService);
-    const token = userService.getToken();
+    this.userService = this.injector.get(UserService);
+    const token = this.userService.getToken();
     if (token) {
       const authRequest = request.clone({ setHeaders: { 'Authorization': `Bearer ${token}` } });
       return next.handle(authRequest)
@@ -55,7 +57,8 @@ export class AuthInterceptor implements HttpInterceptor {
       if (err.status !== 401) {
         return;
       }
-      this.router.navigate(['/login']);
+      this.userService.logout()
+        .subscribe(() => this.router.navigate(['/login']));
     }
   }
 
